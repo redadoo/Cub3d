@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 20:17:47 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/30 15:27:28 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:04:57 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,9 @@ void	print_vector3(t_vector3 v)
 	printf("z : %.2f ", v.z);
 	printf("y : %.2f \n", v.y);
 }
+
 void	print_vector2(t_vector2 v)
 {
 	printf("x : %.2f ", v.x);
 	printf("y : %.2f \n", v.y);
-}
-
-void	set_vector3(t_vector3 *v, double x, double y, double z)
-{
-	v->x = x;
-	v->z = z;
-	v->y = y;
-}
-
-void	set_vector2(t_vector2 *v, double x, double y)
-{
-	v->x = x;
-	v->y = y;
 }

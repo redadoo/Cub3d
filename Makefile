@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2023/11/30 15:47:10 by edoardo          ###   ########.fr        #
+#    Updated: 2024/01/31 15:06:28 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ KEY = src/key/key.c
 
 GAME_LOGIC = src/game_logic/main_loop.c src/game_logic/player.c src/game_logic/camera.c
 
-GAME_ENGINE = src/game_engine/raycasting.c src/game_engine/draw.c src/game_engine/raycasting_texture.c
+GAME_ENGINE = src/game_engine/raycasting.c src/game_engine/draw.c src/game_engine/raycasting_utils.c
 
 MAP_READ = src/map_read/map_read.c src/map_read/init_map.c
 

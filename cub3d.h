@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/30 16:13:44 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:11:15 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # endif
 # ifdef __linux__
 #  include "./mlx_linux/mlx.h"
-#  define UP 119
+#  define UP 115
 #  define LEFT 97
-#  define DOWN 115
+#  define DOWN 119
 #  define RIGHT 100
 #  define EXIT  65307
 # endif
@@ -38,6 +38,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include "lib/ft_libft/libft.h"
+# include <time.h>
 
 typedef struct s_window
 {
@@ -73,10 +74,10 @@ typedef struct s_map
 	char		**map;
 	t_vector3	floor_color;
 	t_vector3	celin_color;
-	t_texture	north_wall;
-	t_texture	south_wall;
-	t_texture	ovest_wall;
-	t_texture	east_wall;
+	t_texture	n_wall;
+	t_texture	s_wall;
+	t_texture	o_wall;
+	t_texture	e_wall;
 }				t_map;
 
 typedef struct s_camera
@@ -126,7 +127,8 @@ t_vector3	string_to_vector(char *str);
 void		print_vector3(t_vector3 v);
 void		set_vector3(t_vector3 *v, double x, double y, double z);
 void		set_vector2(t_vector2 *v, double x, double y);
-t_vector3   divide_vector3(t_vector3 v, int div);
+void		set_vector2_int(t_vector2_int *v, int x, int y);
+void		divide_vector3(t_vector3 *v, int div);
 void		print_vector2(t_vector2 v);
 /* WINDOW */
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);

@@ -6,16 +6,16 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2023/11/29 17:17:33 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:09:44 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static	int	map_height(char *file)
+static int	map_height(char *file)
 {
-	char	*str;	
-	int		fd;	
+	char	*str;
+	int		fd;
 	int		linecount;
 	int		readcount;
 	int		is_map;
@@ -32,14 +32,14 @@ static	int	map_height(char *file)
 		str = get_next_line(fd);
 	}
 	close(fd);
-	printf("%d\n",linecount);
+	printf("%d\n", linecount);
 	return (linecount - 1);
 }
 
 int	file_linecount(char *file)
 {
-	char	c;	
-	int		fd;	
+	char	c;
+	int		fd;
 	int		linecount;
 	int		readcount;
 
@@ -72,8 +72,7 @@ t_map	readmap(char *file)
 	t_vector2_int	index;
 	t_map			game_map;
 
-/* 	printf("%d\n",  map_height(file));
- */	map = ft_calloc((sizeof(char *)), map_height(file) + 1);
+	map = ft_calloc((sizeof(char *)), map_height(file) + 1);
 	if (map == NULL)
 		return (game_map);
 	fd = open(file, O_RDONLY);

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 22:51:07 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/30 14:57:09 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:59:52 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,30 @@ void	init_player(t_player *player, char **map)
 		{
 			if (map[i.y][i.x] == 'N')
 			{
-				set_vector3(&player->pos, (double)i.x,0.0f,(double)i.y);
+				set_vector3(&player->pos, (double)i.x + 1,0.0f,(double)i.y + 1);
 				set_vector2(&player->dir, 0, 1);
+				set_vector2_int(&player->map_pos, i.x + 1, i.y + 1);
 				return ;
 			}
 			if (map[i.y][i.x] == 'S')
 			{
-				set_vector3(&player->pos, (double)i.x,0.0f,(double)i.y);
+				set_vector3(&player->pos, (double)i.x + 1,0.0f,(double)i.y + 1);
 				set_vector2(&player->dir,0, -1);
+				set_vector2_int(&player->map_pos, i.x + 1, i.y + 1);
 				return ;
 			}
 			if (map[i.y][i.x] == 'E')
 			{
-				set_vector3(&player->pos, (double)i.x,0.0f,(double)i.y);
+				set_vector3(&player->pos, (double)i.x + 1,0.0f,(double)i.y + 1);
 				set_vector2(&player->dir,1, 0);
+				set_vector2_int(&player->map_pos, i.x + 1, i.y + 1);
 				return ;
 			}
 			if (map[i.y][i.x] == 'W')
 			{
-				set_vector3(&player->pos, (double)i.x,0.0f,(double)i.y);
+				set_vector3(&player->pos, (double)i.x + 1,0.0f,(double)i.y + 1);
 				set_vector2(&player->dir,-1, 0);
+				set_vector2_int(&player->map_pos, i.x + 1, i.y + 1);
 				return ;
 			}
 			i.x++;
