@@ -3,93 +3,143 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/01/31 15:09:44 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 18:49:31 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static int	map_height(char *file)
+static bool	is_scene_empty(char *file_name)
 {
-	char	*str;
-	int		fd;
-	int		linecount;
-	int		readcount;
-	int		is_map;
+	bool	return_value;
+	char	*temp;
+	int		scene_fd;
 
-	fd = open(file, O_RDONLY);
-	if (!fd)
-		return (-1);
-	linecount = 1;
-	str = get_next_line(fd);
-	while (str)
-	{
-		if (str[0] == '1')
-			linecount++;
-		str = get_next_line(fd);
-	}
-	close(fd);
-	printf("%d\n", linecount);
-	return (linecount - 1);
+	return_value = false;
+	scene_fd = open(file_name, O_RDONLY);
+	if (!scene_fd)
+		return (false);
+	temp = get_next_line(scene_fd);
+	if (temp == NULL)
+		return_value = true;
+	free(temp);
+	close(scene_fd);
+	return (return_value);
 }
 
-int	file_linecount(char *file)
+static char	**get_textures_part(int scene_fd)
 {
-	char	c;
-	int		fd;
-	int		linecount;
-	int		readcount;
+	char	**scene;
+	size_t	i;
+	char	*line;
 
-	fd = open(file, O_RDONLY);
-	if (!fd)
-		return (-1);
-	linecount = 1;
-	while (true)
+	scene = malloc((6 + 1) * sizeof(char *));
+	i = 0;
+	while (i < 6)
 	{
-		readcount = read(fd, &c, 1);
-		if (readcount == 0)
+		line = trim_free(get_next_line(scene_fd), "\n");
+		if (only_spaces(line))
 		{
-			break ;
+			free(line);
+			continue ;
 		}
-		if (readcount < 0)
-			return (-1);
-		if (c == '\n')
-			linecount++;
+		scene[i] = line;
+		i += 1;
 	}
-	close(fd);
-	return (linecount);
+	scene[i] = NULL;
+	print_matrix(scene);
+	free(get_next_line(scene_fd));
+	return (scene);
+}
+
+static size_t	get_nbr_map_lines(char *file_name)
+{
+	int		scene_fd;
+	size_t	i;
+	size_t	count;
+	char	*line;
+
+	scene_fd = open(file_name, O_RDONLY);
+	i = 0;
+	count = 0;
+	line = get_next_line(scene_fd);
+	while (i < 6)
+	{
+		free(line);
+		line = get_next_line(scene_fd);
+		if (!only_spaces(line))
+			i += 1;
+	}
+	while (line)
+	{
+		if (!only_spaces(line))
+			count += 1;
+		free(line);
+		line = get_next_line(scene_fd);
+	}
+	close(scene_fd);
+	return (count);
+}
+static char	**get_map_part(char *file_name, int scene_fd)
+{
+	size_t	i;
+	size_t	nbr_lines;
+	char	**map;
+	char	*line;
+	int		check;
+
+	check = 0;
+	nbr_lines = get_nbr_map_lines(file_name);
+	map = ft_calloc(sizeof(char *), (nbr_lines + 1));
+	i = -1;
+	line = trim_free(get_next_line(scene_fd), "\n");
+	while (line && !line[0])
+	{
+		check = 1;
+		free(line);
+		line = trim_free(get_next_line(scene_fd), "\n");
+	}
+	while (++i < nbr_lines)
+	{
+		if(!check)
+			line = trim_free(get_next_line(scene_fd), "\n");
+		map[i] = line;
+		check = 0;
+	}
+	return (map);
 }
 
 /* read a file and return the map inside it*/
-t_map	readmap(char *file)
+bool	readmap(t_game *game, char *file_name)
 {
-	int				fd;
-	char			*str;
-	char			**map;
-	t_vector2_int	index;
-	t_map			game_map;
+	bool	return_value;
+	int		scene_fd;
+	char	**textures_part;
+	char	**map_part;
 
-	map = ft_calloc((sizeof(char *)), map_height(file) + 1);
-	if (map == NULL)
-		return (game_map);
-	fd = open(file, O_RDONLY);
-	index.x = -1;
-	index.y = -1;
-	while (++index.x < file_linecount(file))
+	return_value = true;
+	scene_fd = open(file_name, O_RDONLY);
+	if (scene_fd == -1 || is_scene_empty(file_name))
+		return (false);
+	textures_part = get_textures_part(scene_fd);
+	if (!parse_textures(&game->map, textures_part))
+		return_value = false;
+	if (return_value != false)
 	{
-		str = get_next_line(fd);
-		if (str[0] == '1')
-			map[++index.y] = ft_strdup(str);
-		else
-			extract_info(&game_map, str);
-		free(str);
+		map_part = get_map_part(file_name, scene_fd);
+		if (!parse_map(map_part))
+		{
+			free_matrix(map_part);
+			return_value = false;
+		}
 	}
-	game_map.map = map;
-	close(fd);
-	return (game_map);
+	if (return_value != false)
+		game->map.map = map_part;
+	close(scene_fd);
+	return (return_value);
 }
 
 void	free_matrix(char **map)
