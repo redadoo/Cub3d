@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/05 20:32:17 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:51:20 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	put_info(t_map *map, char *str1, char *str2)
 		else if (ft_strstr(str1, "SO"))
 			map->s_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "WE"))
-			map->e_wall.path = ft_strdup(str2);
+			map->o_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "EA"))
 			map->e_wall.path = ft_strdup(str2);
 	}
@@ -92,7 +92,7 @@ static bool	fits_in_intrange(int n, int lowest, int highest)
 	return (n >= lowest && n <= highest);
 }
 
-static bool	assign_rgb(char **rgb, t_map *game_map)
+static bool	assign_rgb(char **rgb, t_map *game_map, char* identifier)
 {
 	size_t	i;
 	int element_rgb[3];
@@ -109,9 +109,10 @@ static bool	assign_rgb(char **rgb, t_map *game_map)
 			return (false);
 		i += 1;
 	}
-	game_map->celin_color.x = element_rgb[0];
-	game_map->celin_color.y = element_rgb[1];
-	game_map->celin_color.z = element_rgb[2];
+	if(streq(identifier, "C"))
+		set_vector3(&game_map->celin_color, element_rgb[0], element_rgb[1], element_rgb[2]);
+	else
+		set_vector3(&game_map->floor_color, element_rgb[0], element_rgb[1], element_rgb[2]);
 	return (true);
 }
 
@@ -133,7 +134,7 @@ static bool	parse_rgb(char *identifier, char **map, t_map *game_map)
 			if (matrix_lenght(temp) != 2)
 				return_value = false;
 			rgb = ft_split(temp[1], ',');
-			if (return_value == true && !assign_rgb(rgb, game_map))
+			if (return_value == true && !assign_rgb(rgb, game_map, identifier))
 				return_value = false;
 			free_matrix(rgb);
 			free_matrix(temp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/05 20:30:48 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:38:14 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static int	init_game(t_game *game, char **argv)
 		printf("diooooo\n");
 		exit(1);
 	}
-/* 	print_vector3(game->map.celin_color);
+	print_vector3(game->map.celin_color);
 	print_vector3(game->map.floor_color);
 	printf("%s\n",game->map.n_wall.path);
 	printf("%s\n",game->map.e_wall.path);
 	printf("%s\n",game->map.o_wall.path);
-	printf("%s\n",game->map.s_wall.path); */
+	printf("%s\n",game->map.s_wall.path);
 
 
 

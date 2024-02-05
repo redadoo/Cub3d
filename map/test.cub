@@ -1,10 +1,10 @@
-NO ./assets/matrix_64x64.xpm
-EA ./assets/matrix_64x64.xpm
-SO ./assets/matrix_64x64.xpm
-WE ./assets/matrix_64x64.xpm
+NO ./assets/matrix_64x64.xpm1
+EA ./assets/matrix_64x64.xpm2
+SO ./assets/matrix_64x64.xpm3
+WE ./assets/matrix_64x64.xpm4
 
-F 0,0,0
-C 0,0,0
+F 1,2,0
+C 1,0,3
 
 1111111111111111111111111
 1000000000110000000000001

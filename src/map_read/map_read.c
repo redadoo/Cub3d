@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/05 20:27:27 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:51:34 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static char	**get_textures_part(int scene_fd)
 		i += 1;
 	}
 	scene[i] = NULL;
-	print_matrix(scene);
 	free(get_next_line(scene_fd));
 	return (scene);
 }
