@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/01/31 16:11:15 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:56:53 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #  define EXIT  53
 # endif
 # ifdef __linux__
-#  include "./mlx_linux/mlx.h"
+#  include "../mlx_linux/mlx.h"
 #  define UP 115
 #  define LEFT 97
 #  define DOWN 119
@@ -33,12 +33,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "lib/vector/vector.h"
-# include "lib/collider/collider.h"
+# include "vector/vector.h"
+# include "collider/collider.h"
 # include <math.h>
 # include <fcntl.h>
-# include "lib/ft_libft/libft.h"
-# include <time.h>
+# include "ft_libft/libft.h"
+# include <sys/time.h>
+# include "canvas/canvas.h"
 
 typedef struct s_window
 {
@@ -63,7 +64,6 @@ typedef struct s_player
 {
 	float				rotation_speed;
 	float				movement_speed;
-	t_vector2_int		map_pos;
 	t_vector3			pos;
 	t_vector2			dir;
 	t_3dbox_collider	collider;
@@ -71,7 +71,7 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char		**map;
+	char		**matrix;
 	t_vector3	floor_color;
 	t_vector3	celin_color;
 	t_texture	n_wall;
@@ -82,16 +82,29 @@ typedef struct s_map
 
 typedef struct s_camera
 {
-	t_vector2	camera_plane;
-	t_vector3	pos;
+	t_vector2	plane;
+	t_vector2	dir;
 }				t_camera;
 
-typedef struct s_ray
+typedef struct s_raycaster
 {
-	int			ray_height;
-	t_vector2	ray_dir;
-	t_vector3	ray_lenght;
-}				t_ray;
+	double			camera_x;
+	t_vector2		ray_dir;
+	t_vector2_int	vec_map;
+	t_vector2		side_dist;
+	t_vector2		delta_dist;
+	t_vector2_int	vec_step;
+	t_vector2_int	tex;
+	double	perp_wall_dist;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	double	wall_x;
+	double	tex_pos;
+	double	step;
+}				t_raycaster;
 
 typedef struct s_game
 {
@@ -101,21 +114,25 @@ typedef struct s_game
 	t_window	window;
 	t_player	player;
 	t_camera	camera;
+	t_img		img;
+	t_raycaster raycaster;
 	float		time;
 	float		old_time;
 }				t_game;
 
 /* GAME ENGINE */
-void		renderer_texture(t_game *game);
 void		renderer(t_game *game);
-bool		draw_vert_line(int x, int y1, int y2, t_vector3 color, t_game *game);
-bool 		draw_rectangle(int x1, int y1, int x2, int y2, t_vector3 color, t_game *game);
-bool		draw_screen(t_vector3 color, t_game *game);
+bool		draw_vert_line(t_game *game, int x);
+void		set_raycaster(t_game *game, int x);
+void		set_raycaster_dir(t_game *game);
+void		find_distance_to_wall(t_game *game);
+void		find_wall_height(t_game *game);
+void		find_wall_pixel(t_game *game);
 /* UTILS */
 int			check_extension(char *file);
 int			check_dir(char ch);
 /* GAME LOGIC */
-int			main_loop(void *param);
+int			main_loop(t_game *game);
 void		init_player(t_player *player, char **map);
 void		init_camera(t_camera *camera);
 void		move_player(t_game *game, int dir);

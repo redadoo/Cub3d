@@ -6,19 +6,19 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:34:36 by edoardo           #+#    #+#             */
-/*   Updated: 2024/01/31 16:03:31 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/03 18:03:01 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 void	divide_vector3(t_vector3 *v, int div)
 {
-	if(v->x != 0)
+	if (v->x != 0)
 		v->x /= div;
-	if(v->y != 0)
+	if (v->y != 0)
 		v->y /= div;
-	if(v->z != 0)
+	if (v->z != 0)
 		v->z /= div;
 }
 

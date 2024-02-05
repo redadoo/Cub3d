@@ -6,14 +6,14 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 12:47:56 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/29 18:16:31 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/02 17:27:16 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 void	init_camera(t_camera *camera)
 {
-	camera->camera_plane.x = 0;
-	camera->camera_plane.y = 0.66;
+	camera->plane.x = 0;
+	camera->plane.y = 0.66;
 }

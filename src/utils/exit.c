@@ -6,13 +6,14 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:15:32 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/24 22:20:48 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:57:47 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 int	close_game(t_game *game)
 {
+	free_matrix(game->map.matrix);
 	exit(0);
 }

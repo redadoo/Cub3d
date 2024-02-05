@@ -6,11 +6,11 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 20:17:47 by edoardo           #+#    #+#             */
-/*   Updated: 2024/01/31 15:04:57 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/03 18:03:55 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 int	check_dir(char ch)
 {

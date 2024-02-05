@@ -6,11 +6,11 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:19:30 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/26 12:53:07 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:55:05 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 t_window	ft_new_window(void *mlx, int widht, int height, char *name)
 {
