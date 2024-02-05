@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2023/11/26 16:00:37 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:13:31 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdint.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 typedef struct s_list
@@ -103,5 +103,6 @@ char		*ft_strchr(const char *str, int ch);
 char		*ft_backup(char *backup);
 char		*ft_get_line(char *backup);
 const char	*ft_strstr(const char *X, const char *Y);
+bool		is_onstr(const char *str, int ch);
 
 #endif

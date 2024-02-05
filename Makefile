@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2024/01/31 15:06:28 by edoardo          ###   ########.fr        #
+#    Updated: 2024/02/05 20:08:40 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ KEY = src/key/key.c
 
 GAME_LOGIC = src/game_logic/main_loop.c src/game_logic/player.c src/game_logic/camera.c
 
-GAME_ENGINE = src/game_engine/raycasting.c src/game_engine/draw.c src/game_engine/raycasting_utils.c
+GAME_ENGINE = src/game_engine/raycasting.c src/game_engine/draw.c
 
-MAP_READ = src/map_read/map_read.c src/map_read/init_map.c
+MAP_READ = src/map_read/map_read.c src/map_read/init_map.c src/map_read/map_utils.c src/map_read/parse_map.c
 
 LIBFT_SRC = lib/ft_libft/ft_isdigit.c lib/ft_libft/ft_memset.c lib/ft_libft/ft_split.c lib/ft_libft/ft_strtrim.c lib/ft_libft/ft_isprint.c\
 lib/ft_libft/ft_putchar_fd.c lib/ft_libft/ft_strlcat.c lib/ft_libft/ft_substr.c lib/ft_libft/ft_atoi.c lib/ft_libft/ft_itoa.c lib/ft_libft/ft_putendl_fd.c \
@@ -38,7 +38,7 @@ lib/ft_libft/ft_strnstr.c lib/ft_libft/ft_isascii.c lib/ft_libft/ft_memmove.c li
 lib/ft_libft/ft_printf.c lib/ft_libft/ft_printf_utilis.c lib/ft_libft/ft_printf_flag.c lib/ft_libft/ft_printf_hex.c lib/ft_libft/ft_printf_p.c \
 lib/ft_libft/ft_printf_unsigned.c lib/ft_libft/ft_lstadd_back.c lib/ft_libft/ft_lstadd_front.c lib/ft_libft/ft_lstclear.c lib/ft_libft/ft_lstdelone.c \
 lib/ft_libft/ft_lstiter.c lib/ft_libft/ft_lstlast.c lib/ft_libft/ft_lstmap.c lib/ft_libft/ft_lstnew.c lib/ft_libft/ft_lstsize.c \
-lib/ft_libft/get_next_line.c lib/ft_libft/get_next_line_utils.c
+lib/ft_libft/get_next_line.c
 
 COLLIDER_SRC = lib/collider/collider.c 
 

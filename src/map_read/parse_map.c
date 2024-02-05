@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/02/05 00:26:55 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:17:36 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 size_t	matrix_lenght(char **matrix)
 {
@@ -129,7 +129,6 @@ static bool	wall_surrounding(char **map)
 
 bool	parse_map(char **map)
 {
-    
 	if (!wall_surrounding(map) || !valid_elements(map)
 		|| !player_position(map))
         return (false);

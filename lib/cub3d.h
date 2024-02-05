@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/03 17:56:53 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:07:50 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,11 +150,23 @@ void		print_vector2(t_vector2 v);
 /* WINDOW */
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
 
-/* MAP INIT */
-t_map		readmap(char *file);
-void		extract_info(t_map *map, char *str);
-int			load_texture(t_game *game);
 /* KEY */
 int			key_hook(int keycode, void *param);
+
+/* MAP INIT */
+bool		readmap(t_game *game, char *file);
+void		extract_info(t_map *map, char *str);
+int			load_texture(t_game *game);
+
+bool	parse_map(char **map);
+
+bool	parse_textures(t_map *map, char **textures_part);
+
+size_t	matrix_lenght(char **matrix);
+
+bool	only_spaces(const char *str);
+char	*trim_free(char *s1, char const *set);
+
+bool	is_spaces(char c);
 
 #endif

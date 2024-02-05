@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/05 00:38:56 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:32:17 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 static bool	streq(char *str1, char *str2)
 {

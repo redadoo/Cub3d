@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/03 18:02:10 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:30:48 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,20 @@
 static int	init_game(t_game *game, char **argv)
 {
 	game->mlx = mlx_init();
-	game->map = readmap(argv[1]);
+	if(!readmap(game, argv[1]))
+	{
+		printf("diooooo\n");
+		exit(1);
+	}
+/* 	print_vector3(game->map.celin_color);
+	print_vector3(game->map.floor_color);
+	printf("%s\n",game->map.n_wall.path);
+	printf("%s\n",game->map.e_wall.path);
+	printf("%s\n",game->map.o_wall.path);
+	printf("%s\n",game->map.s_wall.path); */
+
+
+
 	init_player(&game->player, game->map.matrix);
 	init_camera(&game->camera);
 	game->img = init_img();
@@ -40,5 +53,6 @@ int	main(int argc, char **argv)
 		close_game(&game);
 	if (init_game(&game, argv) != 0)
 		close_game(&game);
+		
 	mlx_run(&game);
 }

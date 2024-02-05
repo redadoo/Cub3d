@@ -6,11 +6,11 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/05 19:58:32 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:27:27 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../lib/cub3d.h"
 
 static bool	is_scene_empty(char *file_name)
 {
@@ -83,6 +83,7 @@ static size_t	get_nbr_map_lines(char *file_name)
 	close(scene_fd);
 	return (count);
 }
+
 static char	**get_map_part(char *file_name, int scene_fd)
 {
 	size_t	i;
@@ -91,14 +92,13 @@ static char	**get_map_part(char *file_name, int scene_fd)
 	char	*line;
 	int		check;
 
-	check = 0;
+	check = 1;
 	nbr_lines = get_nbr_map_lines(file_name);
 	map = ft_calloc(sizeof(char *), (nbr_lines + 1));
 	i = -1;
 	line = trim_free(get_next_line(scene_fd), "\n");
 	while (line && !line[0])
 	{
-		check = 1;
 		free(line);
 		line = trim_free(get_next_line(scene_fd), "\n");
 	}
@@ -107,6 +107,7 @@ static char	**get_map_part(char *file_name, int scene_fd)
 		if(!check)
 			line = trim_free(get_next_line(scene_fd), "\n");
 		map[i] = line;
+		printf("%s\n",line);
 		check = 0;
 	}
 	return (map);
@@ -137,7 +138,7 @@ bool	readmap(t_game *game, char *file_name)
 		}
 	}
 	if (return_value != false)
-		game->map.map = map_part;
+		game->map.matrix = map_part;
 	close(scene_fd);
 	return (return_value);
 }
