@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 15:38:11 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:16:59 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline uint32_t	get_color(t_game *game, t_raycaster *rc)
 	if (!rc->side)
 	{
 		if (game->player.pos.x > rc->vec_map.x)
-			return (extract_pixel_from_image(&game->assets.o_wall, rc->tex.x,
+			return (extract_pixel_from_image(&game->assets.w_wall, rc->tex.x,
 					rc->tex.y));
 		return (extract_pixel_from_image(&game->assets.e_wall, rc->tex.x,
 				rc->tex.y));

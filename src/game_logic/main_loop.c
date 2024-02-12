@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:18:31 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 12:53:27 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:16:54 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	renderer(t_game *game)
 	{
 		set_raycaster(game, x);
 		set_raycaster_dir(game);
-		find_distance_to_wall(game);
+		find_distance_tw_wall(game);
 		find_wall_height(game);
 		find_wall_pixel(game);
 		draw_vert_line_texture(game, x);
@@ -47,8 +47,6 @@ void	renderer(t_game *game)
 
 int	main_loop(t_game *game)
 {
-	t_vector2_int	mouse_pos;
-
 	renderer(game);
 	safe_mlx_destroy_image(game->mlx, game->scene.img);
 	game->scene.img = NULL;

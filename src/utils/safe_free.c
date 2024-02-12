@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:39:50 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 13:24:31 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:40:08 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	safe_free(void *_ptr)
 void	safe_mlx_destroy_image(void *mlx_ptr, void *image_ptr)
 {
 	if (mlx_ptr != NULL && image_ptr != NULL)
+	{
 		mlx_destroy_image(mlx_ptr, image_ptr);
+	}
 }
 
 void	safe_mlx_destroy_window(void *mlx_ptr, void *win_ptr)

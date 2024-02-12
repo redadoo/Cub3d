@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/02/12 15:24:16 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:55:42 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static bool	valid_elements(char **map_part)
 		{
 			if (is_onstr("0EWNS", map_part[i][j])
 				&& !valid_surroundings(map_part, i, j))
-				return (printf("qua2 : |%c|\n", map_part[i][j]), false);
+				return (false);
 			j += 1;
 		}
 		while (map_part[i][j])
 		{
 			if (map_part[i][j] != '1')
-				return (printf("qua1 : |%c|\n", map_part[i][j]), false);
+				return (false);
 			j += 1;
 		}
 		i += 1;
@@ -101,7 +101,7 @@ static	bool	wall_surrounding(char **map)
 	j = -1;
 	while (map[0][++j])
 		if (!is_onstr(" 1", map[0][j]))
-			return (printf("qua1 : |%c|\n", map[0][j]), false);
+			return (false);
 	j = -1;
 	i = matrix_lenght(map) - 1;
 	while (map[i][++j])
@@ -114,10 +114,10 @@ static	bool	wall_surrounding(char **map)
 		while (is_spaces(map[i][j]))
 			j += 1;
 		if (map[i][j] != '1')
-			return (printf("qua3\n"), false);
+			return (false);
 		j = last_idx(map[i]) - 1;
 		if (map[i][j] != '1')
-			return (printf("qua4\n"), false);
+			return (false);
 	}
 	return (true);
 }

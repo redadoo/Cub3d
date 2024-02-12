@@ -6,19 +6,13 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/12 15:38:14 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:33:27 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-/**
- * @brief Checks if a scene file is empty.
- *
- * @param file_name The name of the scene file.
- * @return true if the scene is empty, false otherwise.
- */
-static bool	is_scene_empty(char *file_name)
+bool	is_scene_empty(char *file_name)
 {
 	bool	return_value;
 	char	*temp;
@@ -36,23 +30,23 @@ static bool	is_scene_empty(char *file_name)
 	return (return_value);
 }
 
-/**
- * @brief Retrieves the texture part from the scene file.
- *
- * @param scene_fd The file descriptor for the scene file.
- * @return An array containing the texture information from the scene file.
- */
-static char	**get_textures_part(int scene_fd)
+char	**get_textures_part(int scene_fd)
 {
-	char	**scene;
 	size_t	i;
 	char	*line;
+	char	**scene;
 
 	scene = malloc((6 + 1) * sizeof(char *));
+	printf("%p\n", scene);
 	i = 0;
 	while (i < 6)
 	{
 		line = trim_free(get_next_line(scene_fd), "\n");
+		if (line == NULL)
+		{
+			free(scene);
+			return (NULL);
+		}
 		if (only_spaces(line))
 		{
 			free(line);
@@ -66,13 +60,7 @@ static char	**get_textures_part(int scene_fd)
 	return (scene);
 }
 
-/**
- * @brief Gets the number of map lines in the scene file.
- *
- * @param file_name The name of the scene file.
- * @return The number of non-empty map lines in the scene file.
- */
-static size_t	get_nbr_map_lines(char *file_name)
+int	get_nbr_map_lines(char *file_name)
 {
 	int		scene_fd;
 	size_t	i;
@@ -87,6 +75,8 @@ static size_t	get_nbr_map_lines(char *file_name)
 	{
 		free(line);
 		line = get_next_line(scene_fd);
+		if (line == NULL)
+			return (-1);
 		if (!only_spaces(line))
 			i += 1;
 	}
@@ -101,23 +91,18 @@ static size_t	get_nbr_map_lines(char *file_name)
 	return (count);
 }
 
-/**
- * @brief Retrieves the map part from the scene file.
- *
- * @param file_name The name of the scene file.
- * @param scene_fd The file descriptor for the scene file.
- * @return An array containing the map information from the scene file.
- */
-static char	**get_map_part(char *file_name, int scene_fd)
+char	**get_map_part(char *file_name, int scene_fd)
 {
-	size_t	i;
-	size_t	nbr_lines;
+	int		i;
+	int		nbr_lines;
 	char	**map;
 	char	*line;
 	int		check;
 
 	check = 1;
 	nbr_lines = get_nbr_map_lines(file_name);
+	if (nbr_lines == -1)
+		return (NULL);
 	map = ft_calloc(sizeof(char *), (nbr_lines + 1));
 	i = -1;
 	line = trim_free(get_next_line(scene_fd), "\n");
@@ -153,7 +138,7 @@ bool	readmap(t_game *game, char *file_name)
 	if (return_value != false)
 	{
 		map_part = get_map_part(file_name, scene_fd);
-		if (!parse_map(map_part))
+		if (map_part == NULL || !parse_map(map_part))
 		{
 			free_matrix(map_part);
 			return_value = false;

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 15:38:09 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:24:08 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,9 @@ int	check_extension(char *file)
 
 t_vector3	string_to_vector(char *str)
 {
-	int			i;
 	t_vector3	v;
 	char		**numbers;
 
-	i = 0;
 	numbers = ft_split(str, ',');
 	v.x = ft_atoi(numbers[0]);
 	v.y = ft_atoi(numbers[1]);

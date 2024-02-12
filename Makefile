@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2024/02/12 13:19:32 by edoardo          ###   ########.fr        #
+#    Updated: 2024/02/12 16:26:39 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,9 @@ ifeq ($(UNAME_S),Darwin)
 LINKS += -lmlx -framework OpenGL -framework AppKit
 endif
 
-FLAGS = -lm
+FLAGS = -Wall -Wextra -Werror
+
+PATH_MAP = map/test.cub
 
 all: $(NAME)
 
@@ -90,17 +92,17 @@ exe: all
 	@echo "\n     - Done -"
 
 play: all
-	@./$(NAME) map/test.cub
+	@./$(NAME) $(PATH_MAP)
 
 
 ifeq ($(UNAME_S),Linux)
 leaks: all
-	@valgrind --log-file="leak.txt" --leak-check=full --show-leak-kinds=all ./$(NAME) map/test.cub
+	@valgrind --log-file="leak.txt" --leak-check=full --show-leak-kinds=all ./$(NAME) $(PATH_MAP)
 endif
 
 ifeq ($(UNAME_S),Darwin)
 leaks: all
-	@leaks --atExit -- ./$(NAME) map/test.cub
+	@leaks --atExit -- ./$(NAME) $(PATH_MAP)
 endif
 
 norm:

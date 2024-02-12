@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:18:11 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 15:56:44 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:41:26 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ void	init_tgame(t_game *game)
 {
 	game->mlx = NULL;
 	game->assets.e_wall.path = NULL;
-	game->assets.o_wall.path = NULL;
+	game->assets.w_wall.path = NULL;
 	game->assets.s_wall.path = NULL;
 	game->assets.n_wall.path = NULL;
+	game->assets.e_wall.img = NULL;
+	game->assets.w_wall.img = NULL;
+	game->assets.s_wall.img = NULL;
+	game->assets.n_wall.img = NULL;
 	game->map = NULL;
 	game->window.reference = NULL;
 }
@@ -39,7 +43,7 @@ void	init_tgame(t_game *game)
 void	load_cub3d_data(t_game *game, char **argv)
 {
 	if (!readmap(game, argv[1]))
-		exit(1);
+		error("error on map content", game);
 	init_player(&game->player, game->map);
 	init_camera(&game->camera, game->player.dir);
 	load_texture(game);

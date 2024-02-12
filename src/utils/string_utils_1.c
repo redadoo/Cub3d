@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 13:52:00 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:28:54 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*trim_free(char *s1, char const *set)
 	size_t	end;
 	char	*trimmed_str;
 
-	if (!s1 || !set)
+	if (s1 == NULL || set == NULL)
 		return (NULL);
 	beg = 0;
 	while (s1[beg] != '\0' && ft_strchr(set, s1[beg]) != NULL)

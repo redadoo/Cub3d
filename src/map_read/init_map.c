@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 15:20:25 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:59:38 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	put_info(t_assets *assets, char *str1, char *str2)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
 	if (str1[0] != '\n' && str1 && str2)
 	{
 		if (ft_strstr(str1, "NO"))
@@ -26,7 +21,7 @@ void	put_info(t_assets *assets, char *str1, char *str2)
 		else if (ft_strstr(str1, "SO"))
 			assets->s_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "WE"))
-			assets->o_wall.path = ft_strdup(str2);
+			assets->w_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "EA"))
 			assets->e_wall.path = ft_strdup(str2);
 	}
@@ -118,6 +113,8 @@ bool	parse_textures(t_assets *assets, char **textures_part)
 {
 	bool	return_value;
 
+	if (textures_part == NULL)
+		return (false);
 	return_value = false;
 	if (parse_coord("NO", textures_part, assets) && parse_coord("SO",
 			textures_part, assets) && parse_coord("EA", textures_part, assets)

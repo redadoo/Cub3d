@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 15:36:33 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:04:07 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_assets
 	t_vector3_int	celin_color;
 	t_sprite		n_wall;
 	t_sprite		s_wall;
-	t_sprite		o_wall;
+	t_sprite		w_wall;
 	t_sprite		e_wall;
 }					t_assets;
 
@@ -364,7 +364,7 @@ void				set_raycaster_dir(t_game *game);
  * @param game Pointer to the game structure containing 
  * map and raycaster information.
  */
-void				find_distance_to_wall(t_game *game);
+void				find_distance_tw_wall(t_game *game);
 /**
  * @brief Finds the height of the wall to be drawn on the screen.
  * @param game Pointer to the game structure containing raycaster information.
@@ -521,4 +521,33 @@ void				renderer(t_game *game);
  * @return Always returns 0 to indicate successful execution of the main loop.
  */
 int					main_loop(t_game *game);
+/**
+ * @brief Checks if a scene file is empty.
+ *
+ * @param file_name The name of the scene file.
+ * @return true if the scene is empty, false otherwise.
+ */
+bool				is_scene_empty(char *file_name);
+/**
+ * @brief Retrieves the texture part from the scene file.
+ *
+ * @param scene_fd The file descriptor for the scene file.
+ * @return An array containing the texture information from the scene file.
+ */
+char				**get_textures_part(int scene_fd);
+/**
+ * @brief Gets the number of map lines in the scene file.
+ *
+ * @param file_name The name of the scene file.
+ * @return The number of non-empty map lines in the scene file.
+ */
+int					get_nbr_map_lines(char *file_name);
+/**
+ * @brief Retrieves the map part from the scene file.
+ *
+ * @param file_name The name of the scene file.
+ * @param scene_fd The file descriptor for the scene file.
+ * @return An array containing the map information from the scene file.
+ */
+char				**get_map_part(char *file_name, int scene_fd);
 #endif

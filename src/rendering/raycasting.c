@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/12 11:13:18 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:17:00 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	set_raycaster_dir(t_game *game)
 	}
 }
 
-void	find_distance_to_wall(t_game *game)
+void	find_distance_tw_wall(t_game *game)
 {
 	while (!game->raycaster.hit)
 	{
