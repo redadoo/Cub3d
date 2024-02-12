@@ -1,59 +1,15 @@
-/* void					mlx_run(t_game *game);
-void					load_cub3d_data(t_game *game, char **argv);
-void					init_mlx(t_game *game);
-void					init_tgame(t_game *game);
-void					safe_free(void *_ptr);
-void 					safe_mlx_clear_window(void *mlx_ptr, void *win_ptr);
-void 					safe_mlx_destroy_display(void *mlx_ptr);
-void 					safe_mlx_destroy_window(void *mlx_ptr, void *win_ptr);
-void					init_tgame(t_game *game);
-void					renderer(t_game *game);
-void					draw_vert_line_texture(t_game *game, int x);
-void					set_raycaster(t_game *game, int x);
-void					set_raycaster_dir(t_game *game);
-void					find_distance_to_wall(t_game *game);
-void					find_wall_height(t_game *game);
-void					find_wall_pixel(t_game *game);
-int						check_extension(char *file);
-int						check_dir(char ch);
-int						main_loop(t_game *game);
-void					init_player(t_player *player, char **map);
-void					init_camera(t_camera *camera, t_vector2 dir);
-void					move_player(t_game *game, int key);
-int						camera_rotation(int x, int y, t_game *game);
-void					error(char *error_message, t_game *game);
-int						close_game(t_game *game);
-void					free_matrix(char **map);
-void					print_matrix(char **matrix, int x, int y);
-t_vector3				string_to_vector(char *str);
-void					set_vector3(t_vector3 *v, double x, double y, double z);
-void					set_vector2(t_vector2 *v, double x, double y);
-void					set_vector3_int(t_vector3_int *v, int x, int y, int z);
-size_t					last_idx(char *map_line);
-bool					streq(char *str1, char *str2);
-bool					is_all_digits(const char *str);
-bool					fits_in_int_range(int n, int lowest, int highest);
-t_window				ft_new_window(void *mlx, int widht, int height,
-							char *name);
-int						key_hook(int keycode, t_game *game);
-bool					readmap(t_game *game, char *file);
-bool					parse_map(char **map);
-bool					parse_textures(t_assets *assets, char **textures_part);
-size_t					matrix_lenght(char **matrix);
-bool					only_spaces(const char *str);
-char					*trim_free(char *s1, char const *set);
-bool					is_spaces(char c);
-bool					parse_coord(char *coord, char **map, t_assets *assets);
-void					put_info(t_assets *assets, char *str1, char *str2);
-bool					assign_rgb(char **rgb, t_assets *assets,
-							char *identifier);
-bool					parse_rgb(char *identifier, char **map,
-							t_assets *assets);
-t_vector2_int			get_map_size(char **map);
-void					load_texture(t_game *game);
-t_sprite				init_sprite(void);
-t_sprite				new_img(void *mlx_ptr);
-void					put_pixel(t_sprite *img, int x, int y, uint32_t color);
-int						extract_pixel_from_image(t_sprite *img, int X, int Y);
-int						check_next_pos(t_game *game, int x, int y);
-void					safe_mlx_destroy_image(void *mlx_ptr, void *image_ptr); */
+==3662== Memcheck, a memory error detector
+==3662== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3662== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==3662== Command: ./cub3d map/test.cub
+==3662== Parent PID: 3661
+==3662== 
+==3662== 
+==3662== HEAP SUMMARY:
+==3662==     in use at exit: 0 bytes in 0 blocks
+==3662==   total heap usage: 3,020 allocs, 3,020 frees, 162,523 bytes allocated
+==3662== 
+==3662== All heap blocks were freed -- no leaks are possible
+==3662== 
+==3662== For lists of detected and suppressed errors, rerun with: -s
+==3662== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:15:32 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 13:42:42 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:14:25 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	close_game(t_game *game)
 	safe_mlx_clear_window(game->mlx, game->window.reference);
 	safe_mlx_destroy_window(game->mlx, game->window.reference);
 	safe_mlx_destroy_display(game->mlx);
+	free(game->mlx);
 	exit(0);
 }
