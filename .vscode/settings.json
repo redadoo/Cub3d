@@ -7,7 +7,21 @@
         "libft.h": "c",
         "sdl.h": "c",
         "random": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "vector.h": "c",
+        "*.ipp": "c",
+        "*.tcc": "c",
+        "system_error": "c",
+        "fstream": "c",
+        "iostream": "c",
+        "istream": "c",
+        "limits": "c",
+        "new": "c",
+        "ostream": "c",
+        "ratio": "c",
+        "stdexcept": "c",
+        "streambuf": "c",
+        "functional": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

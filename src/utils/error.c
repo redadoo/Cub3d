@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 12:47:56 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/02 17:27:16 by edoardo          ###   ########.fr       */
+/*   Created: 2024/02/12 12:57:38 by edoardo           #+#    #+#             */
+/*   Updated: 2024/02/12 13:34:14 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	init_camera(t_camera *camera)
+void	error(char *error_message, t_game *game)
 {
-	camera->plane.x = 0;
-	camera->plane.y = 0.66;
+	ft_putstr_fd(KRED, STDERR_FILENO);
+	ft_putstr_fd(error_message, STDERR_FILENO);
+	close_game(game);
 }

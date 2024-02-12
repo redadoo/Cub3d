@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collider.h                                         :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 13:11:40 by edoardo           #+#    #+#             */
-/*   Updated: 2023/11/26 13:12:19 by edoardo          ###   ########.fr       */
+/*   Created: 2024/02/05 22:49:43 by edoardo           #+#    #+#             */
+/*   Updated: 2024/02/12 11:53:07 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLLIDER_H
-# define COLLIDER_H
+#include "libft.h"
 
-# include "../vector/vector.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct s_3dbox_collider
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	t_vector3		pos;
-	t_vector3		size;
-}				t_3dbox_collider;
+	size_t	i;
 
-#endif
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i += 1;
+	}
+	if (src[i] && i < n)
+	{
+		while (i < n)
+			dest[i++] = '\0';
+	}
+	dest[i] = '\0';
+	return (dest);
+}

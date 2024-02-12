@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 20:17:47 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/03 18:03:55 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:55:51 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,51 +19,71 @@ int	check_dir(char ch)
 	return (0);
 }
 
-void	print_matrix(char **matrix)
+void	print_matrix(char **matrix, int x, int y)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	while (matrix[i])
 	{
+		j = 0;
 		while (matrix[i][j])
 		{
 			if (matrix[i][j] == '1')
 				printf("\033[0;36m%c", matrix[i][j]);
-			else if (matrix[i][j] == '2')
-				printf("\033[0;32m%c", matrix[i][j]);
-			else if (matrix[i][j] == '3')
-				printf("\033[0;34m%c", matrix[i][j]);
-			else if (matrix[i][j] == '4')
-				printf("\033[0;33m%c", matrix[i][j]);
-			else if (matrix[i][j] == '5')
-				printf("\033[0;31m%c", matrix[i][j]);
 			else if (matrix[i][j] == '0')
 				printf("\033[0;37m%c", matrix[i][j]);
-			else if (check_dir(matrix[i][j]) == 1)
-				printf("\033[0;33m%c", matrix[i][j]);
-			else if (matrix[i][j] != '\n')
-				printf("%c", matrix[i][j]);
+			else
+				printf("\033[0;31m%c", matrix[i][j]);
 			j++;
 		}
 		printf("\n");
-		j = 0;
 		i++;
 	}
+	printf("\n");
+	printf("%d %d\n", i, j);
 }
 
-void	print_vector3(t_vector3 v)
+bool	fits_in_int_range(int n, int lowest, int highest)
 {
-	printf("x : %.2f ", v.x);
-	printf("z : %.2f ", v.z);
-	printf("y : %.2f \n", v.y);
+	return (n >= lowest && n <= highest);
 }
 
-void	print_vector2(t_vector2 v)
+void	free_matrix(char **matrix)
 {
-	printf("x : %.2f ", v.x);
-	printf("y : %.2f \n", v.y);
+	int		i;
+	char	*line;
+
+	if (matrix == NULL)
+		return ;
+	i = 0;
+	while (matrix[i])
+	{
+		line = matrix[i];
+		if (line)
+			free(line);
+		line = NULL;
+		i++;
+	}
+	free(matrix);
+}
+
+t_vector2_int	get_map_size(char **map)
+{
+	t_vector2_int	index;
+
+	index.x = 0;
+	index.y = 0;
+	while (map[index.y])
+	{
+		index.x = 0;
+		while (map[index.y][index.x])
+		{
+			index.x++;
+		}
+		index.y++;
+	}
+	return (index);
 }

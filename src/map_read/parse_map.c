@@ -6,34 +6,11 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/02/05 20:17:36 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 15:24:16 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
-
-size_t	matrix_lenght(char **matrix)
-{
-	size_t	i;
-
-	i = 0;
-	if (!matrix)
-		return (0);
-	while (matrix[i])
-		i += 1;
-	return (i);
-}
-
-static size_t	last_idx(char *map_line)
-{
-	size_t	i;
-
-	i = ft_strlen(map_line) - 1;
-	while (is_spaces(map_line[i]))
-		i -= 1;
-	i += 1;
-	return (i);
-}
 
 bool	valid_surroundings(char **map_part, size_t i, size_t j)
 {
@@ -45,10 +22,16 @@ bool	valid_surroundings(char **map_part, size_t i, size_t j)
 			map_part[i + 1][j + 1]));
 }
 
+/**
+ * @brief Checks if the elements in the map have valid surroundings.
+ *
+ * @param map_part A 2D array of characters representing a part of the map.
+ * @return true if the elements have valid surroundings, false otherwise.
+ */
 static bool	valid_elements(char **map_part)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 1;
 	while (map_part[i + 1])
@@ -59,13 +42,13 @@ static bool	valid_elements(char **map_part)
 		{
 			if (is_onstr("0EWNS", map_part[i][j])
 				&& !valid_surroundings(map_part, i, j))
-				return (printf("qua2 : |%c|\n", map_part[i][j]),false);
+				return (printf("qua2 : |%c|\n", map_part[i][j]), false);
 			j += 1;
 		}
 		while (map_part[i][j])
 		{
 			if (map_part[i][j] != '1')
-				return (printf("qua1 : |%c|\n", map_part[i][j]),false);
+				return (printf("qua1 : |%c|\n", map_part[i][j]), false);
 			j += 1;
 		}
 		i += 1;
@@ -73,6 +56,12 @@ static bool	valid_elements(char **map_part)
 	return (true);
 }
 
+/**
+ * @brief Checks if the player position is valid in the map.
+ *
+ * @param map A 2D array of characters representing the map.
+ * @return true if the player position is valid, false otherwise.
+ */
 static bool	player_position(char **map)
 {
 	bool	player_found;
@@ -98,7 +87,13 @@ static bool	player_position(char **map)
 	return (player_found);
 }
 
-static bool	wall_surrounding(char **map)
+/**
+ * @brief Checks if the map has valid walls surrounding it.
+ *
+ * @param map A 2D array of characters representing the map.
+ * @return true if the walls surrounding are valid, false otherwise.
+ */
+static	bool	wall_surrounding(char **map)
 {
 	int	i;
 	int	j;
@@ -119,18 +114,17 @@ static bool	wall_surrounding(char **map)
 		while (is_spaces(map[i][j]))
 			j += 1;
 		if (map[i][j] != '1')
-			return (printf("qua3\n"),false);
+			return (printf("qua3\n"), false);
 		j = last_idx(map[i]) - 1;
 		if (map[i][j] != '1')
-			return (printf("qua4\n"),false);
+			return (printf("qua4\n"), false);
 	}
 	return (true);
 }
 
 bool	parse_map(char **map)
 {
-	if (!wall_surrounding(map) || !valid_elements(map)
-		|| !player_position(map))
-        return (false);
+	if (!wall_surrounding(map) || !valid_elements(map) || !player_position(map))
+		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/03 18:32:12 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 11:13:18 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	set_raycaster(t_game *game, int x)
 {
 	game->raycaster.camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	game->raycaster.ray_dir.x = game->player.dir.x + game->camera.plane.x
+	game->raycaster.ray_dir.x = game->camera.dir.x + game->camera.plane.x
 		* game->raycaster.camera_x;
-	game->raycaster.ray_dir.y = game->player.dir.y + game->camera.plane.y
+	game->raycaster.ray_dir.y = game->camera.dir.y + game->camera.plane.y
 		* game->raycaster.camera_x;
 	game->raycaster.vec_map.x = (int)game->player.pos.x;
 	game->raycaster.vec_map.y = (int)game->player.pos.z;
@@ -43,25 +43,20 @@ void	set_raycaster_dir(t_game *game)
 	if (game->raycaster.ray_dir.y > 0)
 	{
 		game->raycaster.vec_step.y = -1;
-		game->raycaster.side_dist.y = (game->player.pos.y
+		game->raycaster.side_dist.y = (game->player.pos.z
 				- game->raycaster.vec_map.y) * game->raycaster.delta_dist.y;
 	}
 	else
 	{
 		game->raycaster.vec_step.y = 1;
 		game->raycaster.side_dist.y = (game->raycaster.vec_map.y + 1.0f
-				- game->player.pos.y) * game->raycaster.delta_dist.y;
+				- game->player.pos.z) * game->raycaster.delta_dist.y;
 	}
 }
 
 void	find_distance_to_wall(t_game *game)
 {
-	int	x;
-	int	y;
-
-	x = game->raycaster.vec_map.x;
-	y = game->raycaster.vec_map.y;
-	while (game->raycaster.hit == 0)
+	while (!game->raycaster.hit)
 	{
 		if (game->raycaster.side_dist.x < game->raycaster.side_dist.y)
 		{
@@ -75,7 +70,8 @@ void	find_distance_to_wall(t_game *game)
 			game->raycaster.vec_map.y += game->raycaster.vec_step.y;
 			game->raycaster.side = 1;
 		}
-		if (game->map.matrix[y][x] > 0)
+		if (game->map[game->raycaster.vec_map.y]
+			[game->raycaster.vec_map.x] == '1')
 			game->raycaster.hit = 1;
 	}
 }
@@ -102,7 +98,7 @@ void	find_wall_height(t_game *game)
 void	find_wall_pixel(t_game *game)
 {
 	if (!game->raycaster.side)
-		game->raycaster.wall_x = (int)game->player.pos.y
+		game->raycaster.wall_x = (int)game->player.pos.z
 			+ game->raycaster.perp_wall_dist * game->raycaster.ray_dir.y;
 	else
 		game->raycaster.wall_x = (int)game->player.pos.x

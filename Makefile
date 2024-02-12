@@ -6,28 +6,36 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:53:36 by evocatur          #+#    #+#              #
-#    Updated: 2024/02/05 20:08:40 by edoardo          ###   ########.fr        #
+#    Updated: 2024/02/12 13:19:32 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = cub3d
 
-SRC = $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) $(LIBFT_SRC) $(MAP_READ) $(GAME_ENGINE) $(MAIN_SRC)
+SRC = $(INIT_CUB3D) $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) $(LIBFT_SRC) $(MAP_READ) $(GAME_ENGINE) $(MAIN_SRC) $(IMAGES) $(CAMERA) $(PLAYER) $(RENDERING)
 
 MAIN_SRC = src/cub3d.c
 
-UTILS = src/utils/exit.c src/utils/string_utils.c  src/utils/utils.c src/utils/utils2.c
+INIT_CUB3D = src/init/init_cub3d.c
+
+UTILS = src/utils/error.c src/utils/exit.c src/utils/string_utils_0.c  src/utils/utils_0.c src/utils/utils_1.c  src/utils/safe_free.c src/utils/string_utils_1.c src/utils/texture.c
 
 WINDOW = src/window/window.c
 
 KEY = src/key/key.c
 
-GAME_LOGIC = src/game_logic/main_loop.c src/game_logic/player.c src/game_logic/camera.c
+CAMERA = src/camera/camera.c
 
-GAME_ENGINE = src/game_engine/raycasting.c src/game_engine/draw.c
+IMAGES = src/images/images.c
 
-MAP_READ = src/map_read/map_read.c src/map_read/init_map.c src/map_read/map_utils.c src/map_read/parse_map.c
+PLAYER = src/player/player.c src/player/player_movement.c
+
+GAME_LOGIC = src/game_logic/main_loop.c
+
+RENDERING = src/rendering/raycasting.c src/rendering/draw.c
+
+MAP_READ = src/map_read/map_read.c src/map_read/init_map.c src/map_read/parse_map.c
 
 LIBFT_SRC = lib/ft_libft/ft_isdigit.c lib/ft_libft/ft_memset.c lib/ft_libft/ft_split.c lib/ft_libft/ft_strtrim.c lib/ft_libft/ft_isprint.c\
 lib/ft_libft/ft_putchar_fd.c lib/ft_libft/ft_strlcat.c lib/ft_libft/ft_substr.c lib/ft_libft/ft_atoi.c lib/ft_libft/ft_itoa.c lib/ft_libft/ft_putendl_fd.c \
@@ -38,7 +46,7 @@ lib/ft_libft/ft_strnstr.c lib/ft_libft/ft_isascii.c lib/ft_libft/ft_memmove.c li
 lib/ft_libft/ft_printf.c lib/ft_libft/ft_printf_utilis.c lib/ft_libft/ft_printf_flag.c lib/ft_libft/ft_printf_hex.c lib/ft_libft/ft_printf_p.c \
 lib/ft_libft/ft_printf_unsigned.c lib/ft_libft/ft_lstadd_back.c lib/ft_libft/ft_lstadd_front.c lib/ft_libft/ft_lstclear.c lib/ft_libft/ft_lstdelone.c \
 lib/ft_libft/ft_lstiter.c lib/ft_libft/ft_lstlast.c lib/ft_libft/ft_lstmap.c lib/ft_libft/ft_lstnew.c lib/ft_libft/ft_lstsize.c \
-lib/ft_libft/get_next_line.c
+lib/ft_libft/get_next_line.c lib/ft_libft/ft_strncpy.c lib/ft_libft/ft_strchr.c lib/ft_libft/get_next_line_utils.c
 
 COLLIDER_SRC = lib/collider/collider.c 
 
@@ -84,8 +92,16 @@ exe: all
 play: all
 	@./$(NAME) map/test.cub
 
+
+ifeq ($(UNAME_S),Linux)
 leaks: all
-	@leaks --atExit -- ./$(NAME) map/map_0.ber
+	@valgrind --log-file="leak.txt" --leak-check=full --show-leak-kinds=all ./$(NAME) map/test.cub
+endif
+
+ifeq ($(UNAME_S),Darwin)
+leaks: all
+	@leaks --atExit -- ./$(NAME) map/test.cub
+endif
 
 norm:
 	@norminette $(SRC)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_utils.c                                     :+:      :+:    :+:   */
+/*   string_utils_0.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/03 17:57:53 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:36:07 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,37 @@ t_vector3	string_to_vector(char *str)
 	v.z = ft_atoi(numbers[2]);
 	free_matrix(numbers);
 	return (v);
+}
+
+size_t	last_idx(char *map_line)
+{
+	size_t	i;
+
+	i = ft_strlen(map_line) - 1;
+	while (is_spaces(map_line[i]))
+		i -= 1;
+	i += 1;
+	return (i);
+}
+
+bool	is_spaces(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ')
+		return (true);
+	return (false);
+}
+
+bool	only_spaces(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!is_spaces(str[i]))
+			return (false);
+		i += 1;
+	}
+	return (true);
 }

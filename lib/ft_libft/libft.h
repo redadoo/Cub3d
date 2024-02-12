@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/05 20:13:31 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 11:53:42 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,9 @@ char		*get_next_line(int fd);
 char		*ft_statstr(int fd, char *statstr);
 size_t		ft_strlen(const char *str);
 char		*ft_strjoin(char *backup, char *buff);
-char		*ft_strchr(const char *str, int ch);
 char		*ft_backup(char *backup);
 char		*ft_get_line(char *backup);
 const char	*ft_strstr(const char *X, const char *Y);
 bool		is_onstr(const char *str, int ch);
-
+char		*ft_strncpy(char *dest, const char *src, size_t n);
 #endif

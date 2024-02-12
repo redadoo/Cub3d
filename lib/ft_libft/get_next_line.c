@@ -6,27 +6,11 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:47:06 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/05 20:11:57 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/02/12 11:55:38 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h" 
-
-bool	is_onstr(const char *str, int ch)
-{
-	size_t	i;
-
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ch)
-			return (true);
-		i += 1;
-	}
-	return (false);
-}
 
 static char	*clean_printed(char	*global_buffer)
 {
@@ -132,23 +116,6 @@ static char	*read_buffsize(int fd, char *global_buffer)
 	}
 	free(buffer);
 	return (global_buffer);
-}
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	return (0);
 }
 
 char	*get_next_line(int fd)

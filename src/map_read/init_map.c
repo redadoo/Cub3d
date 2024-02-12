@@ -3,32 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/05 20:51:20 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:20:25 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-static bool	streq(char *str1, char *str2)
-{
-	size_t	i;
-
-	if ((str1 && !str2) || (!str1 && str2))
-		return (false);
-	i = 0;
-	while (str1[i] || str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (false);
-		i += 1;
-	}
-	return (true);
-}
-
-static void	put_info(t_map *map, char *str1, char *str2)
+void	put_info(t_assets *assets, char *str1, char *str2)
 {
 	int	i;
 	int	j;
@@ -38,17 +22,17 @@ static void	put_info(t_map *map, char *str1, char *str2)
 	if (str1[0] != '\n' && str1 && str2)
 	{
 		if (ft_strstr(str1, "NO"))
-			map->n_wall.path = ft_strdup(str2);
+			assets->n_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "SO"))
-			map->s_wall.path = ft_strdup(str2);
+			assets->s_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "WE"))
-			map->o_wall.path = ft_strdup(str2);
+			assets->o_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "EA"))
-			map->e_wall.path = ft_strdup(str2);
+			assets->e_wall.path = ft_strdup(str2);
 	}
 }
 
-static bool	parse_coord(char *coord, char **map, t_map *game_map)
+bool	parse_coord(char *coord, char **map, t_assets *assets)
 {
 	size_t	i;
 	char	**temp;
@@ -64,38 +48,21 @@ static bool	parse_coord(char *coord, char **map, t_map *game_map)
 				free_matrix(temp);
 				return (false);
 			}
-			put_info(game_map, temp[0], temp[1]);
+			put_info(assets, temp[0], temp[1]);
+			free_matrix(temp);
 			return (true);
 		}
 		i += 1;
 		free_matrix(temp);
 	}
+	free_matrix(temp);
 	return (false);
 }
 
-
-static bool	is_all_digits(const char *str)
+bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)
 {
 	size_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (false);
-		i += 1;
-	}
-	return (true);
-}
-static bool	fits_in_intrange(int n, int lowest, int highest)
-{
-	return (n >= lowest && n <= highest);
-}
-
-static bool	assign_rgb(char **rgb, t_map *game_map, char* identifier)
-{
-	size_t	i;
-	int element_rgb[3];
+	int		element_rgb[3];
 
 	i = 0;
 	if (matrix_lenght(rgb) != 3)
@@ -105,18 +72,20 @@ static bool	assign_rgb(char **rgb, t_map *game_map, char* identifier)
 		if (!is_all_digits(rgb[i]))
 			return (false);
 		element_rgb[i] = ft_atoi(rgb[i]);
-		if (!fits_in_intrange(element_rgb[i], 0, 255))
+		if (!fits_in_int_range(element_rgb[i], 0, 255))
 			return (false);
 		i += 1;
 	}
-	if(streq(identifier, "C"))
-		set_vector3(&game_map->celin_color, element_rgb[0], element_rgb[1], element_rgb[2]);
+	if (streq(identifier, "C"))
+		set_vector3_int(&assets->celin_color, element_rgb[0], element_rgb[1],
+			element_rgb[2]);
 	else
-		set_vector3(&game_map->floor_color, element_rgb[0], element_rgb[1], element_rgb[2]);
+		set_vector3_int(&assets->floor_color, element_rgb[0], element_rgb[1],
+			element_rgb[2]);
 	return (true);
 }
 
-static bool	parse_rgb(char *identifier, char **map, t_map *game_map)
+bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 {
 	int		i;
 	bool	return_value;
@@ -125,7 +94,6 @@ static bool	parse_rgb(char *identifier, char **map, t_map *game_map)
 
 	i = -1;
 	return_value = true;
-	
 	while (++i < 6)
 	{
 		temp = ft_split(map[i], ' ');
@@ -134,25 +102,27 @@ static bool	parse_rgb(char *identifier, char **map, t_map *game_map)
 			if (matrix_lenght(temp) != 2)
 				return_value = false;
 			rgb = ft_split(temp[1], ',');
-			if (return_value == true && !assign_rgb(rgb, game_map, identifier))
+			if (return_value == true && !assign_rgb(rgb, assets, identifier))
 				return_value = false;
 			free_matrix(rgb);
 			free_matrix(temp);
 			return (return_value);
 		}
 		free_matrix(temp);
-	}	
+	}
+	free_matrix(temp);
 	return (false);
 }
 
-bool	parse_textures(t_map *map, char **textures_part)
+bool	parse_textures(t_assets *assets, char **textures_part)
 {
 	bool	return_value;
 
 	return_value = false;
-	if (parse_coord("NO", textures_part, map) && parse_coord("SO", textures_part, map)
-		&& parse_coord("EA", textures_part, map) && parse_coord("WE", textures_part, map)
-		&& parse_rgb("C", textures_part, map) && parse_rgb("F", textures_part, map))
+	if (parse_coord("NO", textures_part, assets) && parse_coord("SO",
+			textures_part, assets) && parse_coord("EA", textures_part, assets)
+		&& parse_coord("WE", textures_part, assets) && parse_rgb("C",
+			textures_part, assets) && parse_rgb("F", textures_part, assets))
 		return_value = true;
 	free_matrix(textures_part);
 	return (return_value);
