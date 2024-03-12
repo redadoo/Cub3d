@@ -103,7 +103,7 @@ static	bool	wall_surrounding(char **map)
 		if (!is_onstr(" 1", map[0][j]))
 			return (false);
 	j = -1;
-	i = matrix_lenght(map) - 1;
+	i = matrix_height(map) - 1;
 	while (map[i][++j])
 		if (!is_onstr(" 1", map[i][j]))
 			return (false);

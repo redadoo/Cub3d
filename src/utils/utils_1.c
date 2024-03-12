@@ -32,7 +32,7 @@ void	set_vector2(t_vector2 *v, double x, double y)
 	v->y = y;
 }
 
-size_t	matrix_lenght(char **matrix)
+size_t	matrix_height(char **matrix)
 {
 	size_t	i;
 
@@ -40,6 +40,18 @@ size_t	matrix_lenght(char **matrix)
 	if (!matrix)
 		return (0);
 	while (matrix[i])
+		i += 1;
+	return (i);
+}
+
+size_t	matrix_width(char **matrix, int c)
+{
+	size_t	i;
+
+	i = 0;
+	if (!matrix)
+		return (0);
+	while (matrix[c][i])
 		i += 1;
 	return (i);
 }

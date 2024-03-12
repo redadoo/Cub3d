@@ -38,7 +38,7 @@ bool	parse_coord(char *coord, char **map, t_assets *assets)
 		temp = ft_split(map[i], ' ');
 		if (streq(coord, temp[0]))
 		{
-			if (matrix_lenght(temp) != 2)
+			if (matrix_height(temp) != 2)
 			{
 				free_matrix(temp);
 				return (false);
@@ -60,7 +60,7 @@ bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)
 	int		element_rgb[3];
 
 	i = 0;
-	if (matrix_lenght(rgb) != 3)
+	if (matrix_height(rgb) != 3)
 		return (false);
 	while (rgb[i])
 	{
@@ -94,7 +94,7 @@ bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 		temp = ft_split(map[i], ' ');
 		if (streq(identifier, temp[0]))
 		{
-			if (matrix_lenght(temp) != 2)
+			if (matrix_height(temp) != 2)
 				return_value = false;
 			rgb = ft_split(temp[1], ',');
 			if (return_value == true && !assign_rgb(rgb, assets, identifier))

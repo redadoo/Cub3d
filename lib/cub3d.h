@@ -121,6 +121,7 @@ typedef struct s_game
 	t_player		player;
 	t_camera		camera;
 	t_sprite		scene;
+	t_sprite		mini_map;
 	t_raycaster		raycaster;
 	double			time;
 	double			old_time;
@@ -329,7 +330,8 @@ void				set_vector2(t_vector2 *v, double x, double y);
  * @param matrix A 2D array of characters representing the matrix.
  * @return The number of elements in the matrix.
  */
-size_t				matrix_lenght(char **matrix);
+size_t				matrix_height(char **matrix);
+size_t				matrix_width(char **matrix, int c);
 /**
  * @brief Creates a integer representation of a color with transparency 
  * (alpha) and RGB components.
@@ -388,7 +390,7 @@ t_sprite			init_sprite(void);
  * @param mlx_ptr The mlx pointer used to create the new image.
  * @return The new image represented as a t_sprite structure.
  */
-t_sprite			new_img(void *mlx_ptr);
+t_sprite			new_img(void *mlx_ptr, int width, int height);
 /**
  * @brief Sets the color of a pixel at the specified coordinates 
  * in the given image.
