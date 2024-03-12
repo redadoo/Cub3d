@@ -331,7 +331,7 @@ void				set_vector2(t_vector2 *v, double x, double y);
  * @return The number of elements in the matrix.
  */
 size_t				matrix_height(char **matrix);
-size_t				matrix_width(char **matrix, int c);
+size_t				matrix_width(char **matrix);
 /**
  * @brief Creates a integer representation of a color with transparency 
  * (alpha) and RGB components.

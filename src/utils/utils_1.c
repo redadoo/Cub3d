@@ -44,14 +44,25 @@ size_t	matrix_height(char **matrix)
 	return (i);
 }
 
-size_t	matrix_width(char **matrix, int c)
+size_t	matrix_width(char **matrix)
 {
 	size_t	i;
+	size_t	y;
+	size_t	res;
 
 	i = 0;
+	y = 0;
+	res = 0;
 	if (!matrix)
 		return (0);
-	while (matrix[c][i])
-		i += 1;
-	return (i);
+	while (matrix[y])
+	{
+		while (matrix[y][i])
+			i++;
+		if (i > res)
+			res = i;
+		i = 0;
+		y++;
+	}
+	return (res);
 }

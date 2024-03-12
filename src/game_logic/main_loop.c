@@ -43,7 +43,7 @@ static void draw_minimap(t_game *game)
 	y = 0;
 	set_vector3_int(&mini_map_color, 192,192,192);
 	set_vector3_int(&player_mini_map_color, 30,144,255);
-	game->mini_map = new_img(game->mlx, 200, 200);
+	game->mini_map = new_img(game->mlx, matrix_width(game->map) * 6, matrix_height(game->map) * 6);
 	while(game->map[y])
 	{
 		while(game->map[y][i])
