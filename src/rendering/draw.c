@@ -62,3 +62,5 @@ void	draw_vert_line_texture(t_game *game, int x)
 				game->assets.floor_color));
 	}
 }
+
+

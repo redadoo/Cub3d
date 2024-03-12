@@ -27,6 +27,7 @@
 #  define LEFT 97
 #  define DOWN 115
 #  define RIGHT 100
+#  define SPACE 32
 #  define EXIT 65307
 # endif
 
@@ -87,6 +88,7 @@ typedef struct s_camera
 	double			rot_speed;
 	t_vector2		plane;
 	t_vector2		dir;
+	t_vector2		mouse_pos;
 }					t_camera;
 
 typedef struct s_raycaster

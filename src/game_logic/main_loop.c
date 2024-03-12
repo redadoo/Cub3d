@@ -12,6 +12,11 @@
 
 #include "../../lib/cub3d.h"
 
+static void draw_minimap(t_game *game)
+{
+	
+}
+
 static int64_t	current_time_millis(void)
 {
 	struct timeval	time;
@@ -43,6 +48,7 @@ void	renderer(t_game *game)
 	mlx_clear_window(game->mlx, game->window.reference);
 	mlx_put_image_to_window(game->mlx, game->window.reference, game->scene.img,
 		0, 0);
+	draw_minimap(game);
 }
 
 int	main_loop(t_game *game)

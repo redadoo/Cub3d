@@ -14,6 +14,7 @@
 
 void	mlx_run(t_game *game)
 {
+	mlx_mouse_hide(game->mlx,game->window.reference);
 	mlx_hook(game->window.reference, 6, (1L << 6), camera_rotation, game);
 	mlx_key_hook(game->window.reference, *key_hook, game);
 	mlx_loop_hook(game->mlx, main_loop, game);

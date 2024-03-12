@@ -44,7 +44,6 @@ int	camera_rotation(int x, int y, t_game *game)
 	double			old_plane_x;
 	double			distance;
 
-	(void)y;
 	game->camera.rot_speed = game->frame_time * 3.0;
 	old_dir_x = game->camera.dir.x;
 	old_plane_x = game->camera.plane.x;

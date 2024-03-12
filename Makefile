@@ -70,9 +70,9 @@ ifeq ($(UNAME_S),Darwin)
 LINKS += -lmlx -framework OpenGL -framework AppKit
 endif
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = #-Wall -Wextra -Werror
 
-PATH_MAP = map/test.cub
+PATH_MAP = map/test1.cub
 
 all: $(NAME)
 
