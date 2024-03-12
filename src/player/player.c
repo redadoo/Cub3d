@@ -14,11 +14,8 @@
 
 int	check_next_pos(t_game *game, int x, int y)
 {
-	if (x < get_map_size(game->map).x && y < get_map_size(game->map).y)
-	{
-		if (game->map[y][x] != '1')
-			return (1);
-	}
+	if (game->map[y+1][x+1] && game->map[y+1][x+1] != '1')
+		return (1);
 	return (0);
 }
 

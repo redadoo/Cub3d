@@ -23,7 +23,7 @@ void	set_raycaster(t_game *game, int x)
 	game->raycaster.vec_map.y = (int)game->player.pos.z;
 	game->raycaster.delta_dist.x = fabs(1 / game->raycaster.ray_dir.x);
 	game->raycaster.delta_dist.y = fabs(1 / game->raycaster.ray_dir.y);
-	game->raycaster.hit = false;
+	game->raycaster.hit = 0;
 }
 
 void	set_raycaster_dir(t_game *game)
