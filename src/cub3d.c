@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/12 17:24:43 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/26 17:13:54 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	mlx_run(t_game *game)
 {
-	mlx_mouse_hide(game->mlx,game->window.reference);
+	mlx_mouse_hide(game->mlx, game->window.reference);
 	mlx_hook(game->window.reference, 6, (1L << 6), camera_rotation, game);
 	mlx_key_hook(game->window.reference, *key_hook, game);
 	mlx_loop_hook(game->mlx, main_loop, game);

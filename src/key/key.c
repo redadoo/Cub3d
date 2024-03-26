@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:14:22 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/08 23:43:18 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/26 17:13:35 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-static void jump(t_game *game)
+static void	jump(t_game *game)
 {
 	printf("jump");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/13 22:31:45 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/26 17:13:38 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,3 @@ void	draw_vert_line_texture(t_game *game, int x)
 				game->assets.floor_color));
 	}
 }
-
-
