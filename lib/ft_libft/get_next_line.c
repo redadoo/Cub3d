@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:47:06 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/12 11:55:38 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/27 19:22:38 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	global_buffer[fd] = read_buffsize(fd, global_buffer[fd]);
 	if (!global_buffer[fd])
-		return (NULL);
+		return (free(global_buffer[fd]), NULL);
 	line = get_line(global_buffer[fd]);
 	global_buffer[fd] = clean_printed(global_buffer[fd]);
 	return (line);
