@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 18:04:07 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/30 17:57:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define TEXTURE_WIDTH 64
 # define KRED "\x1B[31m"
 
-# include "ft_libft/libft.h"
+# include "libft/libft.h"
 # include "vector/vector.h"
 # include <fcntl.h>
 # include <math.h>
@@ -111,6 +111,23 @@ typedef struct s_raycaster
 	double			step;
 }					t_raycaster;
 
+typedef struct s_minimap
+{
+	int				lenght_mini_map;
+	int				offset_draw;
+	int				title_lenght;
+	t_vector3_int	player_color;
+	t_vector3_int	title_color;
+	t_sprite		sprite;
+}	t_minimap;
+
+typedef struct s_game_time
+{
+	double			time;
+	double			old_time;
+	double			frame_time;
+}	t_game_time;
+
 typedef struct s_game
 {
 	void			*reference;
@@ -121,11 +138,9 @@ typedef struct s_game
 	t_player		player;
 	t_camera		camera;
 	t_sprite		scene;
-	t_sprite		mini_map;
 	t_raycaster		raycaster;
-	double			time;
-	double			old_time;
-	double			frame_time;
+	t_minimap		mini_map;
+	t_game_time		game_time;
 }					t_game;
 /**
  * @brief Runs the main game loop using the mlx library.
@@ -153,7 +168,7 @@ void				init_tgame(t_game *game);
  */
 void				init_mlx(t_game *game);
 /**
- * @brief load data in game structure(map,player)
+ * @brief load data in game structure(map,player ...)
  *
  * @param game Pointer to the game structure.
  * @param argv Command-line arguments passed to the program.
@@ -554,4 +569,10 @@ int					get_nbr_map_lines(char *file_name);
  * @return An array containing the map information from the scene file.
  */
 char				**get_map_part(char *file_name, int scene_fd);
+
+void				draw_quad(t_sprite *sprite, t_vector2_int offset, int lenght, int color);
+
+void				draw_minimap(t_game *game);
+
+void				set_vector2_int(t_vector2_int *v, int x, int y);
 #endif

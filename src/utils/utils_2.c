@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.c                                              :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:14:22 by evocatur          #+#    #+#             */
-/*   Updated: 2024/03/30 17:46:22 by evocatur         ###   ########.fr       */
+/*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
+/*   Updated: 2024/03/30 17:18:26 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-int	key_hook(int keycode, t_game *game)
+void	set_vector2_int(t_vector2_int *v, int x, int y)
 {
-	if (keycode == EXIT)
-		close_game(game);
-	move_player(game, keycode);
-	return (0);
+	v->x = x;
+	v->y = y;
 }

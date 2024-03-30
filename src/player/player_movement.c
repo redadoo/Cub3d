@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:28:10 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 15:04:12 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/30 16:57:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	move_left(t_game *game)
 
 void	move_player(t_game *game, int key)
 {
-	game->player.mov_speed = game->frame_time * 5.0;
+	game->player.mov_speed = game->game_time.frame_time * 5.0;
 	if (key == UP)
 		move_up(game);
 	if (key == DOWN)

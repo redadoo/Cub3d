@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:18:11 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 17:41:26 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/30 17:00:09 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
+
+void	init_mini_map(t_game *game)
+{
+	int	offset;
+
+	offset = 10;
+	game->mini_map.lenght_mini_map = matrix_width(game->map) * offset;
+	set_vector3_int(&game->mini_map.title_color, 192, 192, 192);
+	set_vector3_int(&game->mini_map.player_color, 30, 144, 255);
+	game->mini_map.offset_draw = 9;
+}
 
 void	init_mlx(t_game *game)
 {
@@ -34,12 +45,6 @@ void	init_tgame(t_game *game)
 	game->window.reference = NULL;
 }
 
-/**
- * @brief load data in game structure(map,player)
- *
- * @param game Pointer to the game structure.
- * @param argv Command-line arguments passed to the program.
- */
 void	load_cub3d_data(t_game *game, char **argv)
 {
 	if (!readmap(game, argv[1]))
@@ -47,7 +52,8 @@ void	load_cub3d_data(t_game *game, char **argv)
 	init_player(&game->player, game->map);
 	init_camera(&game->camera, game->player.dir);
 	load_texture(game);
-	game->time = 0;
-	game->old_time = 0;
-	game->frame_time = 0;
+	init_mini_map(game);
+	game->game_time.frame_time = 0;
+	game->game_time.old_time = 0;
+	game->game_time.time = 0;
 }

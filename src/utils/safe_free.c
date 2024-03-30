@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:39:50 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 17:40:08 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/30 16:56:57 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	safe_mlx_destroy_image(void *mlx_ptr, void *image_ptr)
 	if (mlx_ptr != NULL && image_ptr != NULL)
 	{
 		mlx_destroy_image(mlx_ptr, image_ptr);
+		image_ptr = NULL;
 	}
 }
 

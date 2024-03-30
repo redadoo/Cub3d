@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 22:51:07 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/13 22:35:16 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/30 15:12:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	check_next_pos(t_game *game, int x, int y)
 {
 	if (game->map[y][x] && game->map[y][x] != '1')
+	{
 		return (1);
+	}	
 	return (0);
 }
 

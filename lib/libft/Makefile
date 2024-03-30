@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:53:50 by evocatur          #+#    #+#              #
-#    Updated: 2023/11/24 17:02:19 by evocatur         ###   ########.fr        #
+#    Updated: 2024/03/30 18:06:25 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c ft_striteri.c \
 ft_printf.c ft_printf_utilis.c ft_printf_flag.c ft_printf_hex.c ft_printf_p.c \
 ft_printf_unsigned.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
-get_next_line.c get_next_line_utils.c
+get_next_line.c get_next_line_utils.c ft_strncpy.c ft_strchr.c
 
 OBJS = ${SRCS:.c=.o}
 
