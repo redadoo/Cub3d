@@ -6,7 +6,7 @@
 /*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/03/30 17:39:33 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/03/31 15:47:25 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,10 @@ static char	**get_full_map(char *file_name)
 		full_map[i] = trim_free(get_next_line(scene_fd), "\n");
 		i++;
 	}
-	close(scene_fd);
-	return (full_map);
+	return (close(scene_fd), full_map);
 }
 
-static void	print_mat(char **tmp)
+/* static void	print_mat(char **tmp)
 {
 	int	i;
 
@@ -73,7 +72,7 @@ static void	print_mat(char **tmp)
 		printf("%s acap\n", tmp[i]);
 		i++;
 	}
-}
+} */
 
 bool	readmap(t_game *game, char *file_name)
 {
@@ -87,7 +86,6 @@ bool	readmap(t_game *game, char *file_name)
 	if (is_scene_empty(file_name))
 		return (false);
 	textures_part = get_textures_part(full_map);
-	print_mat(textures_part);
 	if (!parse_textures(&game->assets, textures_part))
 		return_value = false;
 	if (return_value != false)

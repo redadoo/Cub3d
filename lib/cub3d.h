@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/30 17:57:18 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:45:44 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -550,25 +550,22 @@ bool				is_scene_empty(char *file_name);
 /**
  * @brief Retrieves the texture part from the scene file.
  *
- * @param scene_fd The file descriptor for the scene file.
  * @return An array containing the texture information from the scene file.
  */
-char				**get_textures_part(int scene_fd);
+char				**get_textures_part(char **full_map);
 /**
  * @brief Gets the number of map lines in the scene file.
  *
- * @param file_name The name of the scene file.
  * @return The number of non-empty map lines in the scene file.
  */
-int					get_nbr_map_lines(char *file_name);
+int					get_nbr_map_lines(char **full_map);
 /**
  * @brief Retrieves the map part from the scene file.
  *
  * @param file_name The name of the scene file.
- * @param scene_fd The file descriptor for the scene file.
  * @return An array containing the map information from the scene file.
  */
-char				**get_map_part(char *file_name, int scene_fd);
+char				**get_map_part(char **full_map);
 
 void				draw_quad(t_sprite *sprite, t_vector2_int offset, int lenght, int color);
 

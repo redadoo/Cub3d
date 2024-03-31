@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:47:06 by evocatur          #+#    #+#             */
-/*   Updated: 2024/03/27 19:22:38 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/03/31 17:00:03 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "libft.h"
 
-static char	*clean_printed(char	*global_buffer)
+static char	*clean_printed(char *global_buffer)
 {
 	size_t	i;
 	char	*new;
-	size_t	j;
+	size_t	j;	
 
 	i = 0;
 	while (global_buffer[i] && global_buffer[i] != '\n')
@@ -49,14 +49,14 @@ static char	*get_line(char *global_buffer)
 	if (!global_buffer[i])
 		return (NULL);
 	while (global_buffer[len] && global_buffer[len] != '\n')
-		len += 1;
+		len ++;
 	line = malloc((len + 2) * sizeof(char));
 	if (!line)
 		return (NULL);
 	while (i <= len)
 	{
 		line[i] = global_buffer[i];
-		i += 1;
+		i ++;
 	}
 	line[i] = '\0';
 	return (line);
@@ -120,14 +120,14 @@ static char	*read_buffsize(int fd, char *global_buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*global_buffer[FOPEN_MAX];
-	char		*line;
+	static char *global_buffer[FOPEN_MAX];
+	char *line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
 	global_buffer[fd] = read_buffsize(fd, global_buffer[fd]);
 	if (!global_buffer[fd])
-		return (free(global_buffer[fd]), NULL);
+		return (NULL);
 	line = get_line(global_buffer[fd]);
 	global_buffer[fd] = clean_printed(global_buffer[fd]);
 	return (line);
