@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/03/30 16:09:35 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:13:02 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	set_raycaster_dir(t_game *game)
 		game->raycaster.side_dist.x = (game->raycaster.vec_map.x + 1.0f
 				- game->player.pos.x) * game->raycaster.delta_dist.x;
 	}
-	if (game->raycaster.ray_dir.y > 0)
+	if (game->raycaster.ray_dir.y < 0)
 	{
 		game->raycaster.vec_step.y = -1;
 		game->raycaster.side_dist.y = (game->player.pos.z

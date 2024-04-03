@@ -6,21 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:28:10 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/30 16:57:50 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:16:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
-
-static void	move_down(t_game *game)
-{
-	if (check_next_pos(game, game->player.pos.x + game->camera.dir.x
-			* game->player.mov_speed, game->player.pos.z) == 1)
-		game->player.pos.x -= (game->camera.dir.x * game->player.mov_speed);
-	if (check_next_pos(game, game->player.pos.x, game->player.pos.z
-			+ game->camera.dir.y * game->player.mov_speed) == 1)
-		game->player.pos.z += (game->camera.dir.y * game->player.mov_speed);
-}
 
 static void	move_up(t_game *game)
 {
@@ -29,24 +19,34 @@ static void	move_up(t_game *game)
 		game->player.pos.x += (game->camera.dir.x * game->player.mov_speed);
 	if (check_next_pos(game, game->player.pos.x, game->player.pos.z
 			+ game->camera.dir.y * game->player.mov_speed) == 1)
+		game->player.pos.z += (game->camera.dir.y * game->player.mov_speed);
+}
+
+static void	move_down(t_game *game)
+{
+	if (check_next_pos(game, game->player.pos.x + game->camera.dir.x
+			* game->player.mov_speed, game->player.pos.z) == 1)
+		game->player.pos.x -= (game->camera.dir.x * game->player.mov_speed);
+	if (check_next_pos(game, game->player.pos.x, game->player.pos.z
+			+ game->camera.dir.y * game->player.mov_speed) == 1)
 		game->player.pos.z -= (game->camera.dir.y * game->player.mov_speed);
 }
 
-static void	move_right(t_game *game)
+static void	move_left(t_game *game)
 {
 	if (check_next_pos(game, game->player.pos.x + game->camera.dir.y
 			* game->player.mov_speed, game->player.pos.z) == 1)
-		game->player.pos.x += (game->camera.dir.y * game->player.mov_speed);
+		game->player.pos.x -= (game->camera.dir.y * game->player.mov_speed);
 	if (check_next_pos(game, game->player.pos.x, game->player.pos.z
 			+ game->camera.dir.x * game->player.mov_speed) == 1)
 		game->player.pos.z += (game->camera.dir.x * game->player.mov_speed);
 }
 
-static void	move_left(t_game *game)
+static void	move_right(t_game *game)
 {
 	if (check_next_pos(game, game->player.pos.x - game->camera.dir.y
 			* game->player.mov_speed, game->player.pos.z) == 1)
-		game->player.pos.x -= (game->camera.dir.y * game->player.mov_speed);
+		game->player.pos.x += (game->camera.dir.y * game->player.mov_speed);
 	if (check_next_pos(game, game->player.pos.x, game->player.pos.z
 			- game->camera.dir.x * game->player.mov_speed) == 1)
 		game->player.pos.z -= (game->camera.dir.x * game->player.mov_speed);
