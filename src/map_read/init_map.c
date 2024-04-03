@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 19:20:16 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:32:26 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,13 @@ bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)
 	return (true);
 }
 
-/* static void	print_mat(char **tmp)
+bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 {
-	int		i;
 	int		i;
 	bool	return_value;
 	char	**temp;
 	char	**rgb;
 
-	i = 0;
-	while (tmp[i])
-	{
-		printf("%s acap\n", tmp[i]);
-		i++;
-	}
-} */
-bool	parse_rgb(char *identifier, char **map, t_assets *assets)
-{
 	i = -1;
 	return_value = true;
 	temp = NULL;

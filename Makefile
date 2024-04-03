@@ -6,7 +6,7 @@
 #    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/03 17:43:18 by evocatur         ###   ########.fr        #
+#    Updated: 2024/04/03 19:33:06 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ CAMERA 			= src/camera/camera
 IMAGES 			= src/images/images
 PLAYER 			= src/player/player src/player/player_movement
 GAME_LOGIC		= src/game_logic/main_loop
-RENDERING 		= src/rendering/raycasting src/rendering/draw
-MAP_READ 		= src/map_read/map_read src/map_read/map_read_utils src/map_read/parse_map  src/map_read/init_map 
+RENDERING 		= src/rendering/raycasting src/rendering/draw src/rendering/draw_utils
+MAP_READ 		= src/map_read/map_read src/map_read/map_read_utils src/map_read/parse_map  src/map_read/init_map
 
 FILES 			= $(INIT_CUB3D) $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) $(LIBFT_SRC) $(MAP_READ) $(GAME_ENGINE) $(MAIN_SRC) $(IMAGES) $(CAMERA) $(PLAYER) $(RENDERING)
 
