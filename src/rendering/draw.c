@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 16:54:33 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:24:45 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,12 @@ void	draw_vert_line_texture(t_game *game, int x)
 	}
 }
 
-void	draw_quad(t_sprite *sprite, t_vector2_int offset, int lenght, int color)
+static void	draw_minimap_utlis(t_game *game, int offset_draw, t_vector2_int of)
 {
-	int	i;
-	int	y;
-
-	i = 0;
-	y = 0;
-	while (i < lenght)
-	{
-		while (y < lenght)
-		{
-			put_pixel(sprite, offset.x + i, offset.y + y, color);
-			y++;
-		}
-		y = 0;
-		i++;
-	}
+	set_vector2_int(&of, game->player.pos.x * offset_draw,
+		game->player.pos.z * offset_draw);
+	draw_quad(&game->mini_map.sprite, of, 4, create_trgb(256,
+			game->mini_map.player_color));
 }
 
 void	draw_minimap(t_game *game)
@@ -92,23 +81,20 @@ void	draw_minimap(t_game *game)
 	i = 0;
 	y = 0;
 	offset_draw = game->mini_map.offset_draw;
-	game->mini_map.sprite
-		= new_img(game->mlx, matrix_width(game->map) * offset_draw,
-			matrix_height(game->map) * offset_draw);
+	game->mini_map.sprite = new_img(game->mlx, matrix_width(game->map)
+			* offset_draw, matrix_height(game->map) * offset_draw);
 	while (game->map[y])
 	{
 		while (game->map[y][i])
 		{
-			set_vector2_int(
-				&offset_title, i * offset_draw, y * offset_draw);
+			set_vector2_int(&offset_title, i * offset_draw, y * offset_draw);
 			if (game->map[y][i] == '1')
-				draw_quad(&game->mini_map.sprite,
-					offset_title, 5, create_trgb(256, game->mini_map.title_color));
+				draw_quad(&game->mini_map.sprite, offset_title, 5,
+					create_trgb(256, game->mini_map.title_color));
 			i++;
 		}
 		i = 0;
 		y++;
 	}
-	set_vector2_int(&offset_title,game->player.pos.x * offset_draw,game->player.pos.z * offset_draw);
-	draw_quad(&game->mini_map.sprite, offset_title, 4, create_trgb(256, game->mini_map.player_color));
+	draw_minimap_utlis(game, offset_draw, offset_title);
 }

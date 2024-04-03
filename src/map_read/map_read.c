@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/03 17:05:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:03:19 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,6 @@ static char	**get_full_map(char *file_name)
 	}
 	return (close(scene_fd), full_map);
 }
-
-/* static void	print_mat(char **tmp)
-{
-	int	i;
-
-	i = 0;
-	while (tmp[i])
-	{
-		printf("%s acap\n", tmp[i]);
-		i++;
-	}
-} */
 
 bool	readmap(t_game *game, char *file_name)
 {

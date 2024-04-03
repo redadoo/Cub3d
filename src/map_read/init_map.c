@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 17:56:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:20:16 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,29 @@ bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)
 	return (true);
 }
 
-bool	parse_rgb(char *identifier, char **map, t_assets *assets)
+/* static void	print_mat(char **tmp)
 {
+	int		i;
 	int		i;
 	bool	return_value;
 	char	**temp;
 	char	**rgb;
 
+	i = 0;
+	while (tmp[i])
+	{
+		printf("%s acap\n", tmp[i]);
+		i++;
+	}
+} */
+bool	parse_rgb(char *identifier, char **map, t_assets *assets)
+{
 	i = -1;
 	return_value = true;
+	temp = NULL;
 	while (++i < 6)
 	{
+		free_matrix(temp);
 		temp = ft_split(map[i], ' ');
 		if (streq(identifier, temp[0]))
 		{
@@ -101,12 +113,10 @@ bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 				return_value = false;
 			free_matrix(rgb);
 			free_matrix(temp);
-			return (return_value);
+			return (free_matrix(temp), return_value);
 		}
-		free_matrix(temp);
 	}
-	free_matrix(temp);
-	return (false);
+	return (free_matrix(temp), false);
 }
 
 bool	parse_textures(t_assets *assets, char **textures_part)
@@ -116,10 +126,6 @@ bool	parse_textures(t_assets *assets, char **textures_part)
 	if (textures_part == NULL)
 		return (false);
 	return_value = false;
-	for(int i = 0; textures_part[i]; i++)
-	{
-		printf("%s\n",textures_part[i]);
-	}
 	if (parse_coord("NO", textures_part, assets) && parse_coord("SO",
 			textures_part, assets) && parse_coord("EA", textures_part, assets)
 		&& parse_coord("WE", textures_part, assets) && parse_rgb("C",
