@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/03 14:13:02 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:16:11 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_raycaster(t_game *game, int x)
 		* game->raycaster.camera_x;
 	game->raycaster.vec_map.x = (int)game->player.pos.x;
 	game->raycaster.vec_map.y = (int)game->player.pos.z;
-	game->raycaster.delta_dist.x = fabs(1 / game->raycaster.ray_dir.x);
+ 	game->raycaster.delta_dist.x = fabs(1 / game->raycaster.ray_dir.x);
 	game->raycaster.delta_dist.y = fabs(1 / game->raycaster.ray_dir.y);
 	game->raycaster.hit = 0;
 }
@@ -86,10 +86,12 @@ void	find_wall_height(t_game *game)
 			- game->raycaster.delta_dist.y;
 	game->raycaster.line_height = (int)(WIN_HEIGHT
 			/ game->raycaster.perp_wall_dist);
-	game->raycaster.draw_start = -game->raycaster.line_height / 2 + WIN_HEIGHT / 2 + 100;
+	game->raycaster.draw_start
+		= -game->raycaster.line_height / 2 + WIN_HEIGHT / 2 + 100;
 	if (game->raycaster.draw_start < 0)
 		game->raycaster.draw_start = 0;
-	game->raycaster.draw_end = game->raycaster.line_height / 2 + WIN_HEIGHT / 2 + 100;
+	game->raycaster.draw_end
+		= game->raycaster.line_height / 2 + WIN_HEIGHT / 2 + 100;
 	if (game->raycaster.draw_end >= WIN_HEIGHT)
 		game->raycaster.draw_end = WIN_HEIGHT - 1;
 }
@@ -103,7 +105,6 @@ void	find_wall_pixel(t_game *game)
 		game->raycaster.wall_x = (int)game->player.pos.x
 			+ game->raycaster.perp_wall_dist * game->raycaster.ray_dir.x;
 	game->raycaster.wall_x -= floor(game->raycaster.wall_x);
-	
 	game->raycaster.tex.x = (int)(game->raycaster.wall_x
 			* (double)TEXTURE_WIDTH);
 	if (!game->raycaster.side && game->raycaster.ray_dir.x > 0)

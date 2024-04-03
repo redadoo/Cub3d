@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/03/31 16:56:57 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:05:10 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ char	**get_textures_part(char **full_map)
 	char	**scene;
 
 	scene = malloc((6 + 1) * sizeof(char *));
+	if (!scene)
+		return (NULL);
 	i = 0;
 	j = -1;
 	while (i < 6)
 	{
 		if (full_map[++j] == NULL)
 		{
-			free(scene);
+			free_matrix(scene);
 			return (NULL);
 		}
 		if (only_spaces(full_map[j]))

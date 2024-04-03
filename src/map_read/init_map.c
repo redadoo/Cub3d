@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 17:59:38 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/03 17:56:02 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ bool	parse_textures(t_assets *assets, char **textures_part)
 	if (textures_part == NULL)
 		return (false);
 	return_value = false;
+	for(int i = 0; textures_part[i]; i++)
+	{
+		printf("%s\n",textures_part[i]);
+	}
 	if (parse_coord("NO", textures_part, assets) && parse_coord("SO",
 			textures_part, assets) && parse_coord("EA", textures_part, assets)
 		&& parse_coord("WE", textures_part, assets) && parse_rgb("C",

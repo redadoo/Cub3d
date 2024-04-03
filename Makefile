@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+         #
+#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/03/31 14:57:24 by fborroto         ###   ########.fr        #
+#    Updated: 2024/04/03 17:43:18 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ GRAY			="\033[2;37m"
 CURSIVE			="\033[3m"
 YELLOW			="\033[1;33"
 
-MAP				=map/test1.cub
+MAP				=map/test.cub
 
 UNAME_S := $(shell uname -s)
 
@@ -84,7 +84,7 @@ compile_and_play: re
 	@./$(NAME) $(MAP)
 
 leaks: re
-	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME)
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) map/test.cub 
 
 leaks_arg: re
 	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) $(MAP)
