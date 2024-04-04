@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 19:32:26 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:24:15 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 			if (return_value == true && !assign_rgb(rgb, assets, identifier))
 				return_value = false;
 			free_matrix(rgb);
-			free_matrix(temp);
 			return (free_matrix(temp), return_value);
 		}
 	}

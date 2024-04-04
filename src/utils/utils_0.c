@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 20:17:47 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 16:24:26 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/04 16:20:31 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_matrix(char **matrix)
 	{
 		line = matrix[i];
 		if (line)
-			free(line);
+			safe_free(line);
 		line = NULL;
 		i++;
 	}

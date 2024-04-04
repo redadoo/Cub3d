@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
+#    By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/03 19:33:06 by evocatur         ###   ########.fr        #
+#    Updated: 2024/04/04 16:18:58 by fborroto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ GRAY			="\033[2;37m"
 CURSIVE			="\033[3m"
 YELLOW			="\033[1;33"
 
-MAP				=map/test.cub
+MAP				=map/test1.cub
 
 UNAME_S := $(shell uname -s)
 
