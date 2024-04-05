@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils_0.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 16:24:08 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:20:27 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ int	check_extension(char *file)
 	return (0);
 }
 
-t_vector3	string_to_vector(char *str)
-{
-	t_vector3	v;
-	char		**numbers;
-
-	numbers = ft_split(str, ',');
-	v.x = ft_atoi(numbers[0]);
-	v.y = ft_atoi(numbers[1]);
-	v.z = ft_atoi(numbers[2]);
-	free_matrix(numbers);
-	return (v);
-}
-
 size_t	last_idx(char *map_line)
 {
 	size_t	i;
@@ -57,26 +44,4 @@ size_t	last_idx(char *map_line)
 		i -= 1;
 	i += 1;
 	return (i);
-}
-
-bool	is_spaces(char c)
-{
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
-		|| c == ' ')
-		return (true);
-	return (false);
-}
-
-bool	only_spaces(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!is_spaces(str[i]))
-			return (false);
-		i += 1;
-	}
-	return (true);
 }

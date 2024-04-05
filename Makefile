@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+         #
+#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/04 16:18:58 by fborroto         ###   ########.fr        #
+#    Updated: 2024/04/05 16:37:39 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJDIR        	= .objFiles
 
 MAIN_SRC		= src/cub3d
 INIT_CUB3D 		= src/init/init_cub3d
-UTILS 			= src/utils/error src/utils/exit src/utils/string_utils_0  src/utils/utils_0 src/utils/utils_1 src/utils/utils_2  src/utils/safe_free src/utils/string_utils_1 src/utils/texture
+UTILS 			= src/utils/error src/utils/exit src/utils/string_utils_0 src/utils/utils_1 src/utils/safe_free src/utils/string_utils_1 src/utils/texture
 WINDOW			= src/window/window
 KEY 			= src/key/key
 CAMERA 			= src/camera/camera
@@ -55,7 +55,7 @@ ifeq ($(UNAME_S),Darwin)
 LINKS = -lmlx -framework OpenGL -framework AppKit
 endif
 
-LINKS += -Llib/libft/ -lft
+LINKS += -Llib/libft/ -Llib/vector/ -lft -l:vector.a
 
 .PHONY: all clean fclean re leaks
 

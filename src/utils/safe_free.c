@@ -6,17 +6,11 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:39:50 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/30 16:56:57 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:14:24 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
-
-void	safe_free(void *_ptr)
-{
-	if (_ptr != NULL)
-		free(_ptr);
-}
 
 void	safe_mlx_destroy_image(void *mlx_ptr, void *image_ptr)
 {

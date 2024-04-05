@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 11:57:48 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:42:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "math.h"
 # include <stdio.h>
+# include "../libft/libft.h"
 
 typedef struct s_vector2_int
 {
@@ -41,5 +42,11 @@ typedef struct s_vector3
 	double	y;
 	double	z;
 }			t_vector3;
+
+t_vector3	string_to_vector(char *str);
+void		set_vector2_int(t_vector2_int *v, int x, int y);
+void		set_vector3_int(t_vector3_int *v, int x, int y, int z);
+void		set_vector3(t_vector3 *v, double x, double y, double z);
+void		set_vector2(t_vector2 *v, double x, double y);
 
 #endif

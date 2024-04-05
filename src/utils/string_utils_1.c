@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 18:28:54 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:19:37 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,4 @@ char	*trim_free(char *s1, char const *set)
 	ft_strncpy(trimmed_str, (s1 + beg), end);
 	free(s1);
 	return (trimmed_str);
-}
-
-bool	streq(char *str1, char *str2)
-{
-	size_t	i;
-
-	if ((str1 && !str2) || (!str1 && str2))
-		return (false);
-	i = 0;
-	while (str1[i] || str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (false);
-		i += 1;
-	}
-	return (true);
-}
-
-bool	is_all_digits(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (false);
-		i += 1;
-	}
-	return (true);
 }

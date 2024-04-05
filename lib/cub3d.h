@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/31 14:45:44 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:41:07 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_camera
 	t_vector2		plane;
 	t_vector2		dir;
 	t_vector2		mouse_pos;
+	bool			mouse_on_edge;
 }					t_camera;
 
 typedef struct s_raycaster
@@ -206,21 +207,6 @@ t_vector3			string_to_vector(char *str);
  */
 size_t				last_idx(char *map_line);
 /**
- * @brief Checks if a character is a whitespace character.
- *
- * @param c The character to be checked.
- * @return true if the character is a whitespace character, false otherwise.
- */
-bool				is_spaces(char c);
-/**
- * @brief Checks if a string consists only of whitespace characters.
- *
- * @param str The string to be checked.
- * @return true if the string consists only of whitespace characters,
- * false otherwise.
- */
-bool				only_spaces(const char *str);
-/**
  * @brief Trims characters from the beginning
  * and end of a string.
  *
@@ -249,12 +235,6 @@ bool				is_all_digits(const char *str);
  * @param game Pointer to the t_game structure.
  */
 int					close_game(t_game *game);
-/**
- * @brief Safely frees the memory allocated to a pointer if it is not NULL.
- *
- * @param _ptr Pointer to the memory to be freed.
- */
-void				safe_free(void *_ptr);
 /**
  * @brief Safely destroys a image using mlx_destroy_image if 
  * mlx_ptr and image_ptr are not NULL.
@@ -294,11 +274,6 @@ void				load_texture(t_game *game);
  */
 int					check_dir(char ch);
 /**
- * @brief Prints a matrix with formatted colors for different elements.
- * @param matrix A 2D array of characters representing the matrix to be printed.
- */
-void				print_matrix(char **matrix, int x, int y);
-/**
  * @brief Checks if an integer falls within a specified range.
  * @param n The integer to be checked.
  * @param lowest The lower bound of the range (inclusive).
@@ -308,45 +283,10 @@ void				print_matrix(char **matrix, int x, int y);
  */
 bool				fits_in_int_range(int n, int lowest, int highest);
 /**
- * @brief Frees the memory occupied by a dynamically allocated matrix.
- * @param matrix A 2D array of characters representing the matrix to be freed.
- */
-void				free_matrix(char **matrix);
-/**
  * @brief return char ** size in the form of t_vector2_int
  * @param map A 2D array of characters representing the matrix to be freed.
  */
 t_vector2_int		get_map_size(char **map);
-/**
- * @brief Sets the components of a t_vector3_int to the specified values.
- * @param v Pointer to the t_vector3_int structure to be modified.
- * @param x New value for the x-component.
- * @param y New value for the y-component.
- * @param z New value for the z-component.
- */
-void				set_vector3_int(t_vector3_int *v, int x, int y, int z);
-/**
- * @brief Sets the components of a t_vector3 to the specified values.
- * @param v Pointer to the t_vector3 structure to be modified.
- * @param x New value for the x-component.
- * @param y New value for the y-component.
- * @param z New value for the z-component.
- */
-void				set_vector3(t_vector3 *v, double x, double y, double z);
-/**
- * @brief Sets the components of a 2D vector to the specified values.
- * @param v Pointer to the t_vector2 structure to be modified.
- * @param x New value for the x-component.
- * @param y New value for the y-component.
- */
-void				set_vector2(t_vector2 *v, double x, double y);
-/**
- * @brief Calculates the number of elements in a 2D matrix.
- * @param matrix A 2D array of characters representing the matrix.
- * @return The number of elements in the matrix.
- */
-size_t				matrix_height(char **matrix);
-size_t				matrix_width(char **matrix);
 /**
  * @brief Creates a integer representation of a color with transparency 
  * (alpha) and RGB components.
@@ -566,10 +506,7 @@ int					get_nbr_map_lines(char **full_map);
  * @return An array containing the map information from the scene file.
  */
 char				**get_map_part(char **full_map);
-
-void				draw_quad(t_sprite *sprite, t_vector2_int offset, int lenght, int color);
-
+void				draw_quad(t_sprite *sprite, t_vector2_int of, int l, int c);
 void				draw_minimap(t_game *game);
-
 void				set_vector2_int(t_vector2_int *v, int x, int y);
 #endif

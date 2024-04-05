@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 12:47:56 by edoardo           #+#    #+#             */
-/*   Updated: 2024/03/30 17:46:36 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:40:32 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ void	init_camera(t_camera *camera, t_vector2 dir)
 	camera->old_x = 0;
 }
 
+int	manage_mouse_scroll(int x, t_game *game)
+{
+	if (x < 10 || x > WIN_WIDTH - 10)
+		game->camera.mouse_on_edge = true;
+	else
+		game->camera.mouse_on_edge = false;
+	if (game->camera.mouse_on_edge == true)
+		mlx_mouse_move(game->mlx, game->window.reference, x, 100);
+	return (x);
+}
+
 int	camera_rotation(int x, int y, t_game *game)
 {
 	double			old_dir_x;
@@ -45,6 +56,7 @@ int	camera_rotation(int x, int y, t_game *game)
 	double			distance;
 
 	(void)y;
+	x = manage_mouse_scroll(x, game);
 	game->camera.rot_speed = game->game_time.frame_time * 3.0;
 	old_dir_x = game->camera.dir.x;
 	old_plane_x = game->camera.plane.x;

@@ -3,66 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:34:36 by edoardo           #+#    #+#             */
-/*   Updated: 2024/02/12 14:00:22 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:40:40 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	set_vector3_int(t_vector3_int *v, int x, int y, int z)
+int	check_dir(char ch)
 {
-	v->x = x;
-	v->z = z;
-	v->y = y;
+	if (ch == 'N' || ch == 'S' || ch == 'E' || ch == 'W')
+		return (1);
+	return (0);
 }
 
-void	set_vector3(t_vector3 *v, double x, double y, double z)
+bool	fits_in_int_range(int n, int lowest, int highest)
 {
-	v->x = x;
-	v->z = z;
-	v->y = y;
+	return (n >= lowest && n <= highest);
 }
 
-void	set_vector2(t_vector2 *v, double x, double y)
+t_vector2_int	get_map_size(char **map)
 {
-	v->x = x;
-	v->y = y;
-}
+	t_vector2_int	index;
 
-size_t	matrix_height(char **matrix)
-{
-	size_t	i;
-
-	i = 0;
-	if (!matrix)
-		return (0);
-	while (matrix[i])
-		i += 1;
-	return (i);
-}
-
-size_t	matrix_width(char **matrix)
-{
-	size_t	i;
-	size_t	y;
-	size_t	res;
-
-	i = 0;
-	y = 0;
-	res = 0;
-	if (!matrix)
-		return (0);
-	while (matrix[y])
+	index.x = 0;
+	index.y = 0;
+	while (map[index.y])
 	{
-		while (matrix[y][i])
-			i++;
-		if (i > res)
-			res = i;
-		i = 0;
-		y++;
+		index.x = 0;
+		while (map[index.y][index.x])
+		{
+			index.x++;
+		}
+		index.y++;
 	}
-	return (res);
+	return (index);
 }

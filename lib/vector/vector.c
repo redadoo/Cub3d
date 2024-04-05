@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 14:26:16 by evocatur         ###   ########.fr       */
+/*   Created: 2024/04/05 14:26:34 by evocatur          #+#    #+#             */
+/*   Updated: 2024/04/05 16:42:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../lib/cub3d.h"
+#include "vector.h"
 
-void	set_vector2_int(t_vector2_int *v, int x, int y)
+t_vector3	string_to_vector(char *str)
 {
-	v->x = x;
-	v->y = y;
+	t_vector3	v;
+	char		**numbers;
+
+	numbers = ft_split(str, ',');
+	v.x = ft_atoi(numbers[0]);
+	v.y = ft_atoi(numbers[1]);
+	v.z = ft_atoi(numbers[2]);
+	free_matrix(numbers);
+	return (v);
 }

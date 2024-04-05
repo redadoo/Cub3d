@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/03/26 17:12:51 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:39:34 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static bool	player_position(char **map)
  * @param map A 2D array of characters representing the map.
  * @return true if the walls surrounding are valid, false otherwise.
  */
-
 static	bool	wall_surrounding(char **map)
 {
 	int	i;

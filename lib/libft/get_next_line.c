@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:47:06 by evocatur          #+#    #+#             */
-/*   Updated: 2024/03/31 17:00:03 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:41:49 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ static char	*read_buffsize(int fd, char *global_buffer)
 
 char	*get_next_line(int fd)
 {
-	static char *global_buffer[FOPEN_MAX];
-	char *line;
+	static char	*global_buffer[FOPEN_MAX];
+	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > FOPEN_MAX)
 		return (NULL);

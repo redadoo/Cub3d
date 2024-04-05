@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/12 11:53:42 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:22:01 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,12 @@ char		*ft_get_line(char *backup);
 const char	*ft_strstr(const char *X, const char *Y);
 bool		is_onstr(const char *str, int ch);
 char		*ft_strncpy(char *dest, const char *src, size_t n);
+void		free_matrix(char **matrix);
+void		safe_free(void *_ptr);
+size_t		matrix_height(char **matrix);
+size_t		matrix_width(char **matrix);
+bool		is_all_digits(const char *str);
+bool		streq(char *str1, char *str2);
+bool		is_spaces(char c);
+bool		only_spaces(const char *str);
 #endif
