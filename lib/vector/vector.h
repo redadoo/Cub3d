@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/05 16:42:50 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:52:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void		set_vector2_int(t_vector2_int *v, int x, int y);
 void		set_vector3_int(t_vector3_int *v, int x, int y, int z);
 void		set_vector3(t_vector3 *v, double x, double y, double z);
 void		set_vector2(t_vector2 *v, double x, double y);
-
+t_vector3	vector3_direction(t_vector3 a, t_vector3 b);
+t_vector3	vector3_direction_normalize(t_vector3 a, t_vector3 b);
 #endif
