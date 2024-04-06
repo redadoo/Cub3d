@@ -21,7 +21,9 @@
         "ratio": "c",
         "stdexcept": "c",
         "streambuf": "c",
-        "functional": "c"
+        "functional": "c",
+        "complex": "c",
+        "iterator": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

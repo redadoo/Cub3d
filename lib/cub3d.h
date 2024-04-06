@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/05 16:41:07 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:47:35 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ typedef struct s_assets
 typedef struct s_camera
 {
 	double			old_x;
+	double			old_dir_x;
+	double			old_plane_x;
+	double			distance;
 	double			rot_speed;
 	t_vector2		plane;
 	t_vector2		dir;

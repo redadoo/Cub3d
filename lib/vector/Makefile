@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 14:28:17 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/05 14:49:57 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/06 14:44:14 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = vector.a
 
-SRCS = vector.c vector_set.c string_to_vector.c vector_dir.c
+SRCS = vector_set.c string_to_vector.c vector_dir.c vector_print.c
 
 OBJS = ${SRCS:.c=.o}
 

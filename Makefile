@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
+#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/05 16:37:39 by evocatur         ###   ########.fr        #
+#    Updated: 2024/04/06 15:02:35 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJDIR        	= .objFiles
 
 MAIN_SRC		= src/cub3d
 INIT_CUB3D 		= src/init/init_cub3d
-UTILS 			= src/utils/error src/utils/exit src/utils/string_utils_0 src/utils/utils_1 src/utils/safe_free src/utils/string_utils_1 src/utils/texture
+UTILS 			= src/utils/error src/utils/exit src/utils/string_utils src/utils/game_utils src/utils/safe_free src/utils/texture
 WINDOW			= src/window/window
 KEY 			= src/key/key
 CAMERA 			= src/camera/camera
@@ -62,7 +62,13 @@ LINKS += -Llib/libft/ -Llib/vector/ -lft -l:vector.a
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@echo $(CURSIVE)$(GRAY) "     - Making object files..." $(NONE)
+	@echo $(CURSIVE) $(GRAY) "     - Compiling libft library ..." $(NONE)
+	@cd lib/libft  && make > /dev/null 2>&1 && make clean > /dev/null 2>&1
+	@echo $(CURSIVE) $(GRAY) "     - Compiling vector library ..." $(NONE)
+	@cd lib/vector && make > /dev/null 2>&1 && make clean > /dev/null 2>&1
+	@echo $(CURSIVE) $(GRAY) "     - Compiling mlx library ..." $(NONE)
+	@cd mlx_linux/ && make > /dev/null 2>&1
+	@echo $(CURSIVE)$(GRAY) "      - Making object files..." $(NONE)
 	@echo $(CURSIVE) $(GRAY) "     - Compiling $(NAME)..." $(NONE)
 	@$(CC)  $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)
 	@echo $(GREEN)"- Compiled -"$(NONE)
@@ -96,3 +102,7 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+norm:
+	@norminette src/
+	@norminette lib/
