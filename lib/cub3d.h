@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/06 14:47:35 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/06 15:14:59 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ typedef struct s_camera
 	double			rot_speed;
 	t_vector2		plane;
 	t_vector2		dir;
-	t_vector2		mouse_pos;
+	t_vector2_int	mouse_dir;
+	t_vector2_int	mouse_pos;
+	t_vector2_int	last_mouse_pos;
 	bool			mouse_on_edge;
 }					t_camera;
 
@@ -195,13 +197,6 @@ t_window			ft_new_window(void *mlx, int widht, int height, char *name);
  * @return 0 if the extension is correct, 1 otherwise.
  */
 int					check_extension(char *file);
-/**
- * @brief Converts a comma-separated string to a 3D vector.
- *
- * @param str The string containing comma-separated numbers.
- * @return A t_vector3 structure representing the converted 3D vector.
- */
-t_vector3			string_to_vector(char *str);
 /**
  * @brief Finds the index of the last non-space character in a string.
  *

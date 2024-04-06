@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_to_vector.c                                 :+:      :+:    :+:   */
+/*   string_math.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 14:47:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/06 15:15:02 by edoardo          ###   ########.fr       */
+/*   Created: 2024/04/06 15:31:15 by edoardo           #+#    #+#             */
+/*   Updated: 2024/04/06 15:35:49 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-t_vector3	string_to_vector(char *str)
+int	int_sign(int val)
 {
-	t_vector3	v;
-	char		**numbers;
+	return ((val > 0) - (val < 0));
+}
 
-	numbers = ft_split(str, ',');
-	v.x = ft_atoi(numbers[0]);
-	v.y = ft_atoi(numbers[1]);
-	v.z = ft_atoi(numbers[2]);
-	free_matrix(numbers);
-	return (v);
+double	magnitude(t_vector2 vec)
+{
+	return (sqrt(vec.x * vec.x + vec.y * vec.y));
 }

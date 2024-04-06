@@ -6,13 +6,13 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 14:28:17 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/06 14:44:14 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/06 15:31:49 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = vector.a
 
-SRCS = vector_set.c string_to_vector.c vector_dir.c vector_print.c
+SRCS = vector_set.c string_to_vector.c vector_dir.c vector_print.c string_math.c
 
 OBJS = ${SRCS:.c=.o}
 
