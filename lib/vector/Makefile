@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 14:28:17 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/06 15:31:49 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/06 18:34:58 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ RM		= rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
-LINKS += -Llib/libft/ -lft 
+LINKS += -Llib/libft/ -lft -lm
 
 .c.o:
 		${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o} $(LINKS) 

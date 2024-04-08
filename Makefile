@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/06 15:02:35 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/06 18:35:59 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ ifeq ($(UNAME_S),Darwin)
 LINKS = -lmlx -framework OpenGL -framework AppKit
 endif
 
-LINKS += -Llib/libft/ -Llib/vector/ -lft -l:vector.a
+LINKS += -Llib/libft/ -Llib/vector/ -lft -l:vector.a -lm
 
 .PHONY: all clean fclean re leaks
 

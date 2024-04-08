@@ -23,7 +23,8 @@
         "streambuf": "c",
         "functional": "c",
         "complex": "c",
-        "iterator": "c"
+        "iterator": "c",
+        "types.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
