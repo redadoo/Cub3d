@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/06 15:03:34 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:24:34 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ char	*trim_free(char *s1, char const *set)
 	if (!trimmed_str)
 		return (NULL);
 	ft_strncpy(trimmed_str, (s1 + beg), end);
-	free(s1);
+	safe_free(s1);
 	return (trimmed_str);
 }

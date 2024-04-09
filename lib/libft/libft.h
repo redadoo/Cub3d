@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/05 16:22:01 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:04:48 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ bool		is_all_digits(const char *str);
 bool		streq(char *str1, char *str2);
 bool		is_spaces(char c);
 bool		only_spaces(const char *str);
+void		print_matrix(char **matrix);
 #endif

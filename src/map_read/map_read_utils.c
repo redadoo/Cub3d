@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/03 17:05:10 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:24:36 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ bool	is_scene_empty(char *file_name)
 	bytes_rd = read(scene_fd, temp, BUFFER_SIZE);
 	if (bytes_rd == -1 || bytes_rd == 0)
 	{
-		free(temp);
+		safe_free(temp);
 		return (NULL);
 	}
 	if (temp == NULL)
 		return_value = true;
-	free(temp);
+	safe_free(temp);
 	close(scene_fd);
 	return (return_value);
 }

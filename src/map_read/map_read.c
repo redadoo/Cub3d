@@ -3,63 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/03 19:03:19 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:32:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-static int	file_lines_count(char *file_name)
+int	file_lines_count(char *file)
 {
-	int		i;
-	int		file_fd;
-	char	*line;
+	char	c;	
+	int		fd;	
+	int		linecount;
+	int		readcount;
 
-	i = 0;
-	file_fd = open(file_name, O_RDONLY);
-	if (file_fd == -1)
-		return (0);
-	line = get_next_line(file_fd);
-	while (line)
+	fd = open(file, O_RDONLY);
+	if (!fd)
+		return (-1);
+	linecount = 1;
+	while (true)
 	{
-		i++;
-		free(line);
-		line = get_next_line(file_fd);
+		readcount = read(fd, &c, 1);
+		if (readcount == 0)
+			break ;
+		if (readcount < 0)
+			return (-1);
+		if (c == '\n')
+			linecount++;
 	}
-	close(file_fd);
-	return (i);
+	close(fd);
+	return (linecount);
 }
 
-static char	**get_full_map(char *file_name)
+char	**get_full_map(char *file)
 {
-	int		scene_fd;
-	char	**full_map;
-	int		map_len;
-	int		i;
+	int				i;
+	int				fd;
+	char			**map;
 
+	map = ft_calloc((sizeof(char *)), file_lines_count(file) + 1);
+	if (map == NULL)
+		return (NULL);
+	fd = open(file, O_RDONLY);
 	i = 0;
-	scene_fd = open(file_name, O_RDONLY);
-	if (scene_fd == -1)
-		return (NULL);
-	map_len = file_lines_count(file_name);
-	if (!map_len)
+	while (i < file_lines_count(file))
 	{
-		close(scene_fd);
-		return (NULL);
-	}
-	full_map = (char **)malloc(sizeof(char *) * (map_len + 1));
-	if (!full_map)
-		return (NULL);
-	full_map[map_len] = NULL;
-	while (i < map_len)
-	{
-		full_map[i] = trim_free(get_next_line(scene_fd), "\n");
+		map[i] = get_next_line(fd);
+		map[i] = trim_free(map[i], "\n");
 		i++;
 	}
-	return (close(scene_fd), full_map);
+	close(fd);
+	return (map);
 }
 
 bool	readmap(t_game *game, char *file_name)
@@ -70,7 +66,7 @@ bool	readmap(t_game *game, char *file_name)
 	bool	return_value;
 
 	return_value = true;
-	full_map = get_full_map(file_name);
+	full_map = get_full_map(file_name);	
 	if (is_scene_empty(file_name))
 		return (false);
 	textures_part = get_textures_part(full_map);
