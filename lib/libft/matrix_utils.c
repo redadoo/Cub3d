@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:10:53 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/09 14:26:41 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:34:26 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ size_t	matrix_width(char **matrix)
 	return (res);
 }
 
-void print_matrix(char **matrix)
+void	print_matrix(char **matrix)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while(matrix[i])
+	while (matrix[i])
 	{
-		printf("%s",matrix[i]);
+		printf("%s", matrix[i]);
 		i++;
 	}
 }

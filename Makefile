@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
+#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/06 18:35:59 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/09 16:29:52 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ leaks_arg: re
 
 clean:
 	@$(RM) $(OBJDIR) $(OBJ)
+	@$(RM) leaks.txt
 
 fclean: clean
 	@$(RM) $(NAME)

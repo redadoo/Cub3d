@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/09 14:32:39 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:33:24 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	readmap(t_game *game, char *file_name)
 	bool	return_value;
 
 	return_value = true;
-	full_map = get_full_map(file_name);	
+	full_map = get_full_map(file_name);
 	if (is_scene_empty(file_name))
 		return (false);
 	textures_part = get_textures_part(full_map);

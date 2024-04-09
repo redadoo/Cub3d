@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_normalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:19 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/09 11:46:41 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/09 16:34:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_vector2	vector2_normalize(t_vector2 vec)
 	}
 	return (normalized_vec);
 }
-
 
 t_vector2_int	vector2_int_normalize(t_vector2_int vec)
 {
