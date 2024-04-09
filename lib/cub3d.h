@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/06 15:14:59 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/09 16:54:27 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 typedef struct s_window
 {
-	t_vector2		size;
+	t_vector2_int	size;
 	void			*reference;
 }					t_window;
 
