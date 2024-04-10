@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 22:51:07 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 14:26:29 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:00:45 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ void	init_player(t_player *player, char **map)
 	char			ch;
 	t_vector2_int	i;
 
-	i.x = 0;
-	i.y = 0;
+	set_vector2_int(&i,0,0);
 	while (map[i.y])
 	{
 		while (map[i.y][i.x])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/03 19:20:59 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:04:41 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 void	set_raycaster(t_game *game, int x)
 {
 	game->raycaster.camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	game->raycaster.ray_dir.x = game->camera.dir.x + game->camera.plane.x
-		* game->raycaster.camera_x;
-	game->raycaster.ray_dir.y = game->camera.dir.y + game->camera.plane.y
-		* game->raycaster.camera_x;
-	game->raycaster.vec_map.x = (int)game->player.pos.x;
-	game->raycaster.vec_map.y = (int)game->player.pos.z;
-	game->raycaster.delta_dist.x = fabs(1 / game->raycaster.ray_dir.x);
-	game->raycaster.delta_dist.y = fabs(1 / game->raycaster.ray_dir.y);
+	set_vector2(&game->raycaster.ray_dir, game->camera.dir.x
+		+ game->camera.plane.x * game->raycaster.camera_x, game->camera.dir.y
+		+ game->camera.plane.y * game->raycaster.camera_x);
+	set_vector2_int(&game->raycaster.vec_map, (int)game->player.pos.x,
+		(int)game->player.pos.z);
+	set_vector2(&game->raycaster.delta_dist, fabs(1
+			/ game->raycaster.ray_dir.x), fabs(1 / game->raycaster.ray_dir.y));
 	game->raycaster.hit = 0;
 }
 
@@ -70,8 +69,7 @@ void	find_distance_tw_wall(t_game *game)
 			game->raycaster.vec_map.y += game->raycaster.vec_step.y;
 			game->raycaster.side = 1;
 		}
-		if (game->map[game->raycaster.vec_map.y]
-			[game->raycaster.vec_map.x] == '1')
+		if (game->map[game->raycaster.vec_map.y][game->raycaster.vec_map.x] == '1')
 			game->raycaster.hit = 1;
 	}
 }
