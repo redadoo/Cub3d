@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/10 15:04:41 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/10 15:36:03 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	find_distance_tw_wall(t_game *game)
 			game->raycaster.vec_map.y += game->raycaster.vec_step.y;
 			game->raycaster.side = 1;
 		}
-		if (game->map[game->raycaster.vec_map.y][game->raycaster.vec_map.x] == '1')
+		if (game->map[game->raycaster.vec_map.y]
+			[game->raycaster.vec_map.x] == '1')
 			game->raycaster.hit = 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 22:51:07 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 15:00:45 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/10 15:36:16 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_player(t_player *player, char **map)
 	char			ch;
 	t_vector2_int	i;
 
-	set_vector2_int(&i,0,0);
+	set_vector2_int(&i, 0, 0);
 	while (map[i.y])
 	{
 		while (map[i.y][i.x])

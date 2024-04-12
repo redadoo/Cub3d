@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/09 16:54:27 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:18:41 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -506,5 +506,4 @@ int					get_nbr_map_lines(char **full_map);
 char				**get_map_part(char **full_map);
 void				draw_quad(t_sprite *sprite, t_vector2_int of, int l, int c);
 void				draw_minimap(t_game *game);
-void				set_vector2_int(t_vector2_int *v, int x, int y);
 #endif

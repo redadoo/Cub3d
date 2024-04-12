@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:18:31 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 14:28:06 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:36:29 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,17 @@ void	renderer(t_game *game)
 	safe_mlx_destroy_image(game->mlx, game->mini_map.sprite.img);
 }
 
-int	main_loop(t_game *game)
+void	manage_time(t_game *game)
 {
-	renderer(game);
 	game->game_time.old_time = game->game_time.time;
 	game->game_time.time = current_time_millis();
 	game->game_time.frame_time = (
 			game->game_time.time - game->game_time.old_time) / 1000.0;
+}
+
+int	main_loop(t_game *game)
+{
+	renderer(game);
+	manage_time(game);
 	return (0);
 }

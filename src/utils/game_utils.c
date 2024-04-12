@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:34:36 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 14:56:05 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/10 15:35:42 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vector2_int	get_map_size(char **map)
 {
 	t_vector2_int	index;
 
-	set_vector2_int(&index,0,0);
+	set_vector2_int(&index, 0, 0);
 	while (map[index.y])
 	{
 		index.x = 0;

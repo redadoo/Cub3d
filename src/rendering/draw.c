@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/03 19:24:45 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/11 13:41:21 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ void	draw_vert_line_texture(t_game *game, int x)
 	while (++y < game->raycaster.draw_end)
 	{
 		game->scene.side = game->raycaster.side;
-		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT
-				- 1);
+		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT - 1);
 		game->raycaster.tex_pos += game->raycaster.step;
 		put_pixel(&game->scene, x, y, get_color(game, &game->raycaster));
 	}
