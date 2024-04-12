@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
+#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/09 16:29:52 by evocatur         ###   ########.fr        #
+#    Updated: 2024/04/12 14:27:36 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ FILES 			= $(INIT_CUB3D) $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) $(LIBFT_SRC) $(
 
 SRC			  	= $(FILES:=.c)
 OBJ			  	= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		  	= lib/cub3d.h lib/vector/vector.h
+HEADER		  	= lib/cub3d.h lib/vector/vector.h lib/libft/libft.h
 
 NONE			="\033[0m"
 GREEN			="\033[32m"
@@ -47,7 +47,7 @@ MAP				=map/test1.cub
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LINKS = -Lmlx_linux ./mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+LINKS = -Llib/mlx_linux lib/mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 FLAGS += -I/usr/include -Imlx_linux -O3
 endif
 
@@ -67,7 +67,7 @@ $(NAME): $(OBJ) $(HEADER)
 	@echo $(CURSIVE) $(GRAY) "     - Compiling vector library ..." $(NONE)
 	@cd lib/vector && make > /dev/null 2>&1 && make clean > /dev/null 2>&1
 	@echo $(CURSIVE) $(GRAY) "     - Compiling mlx library ..." $(NONE)
-	@cd mlx_linux/ && make > /dev/null 2>&1
+	@cd lib/mlx_linux/ && make > /dev/null 2>&1
 	@echo $(CURSIVE)$(GRAY) "      - Making object files..." $(NONE)
 	@echo $(CURSIVE) $(GRAY) "     - Compiling $(NAME)..." $(NONE)
 	@$(CC)  $(FLAGS) $(OBJ) $(LINKS) -o $(NAME)

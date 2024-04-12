@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 18:18:41 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/12 14:25:24 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #  define EXIT 53
 # endif
 # ifdef __linux__
-#  include "../mlx_linux/mlx.h"
+#  include "mlx_linux/mlx.h"
 #  define UP 119
 #  define LEFT 97
 #  define DOWN 115
@@ -300,7 +300,7 @@ int					create_trgb(int t, t_vector3_int rgb);
  * and raycaster information.
  * @param x The x-coordinate at which the vertical line will be drawn.
  */
-void				draw_vert_line_texture(t_game *game, int x);
+void				draw_screen(t_game *game, int x);
 /**
  * @brief Sets up the raycaster for a given x-coordinate in the game.
  * @param game Pointer to the game structure containing camera, player,

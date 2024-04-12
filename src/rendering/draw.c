@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/11 13:41:21 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/12 12:57:59 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	create_trgb(int t, t_vector3_int rgb)
 	return (t << 24 | rgb.x << 16 | rgb.y << 8 | rgb.z);
 }
 
-void	draw_vert_line_texture(t_game *game, int x)
+void	draw_screen(t_game *game, int x)
 {
 	int	y;
 
@@ -54,7 +54,7 @@ void	draw_vert_line_texture(t_game *game, int x)
 		put_pixel(&game->scene, x, y, get_color(game, &game->raycaster));
 	}
 	y = game->raycaster.draw_end - 1;
-	while (++y < WIN_HEIGHT)
+	while (++y < game->window.size.y)
 	{
 		game->scene.side = 0;
 		put_pixel(&game->scene, x, y, create_trgb(256,

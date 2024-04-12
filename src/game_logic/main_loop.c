@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:18:31 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 15:36:29 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/12 12:55:06 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ static int64_t	current_time_millis(void)
 
 void	renderer(t_game *game)
 {
-	int	x;
+	int	i;
 
-	x = 0;
-	game->scene = new_img(game->mlx, WIN_WIDTH, WIN_HEIGHT);
-	while (x < WIN_WIDTH)
+	i = 0;
+	game->scene = new_img(game->mlx, game->window.size.x, game->window.size.y);
+	while (i < game->window.size.x)
 	{
-		set_raycaster(game, x);
+		set_raycaster(game, i);
 		set_raycaster_dir(game);
 		find_distance_tw_wall(game);
 		find_wall_height(game);
 		find_wall_pixel(game);
-		draw_vert_line_texture(game, x);
-		x++;
+		draw_screen(game, i);
+		i++;
 	}
 	draw_minimap(game);
 	mlx_clear_window(game->mlx, game->window.reference);
