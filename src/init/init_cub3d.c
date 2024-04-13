@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:18:11 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/06 14:53:25 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:22:27 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_mlx(t_game *game)
 	game->mini_map.sprite = init_sprite();
 }
 
-void	init_tgame(t_game *game)
+void	set_null(t_game *game)
 {
 	game->mlx = NULL;
 	game->assets.e_wall.path = NULL;

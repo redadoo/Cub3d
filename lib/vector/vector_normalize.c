@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:19 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 17:39:13 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 12:49:04 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,6 @@ t_vector2	vector2_normalize(t_vector2 vec)
 
 t_vector3	vector3_normalize(t_vector3 vec)
 {
-/* 	double		mag;
-	t_vector3	normalized_vec; */
-
-/* 	mag = magnitude(vec);
-	if (mag != 0)
-	{
-		normalized_vec.x = vec.x / mag;
-		normalized_vec.y = vec.y / mag;
-		normalized_vec.z = vec.z / mag;
-	}
-	else
-	{
-		normalized_vec.x = 0;
-		normalized_vec.y = 0;
-		normalized_vec.y = 0;
-	} */
 	return (vec);
 }
 

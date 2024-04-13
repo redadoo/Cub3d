@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/12 14:25:24 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 14:11:29 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void				error(char *error_message, t_game *game);
  *
  * @param game Pointer to the game structure.
  */
-void				init_tgame(t_game *game);
+void				set_null(t_game *game);
 /**
  * @brief Initialize mlx, window and scene
  *
@@ -321,18 +321,23 @@ void				set_raycaster_dir(t_game *game);
  * @param game Pointer to the game structure containing 
  * map and raycaster information.
  */
-void				find_distance_tw_wall(t_game *game);
+void				start_dda(t_game *game);
 /**
  * @brief Finds the height of the wall to be drawn on the screen.
  * @param game Pointer to the game structure containing raycaster information.
  */
-void				find_wall_height(t_game *game);
+void				ray_distance(t_game *game);
+/**
+ * @brief calculate lowest and highest pixel to fill in current stripe
+ * @param game Pointer to the game structure containing raycaster information.
+ */
+void	pixel_to_fill(t_game *game);
 /**
  * @brief Finds the texture pixel for the wall being drawn.
  * @param game Pointer to the game structure containing 
  * player and raycaster information.
  */
-void				find_wall_pixel(t_game *game);
+void				wall_hit(t_game *game);
 /**
  * @brief Initializes a sprite structure with default values.
  * @return The initialized sprite structure.
@@ -343,7 +348,7 @@ t_sprite			init_sprite(void);
  * @param mlx_ptr The mlx pointer used to create the new image.
  * @return The new image represented as a t_sprite structure.
  */
-t_sprite			new_img(void *mlx_ptr, int width, int height);
+t_sprite			init_img(void *mlx_ptr, int width, int height);
 /**
  * @brief Sets the color of a pixel at the specified coordinates 
  * in the given image.

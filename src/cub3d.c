@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/12 14:57:34 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:22:25 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	init_tgame(&game);
+	set_null(&game);
 	if (argc != 2)
 		error("wrong number of arguments", &game);
 	if (check_extension(argv[1]) == 1)

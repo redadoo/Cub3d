@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:16:06 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/11 23:29:22 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 14:03:30 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ t_sprite	init_sprite(void)
 	return (new_sprite);
 }
 
-t_sprite	new_img(void *mlx_ptr, int width, int height)
+t_sprite	init_img(void *mlx_ptr, int width, int height)
 {
-	t_sprite	new_img;
+	t_sprite	img;
 
-	new_img.img = mlx_new_image(mlx_ptr, width, height);
-	new_img.addr = mlx_get_data_addr(new_img.img, &new_img.bpp,
-			&new_img.line_len, &new_img.endian);
-	return (new_img);
+	img.img = mlx_new_image(mlx_ptr, width, height);
+	img.addr = mlx_get_data_addr(img.img, &img.bpp,
+			&img.line_len, &img.endian);
+	return (img);
 }
 
 void	put_pixel(t_sprite *img, int x, int y, uint32_t color)

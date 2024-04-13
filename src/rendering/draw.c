@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/12 12:57:59 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 13:00:57 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	draw_screen(t_game *game, int x)
 	while (++y < game->raycaster.draw_end)
 	{
 		game->scene.side = game->raycaster.side;
-		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT - 1);
+		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT
+				- 1);
 		game->raycaster.tex_pos += game->raycaster.step;
 		put_pixel(&game->scene, x, y, get_color(game, &game->raycaster));
 	}
@@ -64,8 +65,8 @@ void	draw_screen(t_game *game, int x)
 
 static void	draw_minimap_utlis(t_game *game, int offset_draw, t_vector2_int of)
 {
-	set_vector2_int(&of, game->player.pos.x * offset_draw,
-		game->player.pos.z * offset_draw);
+	set_vector2_int(&of, game->player.pos.x * offset_draw, game->player.pos.z
+		* offset_draw);
 	draw_quad(&game->mini_map.sprite, of, 4, create_trgb(256,
 			game->mini_map.player_color));
 }
@@ -80,14 +81,14 @@ void	draw_minimap(t_game *game)
 	i = 0;
 	y = 0;
 	offset_draw = game->mini_map.offset_draw;
-	game->mini_map.sprite = new_img(game->mlx, matrix_width(game->map)
+	game->mini_map.sprite = init_img(game->mlx, matrix_width(game->map)
 			* offset_draw, matrix_height(game->map) * offset_draw);
 	while (game->map[y])
 	{
 		while (game->map[y][i])
 		{
 			set_vector2_int(&offset_title, i * offset_draw, y * offset_draw);
-			if (game->map[y][i] == '1')
+			if (game->map[y][i] && game->map[y][i] == '1')
 				draw_quad(&game->mini_map.sprite, offset_title, 5,
 					create_trgb(256, game->mini_map.title_color));
 			i++;

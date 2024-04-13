@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:18:31 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/12 12:55:06 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 13:55:55 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ void	renderer(t_game *game)
 	int	i;
 
 	i = 0;
-	game->scene = new_img(game->mlx, game->window.size.x, game->window.size.y);
+	game->scene = init_img(game->mlx, game->window.size.x, game->window.size.y);
 	while (i < game->window.size.x)
 	{
 		set_raycaster(game, i);
 		set_raycaster_dir(game);
-		find_distance_tw_wall(game);
-		find_wall_height(game);
-		find_wall_pixel(game);
+		start_dda(game);
+		ray_distance(game);
+		pixel_to_fill(game);
+		wall_hit(game);
 		draw_screen(game, i);
 		i++;
 	}

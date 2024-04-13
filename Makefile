@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/12 14:27:36 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/13 14:09:21 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CAMERA 			= src/camera/camera
 IMAGES 			= src/images/images
 PLAYER 			= src/player/player src/player/player_movement
 GAME_LOGIC		= src/game_logic/main_loop
-RENDERING 		= src/rendering/raycasting src/rendering/draw src/rendering/draw_utils
+RENDERING 		= src/rendering/raycasting src/rendering/draw src/rendering/draw_utils src/rendering/raycasting_utils
 MAP_READ 		= src/map_read/map_read src/map_read/map_read_utils src/map_read/parse_map  src/map_read/init_map
 
 FILES 			= $(INIT_CUB3D) $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) $(LIBFT_SRC) $(MAP_READ) $(GAME_ENGINE) $(MAIN_SRC) $(IMAGES) $(CAMERA) $(PLAYER) $(RENDERING)
@@ -48,7 +48,6 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 LINKS = -Llib/mlx_linux lib/mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-FLAGS += -I/usr/include -Imlx_linux -O3
 endif
 
 ifeq ($(UNAME_S),Darwin)
@@ -78,7 +77,7 @@ $(OBJDIR)/%.o: %.c $(HEADER)
 	@$(CC) $(FLAGS) -c $< -o $@
 
 run:
-	@./$(NAME)
+	@./$(NAME) map/test.cub 
 
 play:
 	@./$(NAME) $(MAP)
@@ -106,4 +105,6 @@ re: fclean all
 
 norm:
 	@norminette src/
-	@norminette lib/
+	@norminette lib/libft
+	@norminette lib/vector
+	@norminette lib/cub3d.h
