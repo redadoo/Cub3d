@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 16:06:28 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:51:40 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,4 +247,6 @@ void			print_vector2_int(t_vector2_int v);
  * @param v The vector to print.
  */
 void			print_vector3_int(t_vector3_int v);
+
+int				compare_vector2_int(t_vector2_int v1, t_vector2_int v2);
 #endif

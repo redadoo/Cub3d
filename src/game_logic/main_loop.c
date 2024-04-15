@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:18:31 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/13 13:55:55 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/13 14:30:02 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int64_t	current_time_millis(void)
 	return (s1 + s2);
 }
 
-void	renderer(t_game *game)
+void	render_wall(t_game *game)
 {
 	int	i;
 
@@ -41,7 +41,26 @@ void	renderer(t_game *game)
 		draw_screen(game, i);
 		i++;
 	}
+}
+
+void	render_floor(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->window.size.y)
+	{	
+		i++;
+	}
+	
+}
+
+void	renderer(t_game *game)
+{
+	render_wall(game);
+	render_floor(game);
 	draw_minimap(game);
+	
 	mlx_clear_window(game->mlx, game->window.reference);
 	mlx_put_image_to_window(game->mlx, game->window.reference, game->scene.img,
 		0, 0);
