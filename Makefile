@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
+#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/13 14:09:21 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/15 16:05:28 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ compile_and_play: re
 	@./$(NAME) $(MAP)
 
 leaks: re
-	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) map/test.cub 
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) map/test1.cub 
 
 leaks_arg: re
 	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file=leaks.txt ./$(NAME) $(MAP)

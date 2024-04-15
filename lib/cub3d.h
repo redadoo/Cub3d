@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/15 13:12:00 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:30:28 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,7 +331,7 @@ void				ray_distance(t_game *game);
  * @brief calculate lowest and highest pixel to fill in current stripe
  * @param game Pointer to the game structure containing raycaster information.
  */
-void	pixel_to_fill(t_game *game);
+void				pixel_to_fill(t_game *game);
 /**
  * @brief Finds the texture pixel for the wall being drawn.
  * @param game Pointer to the game structure containing 

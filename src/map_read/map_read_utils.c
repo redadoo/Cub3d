@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/15 13:11:42 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/15 16:45:23 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**get_textures_matrix(char **full_map)
 	scene = malloc(7 * sizeof(char *));
 	if (!scene)
 		return (NULL);
-	set_vector2_int(&i,0,-1);
+	set_vector2_int(&i, 0, -1);
 	while (i.x < 6)
 	{
 		if (full_map[++i.y] == NULL)
@@ -81,8 +81,7 @@ int	file_linecount(char **full_map)
 	}
 	while (full_map[j])
 	{
-		if (!only_spaces(full_map[j]))
-			count++;
+		count++;
 		j++;
 	}
 	return (count);
@@ -108,10 +107,12 @@ char	**get_map_part(char **full_map)
 		j++;
 	}
 	i = 0;
+	while (full_map[j] && only_spaces(full_map[j]))
+		j++;
 	while (full_map[j])
 	{
-		if (!only_spaces(full_map[j]))
-			map[i++] = ft_strdup(full_map[j]);
+		printf("-%s\n", full_map[j]);
+		map[i++] = ft_strdup(full_map[j]);
 		j++;
 	}
 	return (map);

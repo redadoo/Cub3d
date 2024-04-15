@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   vector_compare.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:50:35 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/13 00:04:36 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:30:09 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-int compare_vector2_int(t_vector2_int v1, t_vector2_int v2)
+int	compare_vector2_int(t_vector2_int v1, t_vector2_int v2)
 {
-    if (v1.x == v2.x && v1.y == v2.y)
-    {
-        return (1);
-    }
+	if (v1.x == v2.x && v1.y == v2.y)
+	{
+		return (1);
+	}
 	return (0);
 }
