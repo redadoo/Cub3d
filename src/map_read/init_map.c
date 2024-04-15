@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/04 16:24:15 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/15 13:21:26 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ void	put_info(t_assets *assets, char *str1, char *str2)
 bool	parse_coord(char *coord, char **map, t_assets *assets)
 {
 	size_t	i;
-	char	**temp;
+	char	**tmp;
 
 	i = 0;
 	while (i < 6)
 	{
-		temp = ft_split(map[i], ' ');
-		if (streq(coord, temp[0]))
+		tmp = ft_split(map[i], ' ');
+		if (streq(coord, tmp[0]))
 		{
-			if (matrix_height(temp) != 2)
+			if (matrix_height(tmp) != 2)
 			{
-				free_matrix(temp);
+				free_matrix(tmp);
 				return (false);
 			}
-			put_info(assets, temp[0], temp[1]);
-			free_matrix(temp);
+			put_info(assets, tmp[0], tmp[1]);
+			free_matrix(tmp);
 			return (true);
 		}
 		i += 1;
-		free_matrix(temp);
+		free_matrix(tmp);
 	}
-	free_matrix(temp);
+	free_matrix(tmp);
 	return (false);
 }
 
@@ -84,28 +84,28 @@ bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 {
 	int		i;
 	bool	return_value;
-	char	**temp;
+	char	**tmp;
 	char	**rgb;
 
 	i = -1;
 	return_value = true;
-	temp = NULL;
+	tmp = NULL;
 	while (++i < 6)
 	{
-		free_matrix(temp);
-		temp = ft_split(map[i], ' ');
-		if (streq(identifier, temp[0]))
+		free_matrix(tmp);
+		tmp = ft_split(map[i], ' ');
+		if (streq(identifier, tmp[0]))
 		{
-			if (matrix_height(temp) != 2)
+			if (matrix_height(tmp) != 2)
 				return_value = false;
-			rgb = ft_split(temp[1], ',');
+			rgb = ft_split(tmp[1], ',');
 			if (return_value == true && !assign_rgb(rgb, assets, identifier))
 				return_value = false;
 			free_matrix(rgb);
-			return (free_matrix(temp), return_value);
+			return (free_matrix(tmp), return_value);
 		}
 	}
-	return (free_matrix(temp), false);
+	return (free_matrix(tmp), false);
 }
 
 bool	parse_textures(t_assets *assets, char **textures_part)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/09 16:33:24 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/15 13:12:02 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ bool	readmap(t_game *game, char *file_name)
 	bool	return_value;
 
 	return_value = true;
-	full_map = get_full_map(file_name);
-	if (is_scene_empty(file_name))
+	if (check_file(file_name))
 		return (false);
-	textures_part = get_textures_part(full_map);
+	full_map = get_full_map(file_name);
+	textures_part = get_textures_matrix(full_map);
 	if (!parse_textures(&game->assets, textures_part))
 		return_value = false;
 	if (return_value != false)

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/13 14:11:29 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/15 13:12:00 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -484,24 +484,24 @@ void				renderer(t_game *game);
  */
 int					main_loop(t_game *game);
 /**
- * @brief Checks if a scene file is empty.
+ * @brief Checks if a file is empty.
  *
  * @param file_name The name of the scene file.
  * @return true if the scene is empty, false otherwise.
  */
-bool				is_scene_empty(char *file_name);
+bool				check_file(char *file_name);
 /**
- * @brief Retrieves the texture part from the scene file.
+ * @brief Retrieves the texture part from the file.
  *
- * @return An array containing the texture information from the scene file.
+ * @return An matrix containing the texture information from the file.
  */
-char				**get_textures_part(char **full_map);
+char				**get_textures_matrix(char **full_map);
 /**
  * @brief Gets the number of map lines in the scene file.
  *
  * @return The number of non-empty map lines in the scene file.
  */
-int					get_nbr_map_lines(char **full_map);
+int					file_linecount(char **full_map);
 /**
  * @brief Retrieves the map part from the scene file.
  *

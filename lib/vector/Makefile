@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 14:28:17 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/13 00:05:45 by edoardo          ###   ########.fr        #
+#    Updated: 2024/04/15 12:58:52 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ LINKS += -Llib/libft/ -lft -lm
 .c.o:
 		${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o} $(LINKS) 
 
-$(NAME): ${OBJS} clean
+$(NAME): ${OBJS}
 		ar rcs ${NAME} ${OBJS}
 
 all:	${NAME}
 
 clean:
-		${RM} ${OBJS} ${OBJSBONUS}
+		${RM} ${OBJS}
 
 fclean:	clean
 		${RM} ${NAME}

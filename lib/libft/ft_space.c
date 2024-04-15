@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:20:20 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/05 16:42:10 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/15 13:09:53 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	only_spaces(const char *str)
 	{
 		if (!is_spaces(str[i]))
 			return (false);
-		i += 1;
+		i++;
 	}
 	return (true);
 }

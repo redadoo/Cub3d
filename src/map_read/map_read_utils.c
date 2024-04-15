@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_read_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/09 14:24:36 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/15 13:11:42 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-bool	is_scene_empty(char *file_name)
+bool	check_file(char *file_name)
 {
 	bool	return_value;
 	char	*temp;
@@ -37,34 +37,32 @@ bool	is_scene_empty(char *file_name)
 	return (return_value);
 }
 
-char	**get_textures_part(char **full_map)
+char	**get_textures_matrix(char **full_map)
 {
-	size_t	i;
-	size_t	j;
-	char	**scene;
+	t_vector2_int	i;
+	char			**scene;
 
-	scene = malloc((6 + 1) * sizeof(char *));
+	scene = malloc(7 * sizeof(char *));
 	if (!scene)
 		return (NULL);
-	i = 0;
-	j = -1;
-	while (i < 6)
+	set_vector2_int(&i,0,-1);
+	while (i.x < 6)
 	{
-		if (full_map[++j] == NULL)
+		if (full_map[++i.y] == NULL)
 		{
 			free_matrix(scene);
 			return (NULL);
 		}
-		if (only_spaces(full_map[j]))
+		if (only_spaces(full_map[i.y]))
 			continue ;
-		scene[i] = ft_strdup(full_map[j]);
-		i++;
+		scene[i.x] = ft_strdup(full_map[i.y]);
+		i.x++;
 	}
-	scene[i] = NULL;
+	scene[i.x] = NULL;
 	return (scene);
 }
 
-int	get_nbr_map_lines(char **full_map)
+int	file_linecount(char **full_map)
 {
 	size_t	i;
 	size_t	j;
@@ -94,14 +92,14 @@ char	**get_map_part(char **full_map)
 {
 	int		i;
 	int		j;
-	int		nbr_lines;
+	int		file_line;
 	char	**map;
 
 	j = 0;
-	nbr_lines = get_nbr_map_lines(full_map);
-	if (nbr_lines == -1)
+	file_line = file_linecount(full_map);
+	if (file_line == -1)
 		return (NULL);
-	map = ft_calloc(sizeof(char *), (nbr_lines + 1));
+	map = ft_calloc(sizeof(char *), (file_line + 1));
 	i = 0;
 	while (i < 6)
 	{
