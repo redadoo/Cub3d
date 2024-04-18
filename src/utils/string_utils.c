@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/09 14:24:34 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:21:58 by fborroto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ size_t	last_idx(char *map_line)
 
 	i = ft_strlen(map_line) - 1;
 	while (is_spaces(map_line[i]))
-		i -= 1;
-	i += 1;
+		i--;
+	i++;
 	return (i);
 }
 
