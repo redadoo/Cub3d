@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 12:47:56 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 14:58:25 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/21 14:59:33 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ void	init_camera(t_camera *camera, t_vector2 dir)
 	else if (dir.y == -1)
 		set_vector2(&camera->plane, -0.66, 0);
 	else if (dir.x == 1)
-		set_vector2(&camera->plane, 0, 0.66);
-	else if (dir.x == -1)
+	{
+		printf("1231231\n");
 		set_vector2(&camera->plane, 0, -0.66);
+	}
+	else if (dir.x == -1)
+	{
+		printf("sadasd\n");
+		set_vector2(&camera->plane, 0, 0.66);
+	}
 	camera->dir = dir;
 	camera->old_x = 0;
 }
