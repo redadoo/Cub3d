@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/26 13:21:39 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/26 13:53:42 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,14 @@ bool	get_texture_path(char *coord, char **map, t_assets *assets)
 		if (streq(coord, tmp[0]))
 		{
 			if (matrix_height(tmp) != 2)
-			{
-				free_matrix(tmp);
-				return (false);
-			}
+				return (free_matrix(tmp), false);
 			put_info(assets, tmp[0], tmp[1]);
-			free_matrix(tmp);
-			return (true);
+			return (free_matrix(tmp), true);
 		}
 		i += 1;
 		free_matrix(tmp);
 	}
-	free_matrix(tmp);
-	return (false);
+	return (free_matrix(tmp), false);
 }
 
 bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)

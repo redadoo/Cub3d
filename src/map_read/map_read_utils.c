@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/26 13:02:58 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/26 13:55:13 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	check_file(char *namefile)
 	safe_free(tmp);
 	close(fd);
 	if (tmp == NULL)
-		return(false);
+		return (false);
 	return (true);
 }
 
@@ -107,7 +107,6 @@ char	**get_map_part(char **full_map)
 		j++;
 	while (full_map[j])
 	{
-		printf("-%s\n", full_map[j]);
 		map[i++] = ft_strdup(full_map[j]);
 		j++;
 	}
