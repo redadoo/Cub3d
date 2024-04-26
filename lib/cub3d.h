@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/26 13:21:39 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/26 17:28:55 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ int					check_extension(char *file);
  * @param map_line A string representing a line of the map.
  * @return The index of the last non-space character in the string.
  */
-size_t				last_idx(char *map_line);
+int				last_idx(char *map_line);
 /**
  * @brief Trims characters from the beginning
  * and end of a string.
@@ -462,7 +462,7 @@ bool				readmap(t_game *game, char *file_name);
  * @param j The column index of the current element.
  * @return true if the arrangement is valid, false otherwise.
  */
-bool				valid_surroundings(char **map_part, size_t i, size_t j);
+bool				valid_surroundings(char **map_part, t_vector2_int ind);
 /**
  * @brief Parses and validates the map.
  *

@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fborroto <fborroto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/18 21:50:07 by fborroto         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:58:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-bool	valid_surroundings(char **map_part, size_t i, size_t j)
+bool	valid_surroundings(char **map_part, t_vector2_int ind)
 {
-	return (is_onstr("01EWNS", map_part[i - 1][j - 1]) && is_onstr("01EWNS",
-			map_part[i - 1][j]) && is_onstr("01EWNS", map_part[i - 1][j + 1])
-		&& is_onstr("01EWNS", map_part[i][j - 1]) && is_onstr("01EWNS",
-			map_part[i][j + 1]) && is_onstr("01EWNS", map_part[i + 1][j - 1])
-		&& is_onstr("01EWNS", map_part[i + 1][j]) && is_onstr("01EWNS",
-			map_part[i + 1][j + 1]));
+	if (ft_strchr("01EWNS", map_part[ind.x - 1][ind.y - 1]) == NULL || ft_strchr("01EWNS", map_part[ind.x - 1][ind.y]) == NULL)
+		return (false);
+	if (ft_strchr("01EWNS", map_part[ind.x - 1][ind.y + 1]) == NULL || ft_strchr("01EWNS", map_part[ind.x][ind.y - 1]) == NULL)
+		return (false);
+	if (ft_strchr("01EWNS", map_part[ind.x][ind.y + 1]) == NULL || ft_strchr("01EWNS", map_part[ind.x + 1][ind.y - 1]) == NULL)
+		return (false);
+	if (ft_strchr("01EWNS", map_part[ind.x + 1][ind.y]) == NULL || ft_strchr("01EWNS", map_part[ind.x + 1][ind.y + 1])== NULL)
+		return (false);
+	return (true);
+
 }
 
 /**
@@ -30,22 +34,21 @@ bool	valid_surroundings(char **map_part, size_t i, size_t j)
  */
 static bool	valid_elements(char **map_part)
 {
-	size_t	i;
-	size_t	j;
+	t_vector2_int ind;
 
-	i = 1;
-	while (map_part[i + 1])
+	ind.x = 1;
+	while (map_part[ind.x + 1])
 	{
-		j = 1;
-		while (map_part[i][j] && j < last_idx(map_part[i - 1])
-			&& j < last_idx(map_part[i + 1]))
+		ind.y = 1;
+		while (map_part[ind.x][ind.y] && ind.y < last_idx(map_part[ind.x - 1])
+			&& ind.y < last_idx(map_part[ind.x + 1]))
 		{
-			if (is_onstr("0EWNS", map_part[i][j])
-				&& !valid_surroundings(map_part, i, j))
+			if (ft_strchr("0EWNS", map_part[ind.x][ind.y]) != NULL
+				&& !valid_surroundings(map_part, ind))
 				return (false);
-			j++;
+			ind.y++;
 		}
-		i++;
+		ind.x++;
 	}
 	return (true);
 }
@@ -69,7 +72,7 @@ static bool	player_position(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (is_onstr("NSWE", map[i][j]))
+			if (ft_strchr("NSWE", map[i][j]) != NULL)
 			{
 				if (player_found == true)
 					return (false);
@@ -89,28 +92,26 @@ static bool	player_position(char **map)
  */
 static bool	wall_surrounding(char **map)
 {
-	int	i;
-	int	j;
+	t_vector2_int i;
 
-	j = -1;
-	while (map[0][++j])
-		if (!is_onstr(" 1", map[0][j]))
+	set_vector2_int(&i,-1,-1);
+	while (map[0][++i.y])
+		if (ft_strchr(" 1", map[0][i.y]) == NULL)
 			return (false);
-	j = -1;
-	i = matrix_height(map) - 1;
-	while (map[i][++j])
-		if (!is_onstr(" 1", map[i][j]))
+	set_vector2_int(&i, matrix_height(map) - 1, -1);
+	while (map[i.x][++i.y])
+		if (ft_strchr(" 1", map[i.x][i.y]) == NULL)
 			return (false);
-	i = -1;
-	while (map[++i])
+	i.x = -1;
+	while (map[++i.x])
 	{
-		j = 0;
-		while (is_spaces(map[i][j]))
-			j += 1;
-		if (map[i][j] != '1')
+		i.y = 0;
+		while (is_spaces(map[i.x][i.y]))
+			i.y += 1;
+		if (map[i.x][i.y] != '1')
 			return (false);
-		j = last_idx(map[i]) - 1;
-		if (map[i][j] != '1')
+		i.y = last_idx(map[i.x]) - 1;
+		if (map[i.x][i.y] != '1')
 			return (false);
 	}
 	return (true);
