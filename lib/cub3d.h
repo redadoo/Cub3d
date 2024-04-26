@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/15 15:30:28 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:21:39 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ typedef struct s_game
  *
  * @param game Pointer to the game structure.
  */
-void				mlx_run(t_game *game);
+void				mlx_main(t_game *game);
 /**
  * @brief prints the error message (in red) in standard error
  *
@@ -431,7 +431,7 @@ void				put_info(t_assets *assets, char *str1, char *str2);
  * @param game_map The map structure to be populated.
  * @return true if parsing and assignment are successful, false otherwise.
  */
-bool				parse_coord(char *coord, char **map, t_assets *assets);
+bool				get_texture_path(char *coord, char **map, t_assets *assets);
 /**
  * @brief Assigns RGB color values to the map structure based on identifier.
  * @param rgb The array containing RGB values as strings.
@@ -446,7 +446,7 @@ bool				assign_rgb(char **rgb, t_assets *assets, char *identifier);
  * @param textures_part The array containing texture information strings.
  * @return true if parsing and assignment are successful, false otherwise.
  */
-bool				parse_textures(t_assets *assets, char **textures_part);
+bool				get_info_texture(t_assets *assets, char **textures_part);
 /**
  * @brief Reads the map file and populates the game structure.
  * @param game The game structure to be populated.
@@ -495,19 +495,13 @@ bool				check_file(char *file_name);
  *
  * @return An matrix containing the texture information from the file.
  */
-char				**get_textures_matrix(char **full_map);
+char				**read_texture(char **full_map);
 /**
  * @brief Gets the number of map lines in the scene file.
  *
  * @return The number of non-empty map lines in the scene file.
  */
 int					file_linecount(char **full_map);
-/**
- * @brief Retrieves the map part from the scene file.
- *
- * @param file_name The name of the scene file.
- * @return An array containing the map information from the scene file.
- */
 char				**get_map_part(char **full_map);
 void				draw_quad(t_sprite *sprite, t_vector2_int of, int l, int c);
 void				draw_minimap(t_game *game);

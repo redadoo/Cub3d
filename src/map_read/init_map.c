@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/15 13:21:26 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/26 13:21:39 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	put_info(t_assets *assets, char *str1, char *str2)
 	}
 }
 
-bool	parse_coord(char *coord, char **map, t_assets *assets)
+bool	get_texture_path(char *coord, char **map, t_assets *assets)
 {
 	size_t	i;
 	char	**tmp;
@@ -80,15 +80,15 @@ bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)
 	return (true);
 }
 
-bool	parse_rgb(char *identifier, char **map, t_assets *assets)
+bool	get_color(char *identifier, char **map, t_assets *assets)
 {
 	int		i;
-	bool	return_value;
+	bool	res;
 	char	**tmp;
 	char	**rgb;
 
 	i = -1;
-	return_value = true;
+	res = true;
 	tmp = NULL;
 	while (++i < 6)
 	{
@@ -97,29 +97,38 @@ bool	parse_rgb(char *identifier, char **map, t_assets *assets)
 		if (streq(identifier, tmp[0]))
 		{
 			if (matrix_height(tmp) != 2)
-				return_value = false;
+				res = false;
 			rgb = ft_split(tmp[1], ',');
-			if (return_value == true && !assign_rgb(rgb, assets, identifier))
-				return_value = false;
+			if (res == true && !assign_rgb(rgb, assets, identifier))
+				res = false;
 			free_matrix(rgb);
-			return (free_matrix(tmp), return_value);
+			return (free_matrix(tmp), res);
 		}
 	}
 	return (free_matrix(tmp), false);
 }
 
-bool	parse_textures(t_assets *assets, char **textures_part)
+bool	get_info_texture(t_assets *assets, char **textures_part)
 {
-	bool	return_value;
+	int		i;
+	char	*coord[6];
 
 	if (textures_part == NULL)
 		return (false);
-	return_value = false;
-	if (parse_coord("NO", textures_part, assets) && parse_coord("SO",
-			textures_part, assets) && parse_coord("EA", textures_part, assets)
-		&& parse_coord("WE", textures_part, assets) && parse_rgb("C",
-			textures_part, assets) && parse_rgb("F", textures_part, assets))
-		return_value = true;
-	free_matrix(textures_part);
-	return (return_value);
+	i = 0;
+	coord[0] = "NO";
+	coord[1] = "SO";
+	coord[2] = "EA";
+	coord[3] = "WE";
+	coord[4] = "F";
+	coord[5] = "C";
+	while (i < 6)
+	{
+		if (i > 3 && !get_color(coord[i], textures_part, assets))
+			return (free_matrix(textures_part), false);
+		else if (!get_texture_path(coord[i], textures_part, assets))
+			return (free_matrix(textures_part), false);
+		i++;
+	}
+	return (free_matrix(textures_part), true);
 }

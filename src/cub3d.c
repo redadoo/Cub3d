@@ -6,13 +6,13 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/12 16:22:25 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/26 12:05:43 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3d.h"
 
-void	mlx_run(t_game *game)
+void	mlx_main(t_game *game)
 {
 	mlx_mouse_hide(game->mlx, game->window.reference);
 	mlx_hook(game->window.reference, 6, (1L << 6), camera_rotation, game);
@@ -33,5 +33,5 @@ int	main(int argc, char **argv)
 		error("wrong extension for the map", &game);
 	init_mlx(&game);
 	load_cub3d_data(&game, argv);
-	mlx_run(&game);
+	mlx_main(&game);
 }

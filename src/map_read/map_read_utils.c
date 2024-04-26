@@ -3,41 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   map_read_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/15 16:45:23 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:02:58 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-bool	check_file(char *file_name)
+bool	check_file(char *namefile)
 {
-	bool	return_value;
-	char	*temp;
-	int		scene_fd;
+	int		fd;
+	char	*tmp;
 	int		bytes_rd;
 
-	temp = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	return_value = false;
-	scene_fd = open(file_name, O_RDONLY);
-	if (!scene_fd)
+	tmp = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	fd = open(namefile, O_RDONLY);
+	if (!fd)
 		return (false);
-	bytes_rd = read(scene_fd, temp, BUFFER_SIZE);
+	bytes_rd = read(fd, tmp, BUFFER_SIZE);
 	if (bytes_rd == -1 || bytes_rd == 0)
 	{
-		safe_free(temp);
-		return (NULL);
+		close(fd);
+		safe_free(tmp);
+		return (false);
 	}
-	if (temp == NULL)
-		return_value = true;
-	safe_free(temp);
-	close(scene_fd);
-	return (return_value);
+	safe_free(tmp);
+	close(fd);
+	if (tmp == NULL)
+		return(false);
+	return (true);
 }
 
-char	**get_textures_matrix(char **full_map)
+char	**read_texture(char **full_map)
 {
 	t_vector2_int	i;
 	char			**scene;
@@ -49,10 +48,7 @@ char	**get_textures_matrix(char **full_map)
 	while (i.x < 6)
 	{
 		if (full_map[++i.y] == NULL)
-		{
-			free_matrix(scene);
-			return (NULL);
-		}
+			return (free_matrix(scene), NULL);
 		if (only_spaces(full_map[i.y]))
 			continue ;
 		scene[i.x] = ft_strdup(full_map[i.y]);

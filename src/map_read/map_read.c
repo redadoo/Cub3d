@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/15 13:12:02 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/26 13:21:39 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	file_lines_count(char *file)
 	return (linecount);
 }
 
-char	**get_full_map(char *file)
+char	**readfile(char *file)
 {
 	int				i;
 	int				fd;
@@ -58,31 +58,26 @@ char	**get_full_map(char *file)
 	return (map);
 }
 
-bool	readmap(t_game *game, char *file_name)
+bool	readmap(t_game *game, char *filename)
 {
-	char	**full_map;
-	char	**textures_part;
-	char	**map_part;
-	bool	return_value;
+	char	**file_content;
+	char	**info_texture;
+	char	**map;
 
-	return_value = true;
-	if (check_file(file_name))
+	if (!check_file(filename))
 		return (false);
-	full_map = get_full_map(file_name);
-	textures_part = get_textures_matrix(full_map);
-	if (!parse_textures(&game->assets, textures_part))
-		return_value = false;
-	if (return_value != false)
+	file_content = readfile(filename);
+	info_texture = read_texture(file_content);
+	if (get_info_texture(&game->assets, info_texture))
 	{
-		map_part = get_map_part(full_map);
-		if (map_part == NULL || !parse_map(map_part))
+		map = get_map_part(file_content);
+		if (map == NULL || !parse_map(map))
 		{
-			free_matrix(map_part);
-			return_value = false;
+			free_matrix(map);
+			return (free_matrix(file_content), false);
 		}
+		else
+			game->map = map;
 	}
-	if (return_value != false)
-		game->map = map_part;
-	free_matrix(full_map);
-	return (return_value);
+	return (free_matrix(file_content), true);
 }
