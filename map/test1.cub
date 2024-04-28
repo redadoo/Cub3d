@@ -1,10 +1,10 @@
+F 255,2,0
+C 1,0,3
+
 NO ./texture/wall/mossy.xpm
 EA ./texture/wall/purplestone.xpm
 SO ./texture/wall/redbrick.xpm
 WE ./texture/wall/wood.xpm
-
-F 255,2,0
-C 1,0,3
 
 11111
 10N011

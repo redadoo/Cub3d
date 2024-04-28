@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/28 16:20:50 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 17:38:33 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ bool	readmap(t_game *game, char *filename)
 		else
 			game->map = map;
 	}
+	else
+		return (free_matrix(file_content), false);
 	return (free_matrix(file_content), true);
 }

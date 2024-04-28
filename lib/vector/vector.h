@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/27 18:05:41 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:36:18 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ double			magnitude(t_vector2 vec);
  * @param sep string number separator
  * @return The resulting 3D double vector.
  */
-t_vector3		string_to_vector3(char *str, char sep);
+bool		string_to_vector3(t_vector3 *v, char *str, char sep);
 
 /**
  * @brief Converts a string to a 3D integer vector.
@@ -98,7 +98,7 @@ t_vector3		string_to_vector3(char *str, char sep);
  * @param sep string number separator
  * @return The resulting 3D integer vector.
  */
-t_vector3_int	string_to_vector3_int(char *str, char sep);
+bool	string_to_vector3_int(t_vector3_int *v, char *str, char sep);
 
 /**
  * @brief Converts a string to a 2D double vector.
@@ -107,7 +107,7 @@ t_vector3_int	string_to_vector3_int(char *str, char sep);
  * @param sep string number separator
  * @return The resulting 2D double vector.
  */
-t_vector2		string_to_vector2(char *str, char sep);
+bool		string_to_vector2(t_vector2 *v, char *str, char sep);
 
 /**
  * @brief Converts a string to a 2D integer vector.
@@ -116,7 +116,7 @@ t_vector2		string_to_vector2(char *str, char sep);
  * @param sep string number separator
  * @return The resulting 2D integer vector.
  */
-t_vector2_int	string_to_vector2_int(char *str, char sep);
+bool	string_to_vector2_int(t_vector2_int *v,char *str, char sep);
 
 /**
  * @brief Sets the values of a 2D integer vector.

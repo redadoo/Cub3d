@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/27 18:08:40 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:51:01 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <stdint.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -114,4 +115,7 @@ bool		is_spaces(char c);
 bool		only_spaces(const char *str);
 void		print_matrix(char **matrix);
 long long	ft_atoll(const char *str);
+bool		ft_is_string_int(char *str);
+bool		ft_is_string_num(char *str);
+bool		ft_is_string_alpha(char *str);
 #endif

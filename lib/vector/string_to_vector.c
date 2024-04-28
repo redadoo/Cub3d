@@ -6,58 +6,82 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:47:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/27 18:06:11 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:53:03 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-t_vector3	string_to_vector3(char *str, char sep)
+bool	string_to_vector3(t_vector3 *v, char *str, char sep)
 {
-	t_vector3	v;
-	char		**numbers;
+	size_t	i;
+	char	**numbers;
 
+	i = 0;
 	numbers = ft_split(str, sep);
-	v.x = ft_atoi(numbers[0]);
-	v.y = ft_atoi(numbers[1]);
-	v.z = ft_atoi(numbers[2]);
-	free_matrix(numbers);
-	return (v);
+	while (numbers[i])
+	{
+		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+			return (free_matrix(numbers), false);
+		i++;
+	}
+	v->x = ft_atoi(numbers[0]);
+	v->y = ft_atoi(numbers[1]);
+	v->z = ft_atoi(numbers[2]);
+	return (free_matrix(numbers), true);
 }
 
-t_vector3_int	string_to_vector3_int(char *str, char sep)
+bool	string_to_vector3_int(t_vector3_int *v, char *str, char sep)
 {
-	t_vector3_int	v;
-	char			**numbers;
+	size_t	i;
+	char	**numbers;
 
+	i = 0;
 	numbers = ft_split(str, sep);
-	v.x = ft_atoi(numbers[0]);
-	v.y = ft_atoi(numbers[1]);
-	v.z = ft_atoi(numbers[2]);
-	free_matrix(numbers);
-	return (v);
+	while (numbers[i])
+	{
+		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+			return (free_matrix(numbers), false);
+		i++;
+	}
+	v->x = ft_atoi(numbers[0]);
+	v->y = ft_atoi(numbers[1]);
+	v->z = ft_atoi(numbers[2]);
+	return (free_matrix(numbers), true);
 }
 
-t_vector2	string_to_vector2(char *str, char sep)
+bool	string_to_vector2(t_vector2 *v,char *str, char sep)
 {
-	t_vector2	v;
-	char		**numbers;
+	size_t	i;
+	char	**numbers;
 
+	i = 0;
 	numbers = ft_split(str, sep);
-	v.x = ft_atoi(numbers[0]);
-	v.y = ft_atoi(numbers[1]);
-	free_matrix(numbers);
-	return (v);
+	while (numbers[i])
+	{
+		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+			return (free_matrix(numbers), false);
+		i++;
+	}
+	v->x = ft_atoi(numbers[0]);
+	v->y = ft_atoi(numbers[1]);
+	return (free_matrix(numbers), true);
 }
 
-t_vector2_int	string_to_vector2_int(char *str, char sep)
+bool	string_to_vector2_int(t_vector2_int *v, char *str, char sep)
 {
-	t_vector2_int	v;
-	char			**numbers;
+	size_t	i;
+	char	**numbers;
 
+	i = 0;
 	numbers = ft_split(str, sep);
-	v.x = ft_atoi(numbers[0]);
-	v.y = ft_atoi(numbers[1]);
-	free_matrix(numbers);
-	return (v);
+	while (numbers[i])
+	{
+		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+			return (free_matrix(numbers), false);
+		i++;
+	}
+	v->x = ft_atoi(numbers[0]);
+	v->y = ft_atoi(numbers[1]);
+	return (free_matrix(numbers), true);
 }

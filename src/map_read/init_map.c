@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/28 01:30:25 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 17:36:16 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ bool	get_texture_path(char *coord, char **map, t_assets *assets)
 		}
 		i += 1;
 		free_matrix(tmp);
+		tmp = NULL;
 	}
 	return (free_matrix(tmp), false);
 }
@@ -125,5 +126,6 @@ bool	get_info_texture(t_assets *assets, char **textures_part)
 			return (free_matrix(textures_part), false);
 		i++;
 	}
+	print_matrix(textures_part);
 	return (free_matrix(textures_part), true);
 }
