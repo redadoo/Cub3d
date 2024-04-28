@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/28 14:28:43 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:20:50 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ bool	readmap(t_game *game, char *filename)
 	if (get_info_texture(&game->assets, info_texture))
 	{
 		map = get_map_part(file_content);
-		if (map == NULL || !parse_map(map))
+		if (map == NULL || map[0] == NULL || !parse_map(map))
 		{
 			free_matrix(map);
 			return (free_matrix(file_content), false);
