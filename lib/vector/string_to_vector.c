@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:47:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/28 16:53:03 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 22:12:41 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ bool	string_to_vector3(t_vector3 *v, char *str, char sep)
 	numbers = ft_split(str, sep);
 	while (numbers[i])
 	{
-		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+		if (!is_all_digits(numbers[i]))
 			return (free_matrix(numbers), false);
 		i++;
-	}
+	} 
 	v->x = ft_atoi(numbers[0]);
 	v->y = ft_atoi(numbers[1]);
 	v->z = ft_atoi(numbers[2]);
@@ -40,10 +40,10 @@ bool	string_to_vector3_int(t_vector3_int *v, char *str, char sep)
 	numbers = ft_split(str, sep);
 	while (numbers[i])
 	{
-		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+		if (!is_all_digits(numbers[i]))
 			return (free_matrix(numbers), false);
 		i++;
-	}
+	} 
 	v->x = ft_atoi(numbers[0]);
 	v->y = ft_atoi(numbers[1]);
 	v->z = ft_atoi(numbers[2]);
@@ -59,10 +59,10 @@ bool	string_to_vector2(t_vector2 *v,char *str, char sep)
 	numbers = ft_split(str, sep);
 	while (numbers[i])
 	{
-		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+		if (!is_all_digits(numbers[i]))
 			return (free_matrix(numbers), false);
 		i++;
-	}
+	} 
 	v->x = ft_atoi(numbers[0]);
 	v->y = ft_atoi(numbers[1]);
 	return (free_matrix(numbers), true);
@@ -77,10 +77,10 @@ bool	string_to_vector2_int(t_vector2_int *v, char *str, char sep)
 	numbers = ft_split(str, sep);
 	while (numbers[i])
 	{
-		if (!ft_is_string_int(numbers[i]) || !ft_is_string_num(numbers[i]))
+		if (!is_all_digits(numbers[i]))
 			return (free_matrix(numbers), false);
 		i++;
-	}
+	} 
 	v->x = ft_atoi(numbers[0]);
 	v->y = ft_atoi(numbers[1]);
 	return (free_matrix(numbers), true);

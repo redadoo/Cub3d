@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/28 16:36:18 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/29 00:44:11 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,5 +252,19 @@ void			print_vector2_int(t_vector2_int v);
  */
 void			print_vector3_int(t_vector3_int v);
 
-int				compare_vector2_int(t_vector2_int v1, t_vector2_int v2);
+bool			compare_vector2_int(t_vector2_int v1, t_vector2_int v2);
+
+bool			compare_vector2(t_vector2 v1, t_vector2 v2);
+
+bool			compare_vector3_int(t_vector3_int v1, t_vector3_int v2);
+
+bool			compare_vector3(t_vector3 v1, t_vector3 v2);
+
+bool    is_vector3_in_range(t_vector3 v, double min_range, double max_range);
+
+bool    is_vector3_int_in_range(t_vector3_int v, int min_range, int max_range);
+
+bool    is_vector2_in_range(t_vector2 v, double min_range, double max_range);
+
+bool    is_vector2_int_in_range(t_vector2_int v, int min_range, int max_range);
 #endif

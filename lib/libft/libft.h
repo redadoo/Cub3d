@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/28 16:51:01 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:17:23 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,5 @@ long long	ft_atoll(const char *str);
 bool		ft_is_string_int(char *str);
 bool		ft_is_string_num(char *str);
 bool		ft_is_string_alpha(char *str);
+
 #endif
