@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/26 17:58:04 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/28 16:09:55 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ static bool	wall_surrounding(char **map)
 	while (map[++i.x])
 	{
 		i.y = 0;
+		if (only_spaces(map[i.x]))
+			continue;
 		while (is_spaces(map[i.x][i.y]))
 			i.y += 1;
 		if (map[i.x][i.y] != '1')
@@ -119,7 +121,17 @@ static bool	wall_surrounding(char **map)
 
 bool	parse_map(char **map)
 {
-	if (!wall_surrounding(map) || !valid_elements(map) || !player_position(map))
+	if (!wall_surrounding(map))
+	{
 		return (false);
+	} 
+	if(!valid_elements(map))
+	{
+		return (false);
+	} 
+	if(!player_position(map))
+	{
+		return (false);
+	}
 	return (true);
 }

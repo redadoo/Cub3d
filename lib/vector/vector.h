@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/12 16:51:40 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/27 18:05:41 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,33 +86,37 @@ double			magnitude(t_vector2 vec);
  * @brief Converts a string to a 3D double vector.
  *
  * @param str The string containing the vector components (e.g., "255,255,255").
+ * @param sep string number separator
  * @return The resulting 3D double vector.
  */
-t_vector3		string_to_vector3(char *str);
+t_vector3		string_to_vector3(char *str, char sep);
 
 /**
  * @brief Converts a string to a 3D integer vector.
  *
  * @param str The string containing the vector components (e.g., "255,255,255").
+ * @param sep string number separator
  * @return The resulting 3D integer vector.
  */
-t_vector3_int	string_to_vector3_int(char *str);
+t_vector3_int	string_to_vector3_int(char *str, char sep);
 
 /**
  * @brief Converts a string to a 2D double vector.
  *
  * @param str The string containing the vector components (e.g., "255,255").
+ * @param sep string number separator
  * @return The resulting 2D double vector.
  */
-t_vector2		string_to_vector2(char *str);
+t_vector2		string_to_vector2(char *str, char sep);
 
 /**
  * @brief Converts a string to a 2D integer vector.
  *
  * @param str The string containing the vector components (e.g., "255,255").
+ * @param sep string number separator
  * @return The resulting 2D integer vector.
  */
-t_vector2_int	string_to_vector2_int(char *str);
+t_vector2_int	string_to_vector2_int(char *str, char sep);
 
 /**
  * @brief Sets the values of a 2D integer vector.

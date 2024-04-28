@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/26 13:55:13 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:08:00 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,30 +85,28 @@ int	file_linecount(char **full_map)
 
 char	**get_map_part(char **full_map)
 {
-	int		i;
-	int		j;
-	int		file_line;
-	char	**map;
+	t_vector2_int	ind;
+	char			**map;
+	int				file_line;
 
-	j = 0;
+	ind.y = 0;
 	file_line = file_linecount(full_map);
 	if (file_line == -1)
 		return (NULL);
+	ind.x = 0;
+	while (ind.x < 6)
+	{
+		if (!only_spaces(full_map[ind.y]))
+			ind.x++;
+		ind.y++;
+	}
+	ind.x = 0;
+	while (full_map[ind.y] && only_spaces(full_map[ind.y]))
+		ind.y++;
+	if (ind.y > 8)
+		return (NULL);
 	map = ft_calloc(sizeof(char *), (file_line + 1));
-	i = 0;
-	while (i < 6)
-	{
-		if (!only_spaces(full_map[j]))
-			i++;
-		j++;
-	}
-	i = 0;
-	while (full_map[j] && only_spaces(full_map[j]))
-		j++;
-	while (full_map[j])
-	{
-		map[i++] = ft_strdup(full_map[j]);
-		j++;
-	}
+	while (full_map[ind.y])
+		map[ind.x++] = ft_strdup(full_map[ind.y++]);
 	return (map);
 }

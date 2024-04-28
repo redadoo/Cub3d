@@ -24,7 +24,9 @@
         "functional": "c",
         "complex": "c",
         "iterator": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "numbers": "c",
+        "sstream": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

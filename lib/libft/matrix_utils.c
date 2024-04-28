@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:10:53 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/15 16:26:20 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/28 01:25:59 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	print_matrix(char **matrix)
 	i = 0;
 	while (matrix[i])
 	{
-		printf("%s", matrix[i]);
+		printf("%s\n", matrix[i]);
 		i++;
 	}
 }

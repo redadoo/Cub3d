@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/10 16:12:21 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/27 18:08:40 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,5 @@ bool		streq(char *str1, char *str2);
 bool		is_spaces(char c);
 bool		only_spaces(const char *str);
 void		print_matrix(char **matrix);
+long long	ft_atoll(const char *str);
 #endif
