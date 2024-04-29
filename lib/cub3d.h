@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/28 18:19:27 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/29 02:49:15 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # endif
 # ifdef __linux__
 #  include "mlx_linux/mlx.h"
+#  define RIGHT_ARROW 65363
+#  define LEFT_ARROW 65361
+#  define UP_ARROW 65362
+#  define DOWN_ARROW 65364
 #  define UP 119
 #  define LEFT 97
 #  define DOWN 115

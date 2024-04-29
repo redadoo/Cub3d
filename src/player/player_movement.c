@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:28:10 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/26 16:42:16 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/04/29 02:57:28 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,40 @@ void	go_right(t_game *game)
 		game->player.pos.z -= (game->camera.dir.x * game->player.mov_speed);
 }
 
+void	rotate_camera_with_arrow(t_game *game, int key)
+{
+	double	oldDirX;
+	double	oldPlaneX;
+
+	oldDirX = game->camera.dir.x;
+	oldPlaneX = game->camera.plane.x;
+	if (key == RIGHT_ARROW)
+	{
+		game->camera.rot_speed = game->game_time.frame_time * 3.0;
+		game->camera.dir.x = game->camera.dir.x * cos(-game->camera.rot_speed)
+			- game->camera.dir.y * sin(-game->camera.rot_speed);
+		game->camera.dir.y = oldDirX * sin(-game->camera.rot_speed)
+			+ game->camera.dir.y * cos(-game->camera.rot_speed);
+		game->camera.plane.x = game->camera.plane.x
+			* cos(-game->camera.rot_speed) - game->camera.plane.y
+			* sin(-game->camera.rot_speed);
+		game->camera.plane.y = oldPlaneX * sin(-game->camera.rot_speed)
+			+ game->camera.plane.y * cos(-game->camera.rot_speed);
+	}
+	else
+	{
+		game->camera.dir.x = game->camera.dir.x * cos(game->camera.rot_speed)
+			- game->camera.dir.y * sin(game->camera.rot_speed);
+		game->camera.dir.y = oldDirX * sin(game->camera.rot_speed)
+			+ game->camera.dir.y * cos(game->camera.rot_speed);
+		game->camera.plane.x = game->camera.plane.x
+			* cos(game->camera.rot_speed) - game->camera.plane.y
+			* sin(game->camera.rot_speed);
+		game->camera.plane.y = oldPlaneX * sin(game->camera.rot_speed)
+			+ game->camera.plane.y * cos(game->camera.rot_speed);
+	}
+}
+
 void	move_player(t_game *game, int key)
 {
 	game->player.mov_speed = game->game_time.frame_time * 5.0;
@@ -63,4 +97,6 @@ void	move_player(t_game *game, int key)
 		go_right(game);
 	if (key == LEFT)
 		go_left(game);
+	if (key == RIGHT_ARROW || key == LEFT_ARROW)
+		rotate_camera_with_arrow(game, key);
 }

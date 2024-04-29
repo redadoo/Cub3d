@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/29 01:01:14 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/29 02:44:32 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ bool	get_color(char *identifier, char **map, t_assets *assets)
 			if (matrix_height(tmp) != 2)
 				res = false;
 			if (streq(identifier, "C"))
-				res = string_to_vector3_int(&assets->celin_color, tmp[1],',');
+				res = string_to_vector3_int(&assets->celin_color, tmp[1], ',');
 			else
-				res = string_to_vector3_int(&assets->floor_color, tmp[1],',');
+				res = string_to_vector3_int(&assets->floor_color, tmp[1], ',');
 			return (free_matrix(tmp), res);
 		}
 	}
@@ -124,7 +124,8 @@ bool	get_info_texture(t_assets *assets, char **textures_part)
 			return (free_matrix(textures_part), false);
 		i++;
 	}
-	if (!is_vector3_int_in_range(assets->celin_color,0,255) || !is_vector3_int_in_range(assets->floor_color,0,255))
-			return (free_matrix(textures_part), false);
+	if (!is_vector3_int_in_range(assets->celin_color, 0, 255)
+		|| !is_vector3_int_in_range(assets->floor_color, 0, 255))
+		return (free_matrix(textures_part), false);
 	return (free_matrix(textures_part), true);
 }
