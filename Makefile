@@ -6,14 +6,14 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/04/28 22:07:52 by edoardo          ###   ########.fr        #
+#    Updated: 2024/05/10 08:31:33 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		  	= cub3d
 
 CC			  	= gcc 
-FLAGS		  	= -Wall -Wextra -Werror 
+FLAGS		  	= #-Wall -Wextra -Werror 
 RM			  	= rm -rf
 
 OBJDIR        	= .objFiles

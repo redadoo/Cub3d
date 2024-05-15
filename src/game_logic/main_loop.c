@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:18:31 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/15 15:45:51 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:59:13 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	render_wall(t_game *game)
 void	renderer(t_game *game)
 {
 	render_wall(game);
-	draw_minimap(game);
+	// draw_minimap(game);
 	mlx_clear_window(game->mlx, game->window.reference);
 	mlx_put_image_to_window(game->mlx, game->window.reference, game->scene.img,
 		0, 0);
-	mlx_put_image_to_window(game->mlx, game->window.reference,
-		game->mini_map.sprite.img,
-		WIN_WIDTH - game->mini_map.lenght_mini_map, 0);
+	// mlx_put_image_to_window(game->mlx, game->window.reference,
+	// 	game->mini_map.sprite.img,
+	// 	WIN_WIDTH - game->mini_map.lenght_mini_map, 0);
 	safe_mlx_destroy_image(game->mlx, game->scene.img);
 	safe_mlx_destroy_image(game->mlx, game->mini_map.sprite.img);
 }

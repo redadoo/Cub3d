@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/29 02:49:15 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/04/30 16:56:01 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_sprite
 {
 	void			*img;
 	char			*addr;
+	int				*text_value;
 	int				bpp;
 	int				line_len;
 	int				endian;

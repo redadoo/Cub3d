@@ -6,95 +6,98 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/13 13:00:57 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/15 19:59:39 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-static uint32_t	get_color(t_game *game, t_raycaster *rc)
+static void	ft_put_pixel(t_sprite img, int x, int y, int color)
 {
-	if (!rc->side)
+	if (x >= 0 && y >= 0 && x < WIN_WIDTH && y < WIN_HEIGHT)
 	{
-		if (game->player.pos.x > rc->vec_map.x)
-			return (extract_pixel_from_image(&game->assets.w_wall, rc->tex.x,
-					rc->tex.y));
-		return (extract_pixel_from_image(&game->assets.e_wall, rc->tex.x,
-				rc->tex.y));
+		*(int *)&img.addr[((x * img.bpp) >> 3) + (y * img.line_len)] = color;
 	}
-	if (game->player.pos.z > rc->vec_map.y)
-		return (extract_pixel_from_image(&game->assets.n_wall, rc->tex.x,
-				rc->tex.y));
-	return (extract_pixel_from_image(&game->assets.s_wall, rc->tex.x,
-			rc->tex.y));
 }
 
-int	create_trgb(int t, t_vector3_int rgb)
+static void	draw_texture_color(t_game *game, int x, int start)
 {
-	return (t << 24 | rgb.x << 16 | rgb.y << 8 | rgb.z);
+	int			texcolor;
+	int			index;
+
+	index = TEXTURE_HEIGHT * game->raycaster.tex.y + game->raycaster.tex.x;
+	if (game->raycaster.side == 0)
+	{
+		if (game->raycaster.ray_dir.x < 0)
+			texcolor = game->assets.n_wall.text_value[index];
+		else
+			texcolor = game->assets.s_wall.text_value[index];
+	}
+	else
+	{
+		if (game->raycaster.ray_dir.y < 0)
+			texcolor = game->assets.w_wall.text_value[index];
+		else
+			texcolor = game->assets.e_wall.text_value[index];
+	}
+	if (game->raycaster.side == 1)
+		texcolor = (texcolor >> 1) & 8355711;
+	ft_put_pixel(game->scene, x, start, texcolor);
 }
 
 void	draw_screen(t_game *game, int x)
 {
 	int	y;
 
-	y = -1;
-	while (++y < game->raycaster.draw_start)
+	y = game->raycaster.draw_start;
+	if (x == WIN_WIDTH)
+		x = 0;
+	if (y < 0)
+		y = 0;
+	game->raycaster.step = 1.0 * TEXTURE_HEIGHT / game->raycaster.line_height;
+	game->raycaster.tex_pos = (y - WIN_HEIGHT / 2
+			+ game->raycaster.line_height / 2) * game->raycaster.step;
+	while (y < game->raycaster.draw_end)
 	{
-		game->scene.side = 0;
-		put_pixel(&game->scene, x, y, create_trgb(256,
-				game->assets.celin_color));
-	}
-	y = game->raycaster.draw_start - 1;
-	while (++y < game->raycaster.draw_end)
-	{
-		game->scene.side = game->raycaster.side;
-		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT
-				- 1);
+		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT - 1);
 		game->raycaster.tex_pos += game->raycaster.step;
-		put_pixel(&game->scene, x, y, get_color(game, &game->raycaster));
-	}
-	y = game->raycaster.draw_end - 1;
-	while (++y < game->window.size.y)
-	{
-		game->scene.side = 0;
-		put_pixel(&game->scene, x, y, create_trgb(256,
-				game->assets.floor_color));
+		draw_texture_color(game,x,y);
+		y++;
 	}
 }
 
 static void	draw_minimap_utlis(t_game *game, int offset_draw, t_vector2_int of)
 {
-	set_vector2_int(&of, game->player.pos.x * offset_draw, game->player.pos.z
-		* offset_draw);
-	draw_quad(&game->mini_map.sprite, of, 4, create_trgb(256,
-			game->mini_map.player_color));
+	// set_vector2_int(&of, game->player.pos.x * offset_draw, game->player.pos.z
+	// 	* offset_draw);
+	// draw_quad(&game->mini_map.sprite, of, 4, create_trgb(256,
+	// 		game->mini_map.player_color));
 }
 
 void	draw_minimap(t_game *game)
 {
-	int				i;
-	int				y;
-	int				offset_draw;
-	t_vector2_int	offset_title;
+	// int				i;
+	// int				y;
+	// int				offset_draw;
+	// t_vector2_int	offset_title;
 
-	i = 0;
-	y = 0;
-	offset_draw = game->mini_map.offset_draw;
-	game->mini_map.sprite = init_img(game->mlx, matrix_width(game->map)
-			* offset_draw, matrix_height(game->map) * offset_draw);
-	while (game->map[y])
-	{
-		while (game->map[y][i])
-		{
-			set_vector2_int(&offset_title, i * offset_draw, y * offset_draw);
-			if (game->map[y][i] && game->map[y][i] == '1')
-				draw_quad(&game->mini_map.sprite, offset_title, 5,
-					create_trgb(256, game->mini_map.title_color));
-			i++;
-		}
-		i = 0;
-		y++;
-	}
-	draw_minimap_utlis(game, offset_draw, offset_title);
+	// i = 0;
+	// y = 0;
+	// offset_draw = game->mini_map.offset_draw;
+	// game->mini_map.sprite = init_img(game->mlx, matrix_width(game->map)
+	// 		* offset_draw, matrix_height(game->map) * offset_draw);
+	// while (game->map[y])
+	// {
+	// 	while (game->map[y][i])
+	// 	{
+	// 		set_vector2_int(&offset_title, i * offset_draw, y * offset_draw);
+	// 		if (game->map[y][i] && game->map[y][i] == '1')
+	// 			draw_quad(&game->mini_map.sprite, offset_title, 5,
+	// 				create_trgb(256, game->mini_map.title_color));
+	// 		i++;
+	// 	}
+	// 	i = 0;
+	// 	y++;
+	// }
+	// draw_minimap_utlis(game, offset_draw, offset_title);
 }

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/13 14:09:41 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/13 11:38:17 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	start_dda(t_game *game)
 
 void	ray_distance(t_game *game)
 {
-	if (!game->raycaster.side)
+	if (game->raycaster.side == 0)
 		game->raycaster.perp_wall_dist = game->raycaster.side_dist.x
 			- game->raycaster.delta_dist.x;
 	else
