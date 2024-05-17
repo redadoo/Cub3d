@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/30 16:56:01 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:14:58 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,7 +362,7 @@ t_sprite			init_img(void *mlx_ptr, int width, int height);
  * @param y The y-coordinate of the pixel.
  * @param color The color value to be assigned to the pixel in RGBA format.
  */
-void				put_pixel(t_sprite *img, int x, int y, uint32_t color);
+void				ft_put_pixel(t_sprite img, int x, int y, int color);
 /**
  * @brief Extracts the color of a pixel at the specified coordinates 
  * from the given image.
@@ -507,6 +507,7 @@ char				**read_texture(char **full_map);
  */
 int					file_linecount(char **full_map);
 char				**get_map_part(char **full_map);
-void				draw_quad(t_sprite *sprite, t_vector2_int of, int l, int c);
+void				draw_quad(t_sprite	sprite, t_vector2_int of, int l, int c);
 void				draw_minimap(t_game *game);
+void				render_background(t_game *game, int x);
 #endif

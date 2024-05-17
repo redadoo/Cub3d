@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 14:09:26 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/15 18:40:32 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:03:09 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	wall_hit(t_game *game)
 {
 	game->raycaster.wall_x = 0;
 	if (!game->raycaster.side)
-		game->raycaster.wall_x = (int)game->player.pos.z
+		game->raycaster.wall_x = game->player.pos.z
 			+ game->raycaster.perp_wall_dist * game->raycaster.ray_dir.y;
 	else
-		game->raycaster.wall_x = (int)game->player.pos.x
+		game->raycaster.wall_x = game->player.pos.x
 			+ game->raycaster.perp_wall_dist * game->raycaster.ray_dir.x;
 	game->raycaster.wall_x -= floor((game->raycaster.wall_x));
 	game->raycaster.tex.x = (int)(game->raycaster.wall_x

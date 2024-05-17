@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/28 16:19:55 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:05:14 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 bool	valid_surroundings(char **map_part, t_vector2_int ind)
 {
-	if (ft_strchr("01EWNS", map_part[ind.x - 1][ind.y - 1]) == NULL || ft_strchr("01EWNS", map_part[ind.x - 1][ind.y]) == NULL)
+	if (ft_strchr("01EWNS", map_part[ind.x - 1][ind.y - 1]) == NULL
+		|| ft_strchr("01EWNS", map_part[ind.x - 1][ind.y]) == NULL)
 		return (false);
-	if (ft_strchr("01EWNS", map_part[ind.x - 1][ind.y + 1]) == NULL || ft_strchr("01EWNS", map_part[ind.x][ind.y - 1]) == NULL)
+	if (ft_strchr("01EWNS", map_part[ind.x - 1][ind.y + 1]) == NULL
+		|| ft_strchr("01EWNS", map_part[ind.x][ind.y - 1]) == NULL)
 		return (false);
-	if (ft_strchr("01EWNS", map_part[ind.x][ind.y + 1]) == NULL || ft_strchr("01EWNS", map_part[ind.x + 1][ind.y - 1]) == NULL)
+	if (ft_strchr("01EWNS", map_part[ind.x][ind.y + 1]) == NULL
+		|| ft_strchr("01EWNS", map_part[ind.x + 1][ind.y - 1]) == NULL)
 		return (false);
-	if (ft_strchr("01EWNS", map_part[ind.x + 1][ind.y]) == NULL || ft_strchr("01EWNS", map_part[ind.x + 1][ind.y + 1])== NULL)
+	if (ft_strchr("01EWNS", map_part[ind.x + 1][ind.y]) == NULL
+		|| ft_strchr("01EWNS", map_part[ind.x + 1][ind.y + 1]) == NULL)
 		return (false);
 	return (true);
-
 }
 
 /**
@@ -34,7 +37,7 @@ bool	valid_surroundings(char **map_part, t_vector2_int ind)
  */
 static bool	valid_elements(char **map_part)
 {
-	t_vector2_int ind;
+	t_vector2_int	ind;
 
 	ind.x = 1;
 	while (map_part[ind.x + 1])
@@ -92,9 +95,9 @@ static bool	player_position(char **map)
  */
 static bool	wall_surrounding(char **map)
 {
-	t_vector2_int i;
+	t_vector2_int	i;
 
-	set_vector2_int(&i,-1,-1);
+	set_vector2_int(&i, -1, -1);
 	while (map[0][++i.y])
 		if (ft_strchr(" 1", map[0][i.y]) == NULL)
 			return (false);
@@ -107,7 +110,7 @@ static bool	wall_surrounding(char **map)
 	{
 		i.y = 0;
 		if (only_spaces(map[i.x]))
-			continue;
+			continue ;
 		while (is_spaces(map[i.x][i.y]))
 			i.y += 1;
 		if (map[i.x][i.y] != '1')
@@ -124,12 +127,12 @@ bool	parse_map(char **map)
 	if (!wall_surrounding(map))
 	{
 		return (false);
-	} 
-	if(!valid_elements(map))
+	}
+	if (!valid_elements(map))
 	{
 		return (false);
-	} 
-	if(!player_position(map))
+	}
+	if (!player_position(map))
 	{
 		return (false);
 	}

@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/05/10 07:24:24 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:04:42 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		error("wrong number of arguments", &game);
 	if (check_extension(argv[1]) == 1)
 		error("wrong extension for the map", &game);
- 	init_mlx(&game);
+	init_mlx(&game);
 	load_cub3d_data(&game, argv);
 	mlx_main(&game);
 }

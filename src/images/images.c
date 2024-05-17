@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:16:06 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/30 16:57:02 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:05:01 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ t_sprite	init_img(void *mlx_ptr, int width, int height)
 	t_sprite	img;
 
 	img.img = mlx_new_image(mlx_ptr, width, height);
-	img.addr = mlx_get_data_addr(img.img, &img.bpp,
-			&img.line_len, &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
 	return (img);
 }
-
-

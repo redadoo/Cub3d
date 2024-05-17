@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/04/28 16:28:52 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:05:08 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,9 @@ char	**get_map_part(char **full_map)
 		ind.y++;
 	}
 	ind.x = 0;
-	if (full_map[ind.y] && full_map[ind.y + 1] && only_spaces(full_map[ind.y]) && !only_spaces(full_map[ind.y + 1]))
-		ind.y++;				
+	if (full_map[ind.y] && full_map[ind.y + 1] && only_spaces(full_map[ind.y])
+		&& !only_spaces(full_map[ind.y + 1]))
+		ind.y++;
 	else
 		return (NULL);
 	map = ft_calloc(sizeof(char *), (file_line + 1));
