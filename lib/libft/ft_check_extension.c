@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_string_int.c                                 :+:      :+:    :+:   */
+/*   ft_check_extension.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 16:40:50 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 18:31:26 by edoardo          ###   ########.fr       */
+/*   Created: 2024/05/20 21:52:24 by edoardo           #+#    #+#             */
+/*   Updated: 2024/05/21 18:33:22 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_is_string_int(char *str)
+bool	check_extension(char *file, char *extension)
 {
-	long long	x;
+	int		count;
+	char	*tmp;
 
-	x = ft_atoll(str);
-	return (x > INT_MAX);
+	count = ft_strlen(extension);
+	tmp = (char *)ft_strstr(file, extension);
+	if (tmp == NULL)
+		return (false);
+	while (count)
+	{
+		tmp++;
+		count--;
+	}
+	if ((int)*tmp != 0)
+		return (false);
+	count = open(file, O_RDONLY);
+	if (count == -1)
+		return (false);
+	close(count);
+	return (true);
 }

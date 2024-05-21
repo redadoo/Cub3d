@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/17 22:14:58 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 18:39:32 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 #  define RIGHT 100
 #  define SPACE 32
 #  define EXIT 65307
+#  define TOGGLE_MINIMAP 65470
 # endif
 
 # define WIN_WIDTH 1200
@@ -141,6 +142,7 @@ typedef struct s_game_time
 typedef struct s_game
 {
 	void			*reference;
+	bool			show_minimap;
 	void			*mlx;
 	char			**map;
 	t_assets		assets;
@@ -194,20 +196,14 @@ void				load_cub3d_data(t_game *game, char **argv);
  * @return Returns a new t_window structure representing the created window.
  */
 t_window			ft_new_window(void *mlx, int widht, int height, char *name);
-/**
- * @brief Checks if the given file name has the correct ".cub" extension.
- *
- * @param file The name of the file to be checked.
- * @return 0 if the extension is correct, 1 otherwise.
- */
-int					check_extension(char *file);
+
 /**
  * @brief Finds the index of the last non-space character in a string.
  *
  * @param map_line A string representing a line of the map.
  * @return The index of the last non-space character in the string.
  */
-int				last_idx(char *map_line);
+int					last_idx(char *map_line);
 /**
  * @brief Trims characters from the beginning
  * and end of a string.
@@ -217,21 +213,6 @@ int				last_idx(char *map_line);
  * @return A newly allocated trimmed string.
  */
 char				*trim_free(char *s1, char const *set);
-/**
- * @brief Compares two strings for equality.
- *
- * @param str1 The first string to compare.
- * @param str2 The second string to compare.
- * @return true if the strings are equal, false otherwise.
- */
-bool				streq(char *str1, char *str2);
-/**
- * @brief Checks if a string consists of only numeric digits.
- *
- * @param str The string to be checked.
- * @return true if all characters are digits, false otherwise.
- */
-bool				is_all_digits(const char *str);
 /**
  * @brief Frees allocated memory and exits the game.
  * @param game Pointer to the t_game structure.
@@ -364,17 +345,6 @@ t_sprite			init_img(void *mlx_ptr, int width, int height);
  */
 void				ft_put_pixel(t_sprite img, int x, int y, int color);
 /**
- * @brief Extracts the color of a pixel at the specified coordinates 
- * from the given image.
- * @param img Pointer to the image (t_sprite structure) from which the 
- * pixel color will be extracted.
- * @param x The x-coordinate of the pixel.
- * @param y The y-coordinate of the pixel.
- * @return The color value of the pixel at 
- * the specified coordinates in RGBA format.
- */
-int					extract_pixel_from_image(t_sprite *img, int x, int y);
-/**
  * @brief Initializes the player's position and direction 
  * based on the provided map.
  * @param player Pointer to the player structure to be initialized.
@@ -390,13 +360,6 @@ void				init_player(t_player *player, char **map);
 	otherwise 0.
  */
 int					check_next_pos(t_game *game, int x, int y);
-/**
- * @brief Moves the player based on the specified key input.
- * @param game Pointer to the game structure containing 
- * player and frame time information.
- * @param key The input key representing the desired direction of movement.
- */
-void				move_player(t_game *game, int key);
 /**
  * @brief Handles keyboard input for the game.
  * @param keycode The keycode of the pressed key.
@@ -510,4 +473,11 @@ char				**get_map_part(char **full_map);
 void				draw_quad(t_sprite	sprite, t_vector2_int of, int l, int c);
 void				draw_minimap(t_game *game);
 void				render_background(t_game *game, int x);
+void				rotate_view(t_game *game, double distance);
+void				manage_time(t_game *game);
+void				go_ahead(t_game *game);
+void				go_backwards(t_game *game);
+void				go_left(t_game *game);
+void				go_right(t_game *game);
+void				put_and_destroy_image(t_game *g, void *i, int x, int y);
 #endif

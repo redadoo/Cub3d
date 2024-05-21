@@ -3,37 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 22:21:18 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/26 17:28:35 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:52:02 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
-
-int	check_extension(char *file)
-{
-	int		count;
-	char	*tmp;
-
-	count = 4;
-	tmp = (char *)ft_strstr(file, ".cub");
-	if (tmp == NULL)
-		return (1);
-	while (count)
-	{
-		tmp++;
-		count--;
-	}
-	if ((int)*tmp != 0)
-		return (1);
-	count = open(file, O_RDONLY);
-	if (count == -1)
-		return (1);
-	close(count);
-	return (0);
-}
 
 int	last_idx(char *map_line)
 {

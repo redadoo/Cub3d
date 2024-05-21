@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_cub3d.c                                       :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:18:11 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/27 17:36:20 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 14:54:09 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,19 @@ void	load_cub3d_data(t_game *game, char **argv)
 	game->game_time.frame_time = 0;
 	game->game_time.old_time = 0;
 	game->game_time.time = 0;
+	game->show_minimap = true;
+}
+
+void	init_camera(t_camera *camera, t_vector2 dir)
+{
+	if (dir.y == 1)
+		set_vector2(&camera->plane, 0.66, 0);
+	else if (dir.y == -1)
+		set_vector2(&camera->plane, -0.66, 0);
+	else if (dir.x == 1)
+		set_vector2(&camera->plane, 0, -0.66);
+	else if (dir.x == -1)
+		set_vector2(&camera->plane, 0, 0.66);
+	camera->dir = dir;
+	camera->old_x = 0;
 }

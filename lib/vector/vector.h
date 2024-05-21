@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/29 00:44:11 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 18:36:27 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,6 @@
 # include "math.h"
 # include <stdio.h>
 # include "../libft/libft.h"
-
-//vector2
-// # define VECTOR2_FORWARD ((t_vector2){0, 1})
-// # define VECTOR2_BACK ((t_vector2){0, -1})
-// # define VECTOR2_RIGHT ((t_vector2){1, 0})
-// # define VECTOR2_LEFT ((t_vector2){-1, 0})
-//vector3
-// # define VECTOR3_FORWARD ((t_vector3){0, 1})
-// # define VECTOR3_BACK ((t_vector3){0, -1})
-// # define VECTOR3_RIGHT ((t_vector3){1, 0})
-// # define VECTOR3_LEFT ((t_vector3){-1, 0})
 
 /**
  * @brief Structure representing a 2D integer vector.
@@ -89,7 +78,7 @@ double			magnitude(t_vector2 vec);
  * @param sep string number separator
  * @return The resulting 3D double vector.
  */
-bool		string_to_vector3(t_vector3 *v, char *str, char sep);
+bool			string_to_vector3(t_vector3 *v, char *str, char sep);
 
 /**
  * @brief Converts a string to a 3D integer vector.
@@ -98,7 +87,7 @@ bool		string_to_vector3(t_vector3 *v, char *str, char sep);
  * @param sep string number separator
  * @return The resulting 3D integer vector.
  */
-bool	string_to_vector3_int(t_vector3_int *v, char *str, char sep);
+bool			string_to_vector3_int(t_vector3_int *v, char *str, char sep);
 
 /**
  * @brief Converts a string to a 2D double vector.
@@ -107,7 +96,7 @@ bool	string_to_vector3_int(t_vector3_int *v, char *str, char sep);
  * @param sep string number separator
  * @return The resulting 2D double vector.
  */
-bool		string_to_vector2(t_vector2 *v, char *str, char sep);
+bool			string_to_vector2(t_vector2 *v, char *str, char sep);
 
 /**
  * @brief Converts a string to a 2D integer vector.
@@ -116,7 +105,7 @@ bool		string_to_vector2(t_vector2 *v, char *str, char sep);
  * @param sep string number separator
  * @return The resulting 2D integer vector.
  */
-bool	string_to_vector2_int(t_vector2_int *v,char *str, char sep);
+bool			string_to_vector2_int(t_vector2_int *v, char *str, char sep);
 
 /**
  * @brief Sets the values of a 2D integer vector.
@@ -260,11 +249,11 @@ bool			compare_vector3_int(t_vector3_int v1, t_vector3_int v2);
 
 bool			compare_vector3(t_vector3 v1, t_vector3 v2);
 
-bool    is_vector3_in_range(t_vector3 v, double min_range, double max_range);
+bool			is_vector3_in_range(t_vector3 v, double min, double max);
 
-bool    is_vector3_int_in_range(t_vector3_int v, int min_range, int max_range);
+bool			is_vector3_int_in_range(t_vector3_int v, int min, int max);
 
-bool    is_vector2_in_range(t_vector2 v, double min_range, double max_range);
+bool			is_vector2_in_range(t_vector2 v, double min, double max);
 
-bool    is_vector2_int_in_range(t_vector2_int v, int min_range, int max_range);
+bool			is_vector2_int_in_range(t_vector2_int v, int min, int max);
 #endif

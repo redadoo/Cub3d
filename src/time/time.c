@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 12:57:38 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 12:52:06 by edoardo          ###   ########.fr       */
+/*   Created: 2024/05/21 14:28:02 by edoardo           #+#    #+#             */
+/*   Updated: 2024/05/21 18:30:36 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	error(char *error_message, t_game *game)
+static int64_t	current_time_millis(void)
 {
-	ft_putstr_fd(KRED, STDERR_FILENO);
-	ft_putstr_fd(error_message, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	close_game(game);
+	struct timeval	time;
+	int64_t			s1;
+	int64_t			s2;
+
+	gettimeofday(&time, NULL);
+	s1 = (int64_t)(time.tv_sec) * 1000;
+	s2 = (time.tv_usec / 1000);
+	return (s1 + s2);
+}
+
+void	manage_time(t_game *game)
+{
+	game->game_time.old_time = game->game_time.time;
+	game->game_time.time = current_time_millis();
+	game->game_time.frame_time = (game->game_time.time
+			- game->game_time.old_time) / 1000.0;
 }

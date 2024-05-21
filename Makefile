@@ -6,31 +6,37 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/05/10 08:31:33 by edoardo          ###   ########.fr        #
+#    Updated: 2024/05/21 14:35:05 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		  	= cub3d
 
 CC			  	= gcc 
-FLAGS		  	= #-Wall -Wextra -Werror 
+FLAGS		  	= -Wall -Wextra -Werror 
 RM			  	= rm -rf
 
 OBJDIR        	= .objFiles
 
 MAIN_SRC		= src/cub3d
-INIT_CUB3D 		= src/init/init_cub3d
-UTILS 			= src/utils/error src/utils/exit src/utils/string_utils src/utils/game_utils src/utils/safe_free src/utils/texture
+INIT_CUB3D 		= src/init/init_struct
+UTILS 			= src/utils/error src/utils/exit src/utils/string_utils src/utils/game_utils src/utils/safe_mlx_free src/utils/texture
 WINDOW			= src/window/window
 KEY 			= src/key/key
 CAMERA 			= src/camera/camera
 IMAGES 			= src/images/images
 PLAYER 			= src/player/player src/player/player_movement
-GAME_LOGIC		= src/game_logic/main_loop
-RENDERING 		= src/rendering/raycasting src/rendering/draw src/rendering/draw_utils src/rendering/raycasting_utils
+GAME_LOGIC		= src/main_loop/main_loop
+TIME			= src/time/time
+RENDERING 		= src/rendering/render_wall
+DRAW			= src/draw/draw src/draw/draw_utils 
 MAP_READ 		= src/map_read/map_read src/map_read/map_read_utils src/map_read/parse_map  src/map_read/init_map
+RAYCASTING		= src/raycasting/raycasting src/raycasting/raycasting_utils
 
-FILES 			= $(INIT_CUB3D) $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) $(LIBFT_SRC) $(MAP_READ) $(GAME_ENGINE) $(MAIN_SRC) $(IMAGES) $(CAMERA) $(PLAYER) $(RENDERING)
+FILES 			= $(INIT_CUB3D) $(UTILS) $(WINDOW) $(KEY) $(GAME_LOGIC) \
+				  $(LIBFT_SRC) $(MAP_READ) $(GAME_ENGINE) $(MAIN_SRC) \
+				  $(IMAGES) $(CAMERA) $(PLAYER) $(RENDERING) $(TIME) \
+				  $(DRAW) $(RAYCASTING)
 
 SRC			  	= $(FILES:=.c)
 OBJ			  	= $(addprefix $(OBJDIR)/, $(FILES:=.o))

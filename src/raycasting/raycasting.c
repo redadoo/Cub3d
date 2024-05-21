@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/05/13 11:38:17 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:43:48 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	set_raycaster(t_game *game, int x)
 {
-	double	delta_x;
-	double	delta_y;
+	t_vector2	delta;
 
 	game->raycaster.camera_x = 2 * x / (double)WIN_WIDTH - 1;
 	set_vector2(&game->raycaster.ray_dir, game->camera.dir.x
@@ -24,14 +23,14 @@ void	set_raycaster(t_game *game, int x)
 	set_vector2_int(&game->raycaster.vec_map, game->player.pos.x,
 		game->player.pos.z);
 	if (game->raycaster.ray_dir.x == 0)
-		delta_x = 1e30;
+		delta.x = 1e30;
 	else
-		delta_x = fabs(1 / game->raycaster.ray_dir.x);
+		delta.x = fabs(1 / game->raycaster.ray_dir.x);
 	if (game->raycaster.ray_dir.y == 0)
-		delta_y = 1e30;
+		delta.y = 1e30;
 	else
-		delta_y = fabs(1 / game->raycaster.ray_dir.y);
-	set_vector2(&game->raycaster.delta_dist, delta_x, delta_y);
+		delta.y = fabs(1 / game->raycaster.ray_dir.y);
+	game->raycaster.delta_dist = delta;
 	game->raycaster.hit = 0;
 }
 

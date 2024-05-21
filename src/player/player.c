@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 22:51:07 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/10 15:36:16 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 14:21:41 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	check_next_pos(t_game *game, int x, int y)
 {
 	if (game->map[y][x] && game->map[y][x] != '1')
-	{
 		return (1);
-	}
 	return (0);
 }
 

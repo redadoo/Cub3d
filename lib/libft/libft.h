@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:28:29 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/28 18:17:23 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/20 21:55:47 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,9 @@ int			ft_printf(const char *format, ...);
 int			printstring(char *s);
 int			printdigit(int n);
 int			printchars(int c);
-int			flag(const char *str, va_list ap);
 char		*ft_uitoa(unsigned int temp);
 char		*ft_itoa(int temp);
 int			convertunsigned(int n);
-void		reverse(char *s);
-int			string_length(char *pointer);
-int			print_address_hex(void *p0);
-char		hex_digit(int v);
 int			ft_print_ptr(unsigned long long ptr);
 void		ft_put_ptr(uintptr_t num);
 int			ft_ptr_len(uintptr_t num);
@@ -97,11 +92,7 @@ int			flag_plus(const char *str, va_list ap);
 int			ft_len_hex(unsigned int num);
 void		ft_put_hex(unsigned int num, char c);
 char		*get_next_line(int fd);
-char		*ft_statstr(int fd, char *statstr);
 size_t		ft_strlen(const char *str);
-char		*ft_strjoin(char *backup, char *buff);
-char		*ft_backup(char *backup);
-char		*ft_get_line(char *backup);
 const char	*ft_strstr(const char *X, const char *Y);
 bool		is_onstr(const char *str, int ch);
 char		*ft_strncpy(char *dest, const char *src, size_t n);
@@ -118,5 +109,6 @@ long long	ft_atoll(const char *str);
 bool		ft_is_string_int(char *str);
 bool		ft_is_string_num(char *str);
 bool		ft_is_string_alpha(char *str);
+bool		check_extension(char *file, char *extension);
 
 #endif

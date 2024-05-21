@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_string_int.c                                 :+:      :+:    :+:   */
+/*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 16:40:50 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 18:31:26 by edoardo          ###   ########.fr       */
+/*   Created: 2024/05/21 14:28:48 by edoardo           #+#    #+#             */
+/*   Updated: 2024/05/21 18:30:20 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../lib/cub3d.h"
 
-bool	ft_is_string_int(char *str)
+int	main_loop(t_game *game)
 {
-	long long	x;
-
-	x = ft_atoll(str);
-	return (x > INT_MAX);
+	renderer(game);
+	manage_time(game);
+	return (0);
 }
