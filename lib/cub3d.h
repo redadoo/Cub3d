@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 18:39:32 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 18:47:34 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -480,4 +480,5 @@ void				go_backwards(t_game *game);
 void				go_left(t_game *game);
 void				go_right(t_game *game);
 void				put_and_destroy_image(t_game *g, void *i, int x, int y);
+void				init_texture(t_sprite *texture, t_game *game);
 #endif

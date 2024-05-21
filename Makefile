@@ -6,7 +6,7 @@
 #    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/05/21 14:35:05 by edoardo          ###   ########.fr        #
+#    Updated: 2024/05/21 18:51:17 by edoardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM			  	= rm -rf
 OBJDIR        	= .objFiles
 
 MAIN_SRC		= src/cub3d
-INIT_CUB3D 		= src/init/init_struct
+INIT_CUB3D 		= src/init/init_0 src/init/init_1
 UTILS 			= src/utils/error src/utils/exit src/utils/string_utils src/utils/game_utils src/utils/safe_mlx_free src/utils/texture
 WINDOW			= src/window/window
 KEY 			= src/key/key
