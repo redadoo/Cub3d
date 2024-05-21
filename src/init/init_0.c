@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:18:11 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 18:50:52 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 19:12:13 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
 	game->window = ft_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-	game->scene = init_sprite();
-	game->mini_map.sprite = init_sprite();
+	game->scene = get_empty_sprite();
+	game->mini_map.sprite = get_empty_sprite();
 }
 
 void	set_null(t_game *game)
@@ -52,7 +52,7 @@ void	load_cub3d_data(t_game *game, char **argv)
 		error("error on map content", game);
 	init_player(&game->player, game->map);
 	init_camera(&game->camera, game->player.dir);
-	load_texture(game);
+	load_sprites(game);
 	init_mini_map(game);
 	game->game_time.frame_time = 0;
 	game->game_time.old_time = 0;

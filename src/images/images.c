@@ -6,13 +6,13 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:16:06 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/17 21:05:01 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/21 19:11:57 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-t_sprite	init_sprite(void)
+t_sprite	get_empty_sprite(void)
 {
 	t_sprite	new_sprite;
 

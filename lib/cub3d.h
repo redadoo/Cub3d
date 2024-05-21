@@ -6,7 +6,7 @@
 /*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 21:47:45 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 18:47:34 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/22 01:07:01 by edoardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,10 +246,10 @@ void				safe_mlx_destroy_display(void *mlx_ptr);
  */
 void				safe_mlx_clear_window(void *mlx_ptr, void *win_ptr);
 /**
- * @brief loads textures from information obtained from the map
+ * @brief loads sprites from information obtained from the map
  * @param game Pointer to the t_game structure.
  */
-void				load_texture(t_game *game);
+void				load_sprites(t_game *game);
 /**
  * @brief Checks if a character represents a valid direction('N','S','E','W').
  * @param ch The character to be checked.
@@ -327,7 +327,7 @@ void				wall_hit(t_game *game);
  * @brief Initializes a sprite structure with default values.
  * @return The initialized sprite structure.
  */
-t_sprite			init_sprite(void);
+t_sprite			get_empty_sprite(void);
 /**
  * @brief Creates a new image using the specified mlx pointer.
  * @param mlx_ptr The mlx pointer used to create the new image.
@@ -413,7 +413,9 @@ bool				assign_rgb(char **rgb, t_assets *assets, char *identifier);
  * @param textures_part The array containing texture information strings.
  * @return true if parsing and assignment are successful, false otherwise.
  */
+
 bool				get_info_texture(t_assets *assets, char **textures_part);
+
 /**
  * @brief Reads the map file and populates the game structure.
  * @param game The game structure to be populated.
@@ -421,7 +423,9 @@ bool				get_info_texture(t_assets *assets, char **textures_part);
  * @return true if the scene file is successfully read
  * and parsed, false otherwise.
  */
+
 bool				readmap(t_game *game, char *file_name);
+
 /**
  * @brief Checks if a string has a valid arrangement of surrounding elements.
  * @param map_part A 2D array of characters representing a part of the map.
@@ -429,56 +433,165 @@ bool				readmap(t_game *game, char *file_name);
  * @param j The column index of the current element.
  * @return true if the arrangement is valid, false otherwise.
  */
+
 bool				valid_surroundings(char **map_part, t_vector2_int ind);
+
 /**
  * @brief Parses and validates the map.
  *
  * @param map A 2D array of characters representing the map.
  * @return true if the map is valid, false otherwise.
  */
+
 bool				parse_map(char **map);
+
 /**
  * @brief Renders the game scene.
  * @param game Pointer to the game structure containing 
  * scene and rendering information.
  */
+
 void				renderer(t_game *game);
+
 /**
  * @brief Main loop function for the game.
  * @param game Pointer to the game structure
  *  containing scene and game state information.
  * @return Always returns 0 to indicate successful execution of the main loop.
  */
+
 int					main_loop(t_game *game);
+
 /**
  * @brief Checks if a file is empty.
  *
  * @param file_name The name of the scene file.
  * @return true if the scene is empty, false otherwise.
  */
+
 bool				check_file(char *file_name);
+
 /**
  * @brief Retrieves the texture part from the file.
  *
  * @return An matrix containing the texture information from the file.
  */
+
 char				**read_texture(char **full_map);
+
 /**
  * @brief Gets the number of map lines in the scene file.
  *
  * @return The number of non-empty map lines in the scene file.
  */
+
 int					file_linecount(char **full_map);
+
+/**
+ * @brief Gets the map from file 
+ *
+ * @return char ** of map
+ */
+
 char				**get_map_part(char **full_map);
-void				draw_quad(t_sprite	sprite, t_vector2_int of, int l, int c);
+
+/**
+ * @brief Gets the number of map lines in the scene file.
+ *
+ * @param sprite sprite where draw the quad
+ * 
+ * @param offset pixel offset
+ * 
+ * @param lenght quad size
+ * 
+ * @param color quad color
+ */
+void				draw_quad(t_sprite	sprite, t_vector2_int offset,
+						int lenght, int color);
+
+/**
+ * @brief draw minimap
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ */
 void				draw_minimap(t_game *game);
+
+/**
+ * @brief render floor and celing 
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ * @param x x position of vertical stripes
+ */
 void				render_background(t_game *game, int x);
+
+/**
+ * @brief function to manage the rotation of player view
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ * @param distance distance of view
+ */
 void				rotate_view(t_game *game, double distance);
+
+/**
+ * @brief manage the frame time for the game
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ */
 void				manage_time(t_game *game);
+
+/**
+ * @brief move the player to he's front.
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ */
 void				go_ahead(t_game *game);
+
+/**
+ * @brief move the player to he's back.
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ */
 void				go_backwards(t_game *game);
+
+/**
+ * @brief move the player to he's left.
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ */
 void				go_left(t_game *game);
+
+/**
+ * @brief move the player to he's right.
+ *
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ */
 void				go_right(t_game *game);
+
+/**
+ * @brief put a image on screen and destroy the image
+ * @param game Pointer to the game structure containing 
+ * 	scene and rendering information.
+ * @param i void pointer to the image
+ * @param x x image position
+ * @param y y image position
+ */
 void				put_and_destroy_image(t_game *g, void *i, int x, int y);
-void				init_texture(t_sprite *texture, t_game *game);
+
+/**
+ * @brief Initializes a texture for a sprite in the cub3d project.
+ *
+ * @param texture Pointer to the t_sprite structure that holds the texture 
+ *                information.
+ * @param game Pointer to the game structure containing 
+ * scene and rendering information.
+ */
+void				init_sprite(t_sprite *texture, t_game *game);
 #endif
