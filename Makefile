@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
+#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 17:23:06 by evocatur          #+#    #+#              #
-#    Updated: 2024/05/21 18:51:17 by edoardo          ###   ########.fr        #
+#    Updated: 2024/05/22 14:20:30 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		  	= cub3d
 
 CC			  	= gcc 
-FLAGS		  	= -Wall -Wextra -Werror 
+FLAGS		  	= #-Wall -Wextra -Werror 
 RM			  	= rm -rf
 
 OBJDIR        	= .objFiles
