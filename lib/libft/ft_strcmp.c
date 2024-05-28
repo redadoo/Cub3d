@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_extension.c                               :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 21:52:24 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/28 14:00:09 by evocatur         ###   ########.fr       */
+/*   Created: 2024/04/05 16:18:43 by evocatur          #+#    #+#             */
+/*   Updated: 2024/05/28 13:49:21 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	check_extension(char *file, char *extension)
+bool	ft_strcmp(char *str1, char *str2)
 {
-	int		count;
-	char	*tmp;
+	size_t	i;
 
-	count = ft_strlen(extension);
-	tmp = (char *)ft_strstr(file, extension);
-	if (tmp == NULL)
+	if ((str1 && !str2) || (!str1 && str2))
 		return (false);
-	while (count)
+	i = 0;
+	while (str1[i] || str2[i])
 	{
-		tmp++;
-		count--;
+		if (str1[i] != str2[i])
+			return (false);
+		i += 1;
 	}
-	if ((int)*tmp != 0)
-		return (false);
 	return (true);
 }

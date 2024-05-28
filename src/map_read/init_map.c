@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:36:41 by edoardo           #+#    #+#             */
-/*   Updated: 2024/04/29 02:44:32 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:30:13 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	put_info(t_assets *assets, char *str1, char *str2)
 {
 	if (str1[0] != '\n' && str1 && str2)
 	{
-		if (ft_strstr(str1, "NO"))
+		if (ft_strstr(str1, "WE"))
 			assets->n_wall.path = ft_strdup(str2);
-		else if (ft_strstr(str1, "SO"))
-			assets->s_wall.path = ft_strdup(str2);
-		else if (ft_strstr(str1, "WE"))
-			assets->w_wall.path = ft_strdup(str2);
 		else if (ft_strstr(str1, "EA"))
+			assets->s_wall.path = ft_strdup(str2);
+		else if (ft_strstr(str1, "NO"))
+			assets->w_wall.path = ft_strdup(str2);
+		else if (ft_strstr(str1, "SO"))
 			assets->e_wall.path = ft_strdup(str2);
 	}
 }
@@ -36,7 +36,7 @@ bool	get_texture_path(char *coord, char **map, t_assets *assets)
 	while (i < 6)
 	{
 		tmp = ft_split(map[i], ' ');
-		if (streq(coord, tmp[0]))
+		if (ft_strcmp(coord, tmp[0]))
 		{
 			if (matrix_height(tmp) != 2)
 				return (free_matrix(tmp), false);
@@ -50,30 +50,9 @@ bool	get_texture_path(char *coord, char **map, t_assets *assets)
 	return (free_matrix(tmp), false);
 }
 
-bool	assign_rgb(char **rgb, t_assets *assets, char *identifier)
+bool	test(void)
 {
-	size_t	i;
-	int		element_rgb[3];
-
-	i = 0;
-	if (matrix_height(rgb) != 3)
-		return (false);
-	while (rgb[i])
-	{
-		if (!is_all_digits(rgb[i]))
-			return (false);
-		element_rgb[i] = ft_atoi(rgb[i]);
-		if (!fits_in_int_range(element_rgb[i], 0, 255))
-			return (false);
-		i += 1;
-	}
-	if (streq(identifier, "C"))
-		set_vector3_int(&assets->celin_color, element_rgb[0], element_rgb[1],
-			element_rgb[2]);
-	else
-		set_vector3_int(&assets->floor_color, element_rgb[0], element_rgb[1],
-			element_rgb[2]);
-	return (true);
+	return (is_all_digits("test") && ft_atoi("test") == 1);
 }
 
 bool	get_color(char *identifier, char **map, t_assets *assets)
@@ -88,11 +67,11 @@ bool	get_color(char *identifier, char **map, t_assets *assets)
 	{
 		free_matrix(tmp);
 		tmp = ft_split(map[i], ' ');
-		if (streq(identifier, tmp[0]))
+		if (ft_strcmp(identifier, tmp[0]))
 		{
 			if (matrix_height(tmp) != 2)
 				res = false;
-			if (streq(identifier, "C"))
+			if (ft_strcmp(identifier, "C"))
 				res = string_to_vector3_int(&assets->celin_color, tmp[1], ',');
 			else
 				res = string_to_vector3_int(&assets->floor_color, tmp[1], ',');

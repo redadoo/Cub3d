@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 16:29:27 by fborroto          #+#    #+#             */
-/*   Updated: 2024/05/17 21:05:08 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:08:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,23 @@ bool	check_file(char *namefile)
 char	**read_texture(char **full_map)
 {
 	t_vector2_int	i;
-	char			**scene;
+	char			**world;
 
-	scene = malloc(7 * sizeof(char *));
-	if (!scene)
+	world = malloc(7 * sizeof(char *));
+	if (!world)
 		return (NULL);
 	set_vector2_int(&i, 0, -1);
 	while (i.x < 6)
 	{
 		if (full_map[++i.y] == NULL)
-			return (free_matrix(scene), NULL);
+			return (free_matrix(world), NULL);
 		if (only_spaces(full_map[i.y]))
 			continue ;
-		scene[i.x] = ft_strdup(full_map[i.y]);
+		world[i.x] = ft_strdup(full_map[i.y]);
 		i.x++;
 	}
-	scene[i.x] = NULL;
-	return (scene);
+	world[i.x] = NULL;
+	return (world);
 }
 
 int	file_linecount(char **full_map)

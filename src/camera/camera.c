@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 12:47:56 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/22 14:29:34 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:08:56 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	rotate_view(t_game *game, double distance)
 
 int	camera_rotation(int x, int y, t_game *game)
 {
+	x = -x;
 	game->camera.rot_speed = game->game_time.frame_time * 3.0;
 	set_vector2_int(&game->camera.mouse_pos, x, y);
 	rotate_view(game, (game->camera.old_x - game->camera.mouse_pos.x)

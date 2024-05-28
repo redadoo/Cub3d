@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:29:00 by evocatur          #+#    #+#             */
-/*   Updated: 2024/05/21 17:43:48 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 13:26:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,17 @@ void	ray_distance(t_game *game)
 
 void	pixel_to_fill(t_game *game)
 {
+	int	pitch;
+
+	pitch = 100;
 	game->raycaster.line_height = (int)(WIN_HEIGHT
 			/ game->raycaster.perp_wall_dist);
 	game->raycaster.draw_start = -game->raycaster.line_height / 2 + WIN_HEIGHT
-		/ 2 + 100;
+		/ 2 + pitch;
 	if (game->raycaster.draw_start < 0)
 		game->raycaster.draw_start = 0;
 	game->raycaster.draw_end = game->raycaster.line_height / 2 + WIN_HEIGHT / 2
-		+ 100;
+		+ pitch;
 	if (game->raycaster.draw_end >= WIN_HEIGHT)
 		game->raycaster.draw_end = WIN_HEIGHT - 1;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:10:50 by fborroto          #+#    #+#             */
-/*   Updated: 2024/05/17 21:05:14 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 14:13:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static bool	valid_elements(char **map_part)
 	while (map_part[ind.x + 1])
 	{
 		ind.y = 1;
-		while (map_part[ind.x][ind.y] && ind.y < last_idx(map_part[ind.x - 1])
-			&& ind.y < last_idx(map_part[ind.x + 1]))
+		while (map_part[ind.x][ind.y] && ind.y < f_ind(map_part[ind.x - 1])
+			&& ind.y < f_ind(map_part[ind.x + 1]))
 		{
 			if (ft_strchr("0EWNS", map_part[ind.x][ind.y]) != NULL
 				&& !valid_surroundings(map_part, ind))
@@ -64,18 +64,17 @@ static bool	valid_elements(char **map_part)
  */
 static bool	player_position(char **map)
 {
-	bool	player_found;
-	int		i;
-	int		j;
+	t_vector2_int	i;
+	bool			player_found;
 
 	player_found = false;
-	i = -1;
-	while (map[++i])
+	set_vector2_int(&i, -1, -1);
+	while (map[++i.x])
 	{
-		j = -1;
-		while (map[i][++j])
+		i.y = -1;
+		while (map[i.x][++i.y])
 		{
-			if (ft_strchr("NSWE", map[i][j]) != NULL)
+			if (ft_strchr("NSWE", map[i.x][i.y]) != NULL)
 			{
 				if (player_found == true)
 					return (false);
@@ -115,7 +114,7 @@ static bool	wall_surrounding(char **map)
 			i.y += 1;
 		if (map[i.x][i.y] != '1')
 			return (false);
-		i.y = last_idx(map[i.x]) - 1;
+		i.y = f_ind(map[i.x]) - 1;
 		if (map[i.x][i.y] != '1')
 			return (false);
 	}
@@ -125,16 +124,10 @@ static bool	wall_surrounding(char **map)
 bool	parse_map(char **map)
 {
 	if (!wall_surrounding(map))
-	{
 		return (false);
-	}
 	if (!valid_elements(map))
-	{
 		return (false);
-	}
 	if (!player_position(map))
-	{
 		return (false);
-	}
 	return (true);
 }

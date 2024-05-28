@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 19:22:16 by fborroto          #+#    #+#             */
-/*   Updated: 2024/05/21 17:46:52 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 14:45:23 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_quad(t_sprite sprite, t_vector2_int offset, int lenght, int color)
 	{
 		while (y < lenght)
 		{
-			ft_put_pixel(sprite, offset.x + i, offset.y + y, color);
+			draw_pixel(sprite, offset.x + i, offset.y + y, color);
 			y++;
 		}
 		y = 0;

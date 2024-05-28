@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:21:39 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 17:19:31 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:08:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	ft_put_pixel(t_sprite img, int x, int y, int color)
+void	draw_pixel(t_sprite img, int x, int y, int color)
 {
 	if (x >= 0 && y >= 0 && x < WIN_WIDTH && y < WIN_HEIGHT)
 	{
@@ -20,12 +20,10 @@ void	ft_put_pixel(t_sprite img, int x, int y, int color)
 	}
 }
 
-static void	draw_texture_color(t_game *game, int x, int start)
+static void	draw_texture_color(t_game *game, int x, int start, int index)
 {
 	int	texcolor;
-	int	index;
 
-	index = TEXTURE_HEIGHT * game->raycaster.tex.y + game->raycaster.tex.x;
 	if (game->raycaster.side == 0)
 	{
 		if (game->raycaster.ray_dir.x < 0)
@@ -39,23 +37,20 @@ static void	draw_texture_color(t_game *game, int x, int start)
 			texcolor = game->assets.w_wall.text_value[index];
 		else
 			texcolor = game->assets.e_wall.text_value[index];
-	}
-	if (game->raycaster.side == 1)
 		texcolor = (texcolor >> 1) & 8355711;
-	ft_put_pixel(game->scene, x, start, texcolor);
+	}
+	draw_pixel(game->world, x, start, texcolor);
 }
 
 void	draw_screen(t_game *game, int x)
 {
 	int	y;
+	int	pitch;
 
+	pitch = 100;
 	y = game->raycaster.draw_start;
-	if (x == WIN_WIDTH)
-		x = 0;
-	if (y < 0)
-		y = 0;
 	game->raycaster.step = 1.0 * TEXTURE_HEIGHT / game->raycaster.line_height;
-	game->raycaster.tex_pos = (y - 100 - WIN_HEIGHT / 2
+	game->raycaster.tex_pos = (y - pitch - WIN_HEIGHT / 2
 			+ game->raycaster.line_height / 2) * game->raycaster.step;
 	render_background(game, x);
 	while (y < game->raycaster.draw_end)
@@ -63,7 +58,8 @@ void	draw_screen(t_game *game, int x)
 		game->raycaster.tex.y = (int)game->raycaster.tex_pos & (TEXTURE_HEIGHT
 				- 1);
 		game->raycaster.tex_pos += game->raycaster.step;
-		draw_texture_color(game, x, y);
+		draw_texture_color(game, x, y,
+			TEXTURE_HEIGHT * game->raycaster.tex.y + game->raycaster.tex.x);
 		y++;
 	}
 }

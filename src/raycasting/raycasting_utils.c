@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 14:09:26 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/17 21:03:09 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 13:31:33 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	wall_hit(t_game *game)
 	game->raycaster.wall_x -= floor((game->raycaster.wall_x));
 	game->raycaster.tex.x = (int)(game->raycaster.wall_x
 			* TEXTURE_WIDTH);
-	if (game->raycaster.side == 0 && game->raycaster.ray_dir.x > 0)
-		game->raycaster.tex.x = TEXTURE_WIDTH - game->raycaster.tex.x - 1;
-	if (game->raycaster.side == 1 && game->raycaster.ray_dir.y < 0)
+	if ((game->raycaster.side == 0 && game->raycaster.ray_dir.x > 0)
+		|| (game->raycaster.side == 1 && game->raycaster.ray_dir.y < 0))
 		game->raycaster.tex.x = TEXTURE_WIDTH - game->raycaster.tex.x - 1;
 }

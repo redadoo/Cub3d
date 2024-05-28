@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:18:11 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 19:12:13 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:08:20 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
 	game->window = ft_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
-	game->scene = get_empty_sprite();
+	game->world = get_empty_sprite();
 	game->mini_map.sprite = get_empty_sprite();
 }
 
@@ -70,6 +70,6 @@ void	init_camera(t_camera *camera, t_vector2 dir)
 		set_vector2(&camera->plane, 0, -0.66);
 	else if (dir.x == -1)
 		set_vector2(&camera->plane, 0, 0.66);
-	camera->dir = dir;
+	set_vector2(&camera->dir, -dir.x, -dir.y);
 	camera->old_x = 0;
 }

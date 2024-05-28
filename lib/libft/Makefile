@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+         #
+#    By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:53:50 by evocatur          #+#    #+#              #
-#    Updated: 2024/05/20 21:57:09 by edoardo          ###   ########.fr        #
+#    Updated: 2024/05/28 14:00:28 by evocatur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ ft_printf.c ft_printf_utilis.c ft_printf_flag.c ft_printf_hex.c ft_printf_p.c \
 ft_printf_unsigned.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
 get_next_line.c get_next_line_utils.c ft_strncpy.c ft_strchr.c \
-matrix_utils.c safe_free.c is_all_digits.c streq.c ft_space.c \
+matrix_utils.c safe_free.c is_all_digits.c ft_strcmp.c ft_space.c \
 ft_atoll.c ft_is_string_int.c ft_is_string_num.c ft_is_string_alpha.c \
-ft_check_extension.c
+ft_check_extension.c ft_file_exist.c
 
 OBJS = ${SRCS:.c=.o}
 

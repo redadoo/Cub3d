@@ -6,7 +6,7 @@
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:04:18 by evocatur          #+#    #+#             */
-/*   Updated: 2024/05/22 14:18:09 by evocatur         ###   ########.fr       */
+/*   Updated: 2024/05/28 14:02:18 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 		error(" wrong number of arguments ", &game);
 	if (check_extension(argv[1], ".cub") == false)
 		error(" wrong extension for the map ", &game);
+	if (file_exist(argv[1]) == false)
+		error(" the map file does not exist", &game);
 	init_mlx(&game);
 	load_cub3d_data(&game, argv);
 	mlx_main(&game);

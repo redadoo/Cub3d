@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:12:28 by edoardo           #+#    #+#             */
-/*   Updated: 2024/05/21 18:36:27 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 15:27:04 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,19 +241,91 @@ void			print_vector2_int(t_vector2_int v);
  */
 void			print_vector3_int(t_vector3_int v);
 
+/**
+ * @brief compare each elements of two t_vector2_int
+ * 
+ * @param v1 The first vector.
+ * @param v2 The second vector.
+ * 
+ * @return true if vectors are the same otherwise false
+*/
 bool			compare_vector2_int(t_vector2_int v1, t_vector2_int v2);
 
+/**
+ * @brief compare each elements of two t_vector2
+ * 
+ * @param v1 The first vector.
+ * @param v2 The second vector.
+ * 
+ * @return true if vectors are the same otherwise false
+*/
 bool			compare_vector2(t_vector2 v1, t_vector2 v2);
 
+/**
+ * @brief compare each elements of two t_vector3_int
+ * 
+ * @param v1 The first vector.
+ * @param v2 The second vector.
+ * 
+ * @return true if vectors are the same otherwise false
+*/
 bool			compare_vector3_int(t_vector3_int v1, t_vector3_int v2);
 
+/**
+ * @brief compare each elements of two t_vector3
+ * 
+ * @param v1 The first vector.
+ * @param v2 The second vector.
+ * 
+ * @return true if vectors are the same otherwise false
+*/
 bool			compare_vector3(t_vector3 v1, t_vector3 v2);
 
+/**
+ * @brief checks whether each element of a t_vector3
+ * is in a range of minimum(inclusive) and maximum(inclusive)
+ * 
+ * @param v vector to check.
+ * @param min smallest value in the range
+ * @param max largest value in the range
+ * 
+ * @return true if each element of a vector is in range
+*/
 bool			is_vector3_in_range(t_vector3 v, double min, double max);
 
+/**
+ * @brief checks whether each element of a t_vector3_int
+ * is in a range of minimum(inclusive) and maximum(inclusive)
+ * 
+ * @param v vector to check.
+ * @param min smallest value in the range
+ * @param max largest value in the range
+ * 
+ * @return true if each element of a vector is in range
+*/
 bool			is_vector3_int_in_range(t_vector3_int v, int min, int max);
 
+/**
+ * @brief checks whether each element of a t_vector2
+ * is in a range of minimum(inclusive) and maximum(inclusive)
+ * 
+ * @param v vector to check.
+ * @param min smallest value in the range
+ * @param max largest value in the range
+ * 
+ * @return true if each element of a vector is in range
+*/
 bool			is_vector2_in_range(t_vector2 v, double min, double max);
 
+/**
+ * @brief checks whether each element of a t_vector2_int
+ * is in a range of minimum(inclusive) and maximum(inclusive)
+ * 
+ * @param v vector to check.
+ * @param min smallest value in the range
+ * @param max largest value in the range
+ * 
+ * @return true if each element of a vector is in range
+*/
 bool			is_vector2_int_in_range(t_vector2_int v, int min, int max);
 #endif

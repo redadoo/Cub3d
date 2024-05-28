@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:51:43 by evocatur          #+#    #+#             */
-/*   Updated: 2024/02/05 20:09:49 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 12:32:39 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,28 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (newstr == NULL)
 		return (NULL);
 	ft_strlcpy(newstr, s1 + start, end - start + 1);
+	return (newstr);
+}
+
+char	*ft_strtrim_free(char *s1, char const *set)
+{
+	int		start;
+	int		end;
+	char	*newstr;
+
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	start = ft_getstart(s1, set);
+	end = ft_getend(s1, set);
+	if (start >= end)
+	{
+		safe_free(s1);
+		return (ft_strdup(""));
+	}
+	newstr = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (newstr == NULL)
+		return (NULL);
+	ft_strlcpy(newstr, s1 + start, end - start + 1);
+	safe_free(s1);
 	return (newstr);
 }

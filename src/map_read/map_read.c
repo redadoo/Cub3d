@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edoardo <edoardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:50:16 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/28 17:38:33 by edoardo          ###   ########.fr       */
+/*   Updated: 2024/05/28 13:24:29 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**readfile(char *file)
 	while (i < file_lines_count(file))
 	{
 		map[i] = get_next_line(fd);
-		map[i] = trim_free(map[i], "\n");
+		map[i] = ft_strtrim_free(map[i], "\n");
 		i++;
 	}
 	close(fd);

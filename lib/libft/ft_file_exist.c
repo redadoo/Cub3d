@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   streq.c                                            :+:      :+:    :+:   */
+/*   ft_file_exist.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evocatur <evocatur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 16:18:43 by evocatur          #+#    #+#             */
-/*   Updated: 2024/04/05 16:41:58 by evocatur         ###   ########.fr       */
+/*   Created: 2024/05/20 21:52:24 by edoardo           #+#    #+#             */
+/*   Updated: 2024/05/28 14:56:50 by evocatur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	streq(char *str1, char *str2)
+bool	file_exist(char const *file)
 {
-	size_t	i;
+	int	fd;
 
-	if ((str1 && !str2) || (!str1 && str2))
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 		return (false);
-	i = 0;
-	while (str1[i] || str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (false);
-		i += 1;
-	}
+	close(fd);
 	return (true);
 }
